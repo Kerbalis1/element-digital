@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1d1c1a">
+  <title>Живой аватар — ELEMENT DIGITAL</title>
+  <style>
+    @font-face{font-family:Manrope;src:url('/assets/manrope-400.woff') format('woff');font-display:swap}
+    *{box-sizing:border-box}body{margin:0;background:#1d1c1a;color:#f3f0ea;font:16px/1.6 Manrope,Arial,sans-serif}main{width:min(100% - 40px,720px);margin:40px auto 64px}a{color:inherit;text-underline-offset:5px}header{display:flex;justify-content:space-between;gap:24px;font-size:14px;color:#d4c6b4;margin-bottom:28px}h1{font:400 clamp(30px,6vw,46px)/1.2 Georgia,serif;margin:0 0 12px}p{color:#d4cdc3;margin:0 0 24px}.player{overflow:hidden;border:1px solid #6b5a46;border-radius:18px;background:#151412}video{display:block;width:100%;aspect-ratio:1;object-fit:contain}.actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:24px 0}button{border:1px solid #c8ad88;background:#c8ad88;color:#1d1c1a;font:inherit;padding:14px 23px;border-radius:8px;cursor:pointer}.actions a{padding:10px 0}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #fff;outline-offset:5px}#status{min-height:26px;font-size:14px}details{border-top:1px solid #5d5347;padding-top:20px;margin-top:28px}summary{cursor:pointer;color:#e5d5bf}details img{display:block;max-width:100%;width:480px;height:auto;margin:20px auto;border-radius:14px}.details-links{display:flex;gap:24px;flex-wrap:wrap;margin-top:16px}@media(max-width:480px){main{width:calc(100% - 28px);margin-top:24px}header{font-size:13px}button{width:100%}.actions{gap:8px 24px}}
+  </style>
+</head>
+<body>
+<main>
+  <header><span>ELEMENT DIGITAL</span><a href="/">На сайт ↗</a></header>
+  <h1>Живой аватар студии.</h1>
+  <p>Два стеклянных шарика вращаются вокруг объёмной E. Полный оборот — 8 секунд.</p>
+  <div class="player"><video id="avatar" controls loop muted playsinline preload="metadata" poster="/avatar/cover.jpg" aria-label="Аватар ELEMENT DIGITAL: шарики вращаются вокруг буквы E"><source src="/avatar/avatar.mp4" type="video/mp4">Откройте GIF-версию ниже или скачайте видео.</video></div>
+  <div class="actions"><button type="button" id="play" aria-controls="avatar">Смотреть анимацию</button><a href="/avatar/avatar.mp4" download="ELEMENT-DIGITAL-orbit.mp4">Скачать MP4 ↓</a></div>
+  <p id="status" role="status" aria-live="polite"></p>
+  <details id="gif"><summary>Открыть GIF-версию</summary><img src="/avatar/preview.gif" width="320" height="320" alt="Анимация вращения стеклянных шариков вокруг буквы E" loading="lazy"><div class="details-links"><a href="/avatar/preview.gif" download="ELEMENT-DIGITAL-preview.gif">Скачать GIF ↓</a><a href="/avatar/avatar-kit.zip" download="ELEMENT-DIGITAL-orbit-kit.zip">Комплект для установки ↓</a></div></details>
+</main>
+<script>
+  const video=document.querySelector('#avatar'),button=document.querySelector('#play'),status=document.querySelector('#status');
+  function sync(){button.textContent=video.paused?'Смотреть анимацию':'Остановить анимацию';}
+  button.addEventListener('click',async()=>{if(!video.paused){video.pause();return;}try{await video.play();status.textContent='';}catch{status.textContent='Видео не удалось запустить. Откройте GIF-версию ниже.';document.querySelector('#gif').open=true;}});
+  video.addEventListener('play',sync);video.addEventListener('pause',sync);
+  video.addEventListener('error',()=>{status.textContent='Видео недоступно в этом браузере. Откройте GIF-версию ниже.';});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();});
+</script>
+</body>
+</html>

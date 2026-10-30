@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" fill="none"><defs>
+<linearGradient id="metal" x1=".1" y1="0" x2=".8" y2="1"><stop stop-color="#f0dfbf"/><stop offset=".42" stop-color="#c4a477"/><stop offset=".74" stop-color="#91704c"/><stop offset="1" stop-color="#d2b58b"/></linearGradient>
+<linearGradient id="side" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8f714e"/><stop offset="1" stop-color="#332a22"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#cbd2d9" stop-opacity=".3"/><stop offset=".5" stop-color="#b7c2cd" stop-opacity=".06"/><stop offset="1" stop-color="#d6c8b1" stop-opacity=".18"/></linearGradient>
+<linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3ead9" stop-opacity=".9"/><stop offset=".45" stop-color="#a3a9ad" stop-opacity=".28"/><stop offset="1" stop-color="#dfc39d" stop-opacity=".8"/></linearGradient>
+<radialGradient id="halo"><stop stop-color="#c8ad88" stop-opacity=".13"/><stop offset="1" stop-color="#c8ad88" stop-opacity="0"/></radialGradient>
+<filter id="blur"><feGaussianBlur stdDeviation="7"/></filter>
+</defs><circle cx="150" cy="145" r="125" fill="url(#halo)"/><ellipse cx="155" cy="255" rx="69" ry="12" fill="#000" opacity=".25" filter="url(#blur)"/><path d="M82 59L244 161L174 178L151 244L130 228L142 177L76 199Z" fill="url(#side)" stroke="#a88b65" stroke-width=".7"/><path d="M76 46L232 145L162 162L139 228L117 164L70 184Z" fill="url(#metal)" stroke="#f3dcb5" stroke-width="1"/><path d="M76 46L148 153L139 228M148 153L232 145M148 153L70 184" stroke="#f6e1bd" stroke-opacity=".42"/><path d="M230 65v24m-12-12h24M55 221v14m-7-7h14" stroke="#c8ad88" stroke-opacity=".5"/></svg>

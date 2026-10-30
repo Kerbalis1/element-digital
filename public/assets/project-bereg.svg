@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="640" viewBox="0 0 1440 640"><defs><filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-opacity=".13"/></filter><filter id="tub-steam-soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.5"/></filter></defs><rect width="1440" height="640" fill="#c6c2be"/><circle cx="1310" cy="60" r="270" fill="#beb8b2"/><rect x="105" y="51" width="1230" height="559" rx="5" fill="#f7f5ec" filter="url(#shadow)"/><path d="M105 85H1335" stroke="#dddad7"/><g fill="#b7b3af"><circle cx="125" cy="68" r="3"/><circle cx="137" cy="68" r="3"/><circle cx="149" cy="68" r="3"/></g><text x="720" y="73" text-anchor="middle" font-family="Arial" font-size="9" fill="#85807a">bereg — концепция сайта</text><text x="144" y="128" font-family="Georgia" font-size="32" fill="#3f3932">берег.</text><g font-family="Arial" font-size="11" fill="#5b554f"><text x="589" y="122">Домики</text><text x="681" y="122">Впечатления</text><text x="801" y="122">Как добраться</text><text x="1180" y="122">Выбрать даты </text><path d="M1258.65 122.0l7 -7m-7 0h7v7" fill="none" stroke="#6b655d" stroke-width="1.2"/></g><rect x="140" y="159" width="1160" height="400" fill="#948c82"/><path d="M140 375Q450 165 800 330T1300 282V559H140Z" fill="#766f66"/><path d="M140 430Q500 300 820 407T1300 373V559H140Z" fill="#625c55"/><path d="M140 482Q470 383 800 459T1300 433V559H140Z" fill="#534d47"/><circle cx="1118" cy="222" r="34" fill="#e4d9ac"/><g fill="#423b33"><path d="M1190 173.0l-38.4 90.0h20.4l-37.199999999999996 66.0h110.39999999999999l-37.199999999999996 -66.0h20.4z"/><path d="M1230 212.0l-41.6 97.5h22.1l-40.300000000000004 71.5h119.60000000000001l-40.300000000000004 -71.5h22.1z"/><path d="M1150 285l-32 75h17l-31 55h92l-31 -55h17z"/><path d="M1280 296.0l-28.8 67.5h15.3l-27.900000000000002 49.5h82.8l-27.900000000000002 -49.5h15.3z"/><path d="M930 225l-32 75h17l-31 55h92l-31 -55h17z"/><path d="M1000 277.0l-25.6 60.0h13.600000000000001l-24.8 44.0h73.60000000000001l-24.8 -44.0h13.600000000000001z"/><path d="M875 303.0l-22.4 52.5h11.899999999999999l-21.7 38.5h64.39999999999999l-21.7 -38.5h11.899999999999999z"/></g><g class="house-ghost" fill="none" stroke="#d5bb91" stroke-width="1.5" stroke-dasharray="5 6"><path d="M807 464L980 298L1150 464M842 455V519H1115V455M980 324V519M907 396V519M1050 390V519M824 522H1133"/></g>
+<g class="house-part house-roof-left"><path d="M807 464L980 298V464Z" fill="#d5bb91"/><path d="M821 460L980 310V460Z" fill="#443f33"/></g>
+<g class="house-part house-roof-right"><path d="M980 298L1150 464H980Z" fill="#d5bb91"/><path d="M980 310L1135 460H980Z" fill="#443f33"/></g>
+<g class="house-part house-wall-left"><path d="M842 455L907 393.2971V519H842Z" fill="#413d38"/></g>
+<g class="house-part house-wall-middle"><path d="M907 393.2971L980 324L1050 391.9259V519H907Z" fill="#413d38"/></g>
+<g class="house-part house-wall-right"><path d="M1050 391.9259L1115 455V519H1050Z" fill="#413d38"/></g>
+<g class="house-part house-frame"><path d="M980 324V519M907 396V519M1050 390V519M842 455H1115" stroke="#ac936d" stroke-width="7"/></g>
+<g class="house-part house-base"><path d="M824 522H1133L1160 539H797Z" fill="#baa687"/></g>
+<g class="house-part house-door"><path d="M971 456H1008V518H971Z" fill="#d9b779"/><path d="M977 464H1002V513H977Z" fill="#e8d4a3"/></g><g class="hot-tub">
+  <ellipse cx="695" cy="545" rx="76" ry="10" fill="#302b25" opacity=".23"/>
+  <g class="tub-fire" opacity="0" aria-hidden="true">
+    <ellipse class="tub-heat" cx="695" cy="540" rx="60" ry="13" fill="#b88649" opacity=".3"/>
+    <path class="tub-flame tub-flame-left" d="M669 542C657 530 672 526 671 513C684 519 677 527 684 531C691 536 681 544 669 542Z" fill="#c88143"/>
+    <path class="tub-flame tub-flame-main" d="M684 543C675 535 687 525 685 515C691 518 692 518 694 505C709 516 700 525 708 531C716 542 699 547 684 543Z" fill="#dda65e"/>
+    <path class="tub-flame tub-flame-right" d="M706 542C699 531 713 528 713 514C724 524 716 528 722 533C730 540 716 546 706 542Z" fill="#cb8847"/>
+    <path class="tub-flame tub-flame-core" d="M689 541C685 535 695 531 694 521C706 531 698 533 704 539C701 544 693 545 689 541Z" fill="#f2d99a"/>
+  </g>
+  <path d="M656 507L650 539M733 507L740 539" stroke="#272824" stroke-width="6" stroke-linecap="round"/>
+  <path d="M675 545L716 538M678 538L712 546" stroke="#8d7252" stroke-width="6" stroke-linecap="round"/>
+  <path d="M633 473Q695 493 757 473L744 507Q695 533 646 507Z" fill="#363731"/>
+  <path d="M639 482L650 505Q695 523 739 505" fill="none" stroke="#505149" stroke-width="3"/>
+  <path d="M634 481Q621 476 628 490L639 493M756 481Q769 476 762 490L751 493" fill="none" stroke="#b19a76" stroke-width="3"/>
+  <ellipse cx="695" cy="473" rx="62" ry="16" fill="#b19a76"/>
+  <ellipse cx="695" cy="472" rx="56" ry="12" fill="#30352f"/>
+  <ellipse cx="695" cy="470" rx="52" ry="9" fill="#849093"/>
+  <path d="M655 469Q687 463 722 469M680 475Q703 478 731 472" fill="none" stroke="#d3c9b6" stroke-width="1.5" opacity=".7"/>
+  <g class="tub-steam" fill="none" stroke="#eee7d6" stroke-width="5" stroke-linecap="round" filter="url(#tub-steam-soft)" opacity="0" aria-hidden="true">
+    <path class="tub-smoke-wisp tub-smoke-one" d="M670 461C654 446 680 441 669 425C661 414 672 408 674 402"/>
+    <path class="tub-smoke-wisp tub-smoke-two" d="M693 461C710 448 685 436 696 424C710 410 692 404 700 393"/>
+    <path class="tub-smoke-wisp tub-smoke-three" d="M717 461C702 450 729 438 717 426C710 419 718 412 724 406"/>
+  </g>
+</g><text x="181" y="208" fill="#e8e5e2" font-family="Arial" font-size="9" letter-spacing="2">ЗАГОРОДНЫЙ ОТДЫХ · КОНЦЕПЦИЯ</text><g fill="#f9f7ec" font-family="Georgia" font-size="65"><text x="179" y="295">Ближе к природе.</text><text x="179" y="365">Ближе к себе.</text></g><text x="183" y="408" fill="#e6e2de" font-family="Arial" font-size="12">Тишина, тёплый дом и время для самого важного.</text><rect x="182" y="448" width="178" height="43" fill="#f5f3e6"/><text x="203" y="474" font-family="Arial" font-size="11" fill="#413b34">Найти свой домик</text><text x="333" y="475" font-family="Arial" font-size="15" fill="#413b34"></text><path d="M333.0 475.0l7 -7m-7 0h7v7" fill="none" stroke="#413b34" stroke-width="1.2"/><text x="143" y="588" fill="#79736b" font-family="Arial" font-size="10">01 — МЕСТО ДЛЯ ВАШЕЙ ПАУЗЫ</text><text x="1204" y="588" fill="#79736b" font-family="Arial" font-size="10">КОНЦЕПЦИЯ </text><path d="M1259.0 588.0l7 -7m-7 0h7v7" fill="none" stroke="#79736b" stroke-width="1.2"/></svg>

@@ -1,0 +1,207 @@
+/* Motion art direction. Layout and text remain in the normal document flow. */
+.hero-composition{position:relative;min-height:570px;width:100%;display:grid;place-items:center;perspective:1000px;transform:translate3d(var(--hero-x,0px),var(--hero-y,0px),0)}
+.mark-rig{position:relative;width:116%;margin-left:-8%;transform-style:preserve-3d;animation:mark-drift 9s ease-in-out infinite;will-change:transform}
+.hero-art .element-mark{display:block;width:100%;height:auto;max-width:none;aspect-ratio:560/620;margin:0;object-fit:contain}
+.mark-shine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(112deg,transparent 25%,transparent 43%,#fff2cf7a 49%,#fff8e8b0 50%,transparent 57%,transparent 75%);background-size:300% 100%;mask:url('assets/element-mask.svg') center/contain no-repeat;animation:metal-sweep 8s ease-in-out infinite;mix-blend-mode:screen}
+.hero-halo{position:absolute;inset:9% -5% 10%;border-radius:50%;background:radial-gradient(ellipse,#c8ad8810,transparent 66%);pointer-events:none}
+.orbit-card{position:absolute;z-index:2;width:158px;min-height:185px;border:1px solid #c8ad8840;border-radius:14px;background:linear-gradient(145deg,#ffffff0b,#ffffff02 55%,#c8ad880b);box-shadow:0 20px 55px #0003,inset 0 1px 0 #ffffff13;backdrop-filter:blur(10px);display:flex;align-items:center;flex-direction:column;padding:14px 12px;transform-style:preserve-3d;animation:panel-drift 8s ease-in-out infinite;pointer-events:none}
+.hero-art .orbit-card img{width:155px;height:155px;margin:-12px -15px -18px;max-width:none;object-fit:contain;aspect-ratio:1}
+.orbit-card-browser{left:-4%;top:8%;rotate:-9deg;animation-delay:-2s}
+.orbit-card-message{right:-4%;bottom:10%;rotate:8deg;animation-delay:-5s}
+.orbit-label{position:relative;font-size:14px;line-height:1.5;color:#e0d1ba;white-space:nowrap}
+.orbit-window-dots{display:flex;gap:5px;align-self:flex-start;height:12px}.orbit-window-dots i{width:3px;height:3px;border-radius:50%;background:#c8ad88}
+.orbit-node{width:5px;height:5px;border-radius:50%;background:#d7b98b;box-shadow:0 0 12px #c8ad8844;align-self:flex-end;margin-bottom:7px}
+.orbit-point{position:absolute;width:5px;height:5px;border:1px solid #c8ad8880;border-radius:50%;box-shadow:0 0 18px #c8ad8822}
+.orbit-point-one{left:5%;bottom:25%}.orbit-point-two{right:14%;top:7%}
+.hero-art{min-width:0}
+.hero-art figcaption{position:relative;inset:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 14px;margin:0 0 0 5%;padding-top:16px;min-height:62px}
+.hero-art figcaption>span{font-size:14px}
+.motion-toggle{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:8px 0;background:none;color:#cbb99f;font-size:14px;line-height:1.5;text-align:left;border-bottom:1px solid #c8ad8840}
+.motion-toggle:hover{color:#f2dfc0}.motion-toggle:disabled{color:#c0b2a0;border-color:transparent}.motion-control-icon{flex-shrink:0}
+/* A connected product, illustrated in layers. */
+.digital-product{position:relative;isolation:isolate;background:#23211f;color:var(--paper);overflow:clip}
+.digital-product:before{content:'';position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 75% 50%,#c8ad880d,transparent 55%);pointer-events:none}
+.product-layout{display:grid;grid-template-columns:.85fr 1.3fr;gap:45px;align-items:center}
+.product-copy{position:relative;z-index:2;max-width:470px}
+.product-copy .eyebrow{color:var(--accent);margin-bottom:27px}
+.product-copy h2{font-size:clamp(44px,4.5vw,68px);line-height:1.12}
+.product-lead{font-size:17px;line-height:1.8;color:#d2c8ba;max-width:43ch;margin:29px 0}
+.product-copy .text-link{color:#dfc6a3;border-color:#776148}
+.product-note{font-size:14px;line-height:1.8;color:#bfb09d;margin:34px 0 0;max-width:35ch}
+.product-scene{position:relative;min-width:0;height:650px;perspective:1200px;--scene-progress:.5}
+.product-orbit{position:absolute;width:100%;height:48%;left:3%;bottom:4%;border:1px solid #c8ad881c;border-radius:50%;transform:rotateX(65deg) rotate(-16deg)}
+.product-connections{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.connection-path{stroke:#c8ad8845;stroke-width:1;stroke-dasharray:3 7}
+.connection-signal{stroke:#e8cca1;stroke-width:2;stroke-linecap:round;stroke-dasharray:15 750;animation:data-flow 7s linear infinite;filter:drop-shadow(0 0 4px #cfab74)}
+.connection-signal-second{animation-delay:-3.5s}
+.product-depth{position:absolute;left:1%;top:14%;width:80%;transform:translateY(calc((.5 - var(--scene-progress))*55px)) rotateY(-9deg) rotateX(5deg) rotateZ(-3deg);transform-style:preserve-3d;transition:transform .12s linear}
+.product-browser{position:relative;min-width:0;border:1px solid #c5ad8e80;border-radius:14px;background:#302b26;box-shadow:14px 18px 0 #15131055,0 35px 65px #0005;overflow:hidden;animation:browser-drift 10s ease-in-out infinite}
+.mock-toolbar{height:40px;background:#2b2723;display:flex;align-items:center;justify-content:space-between;padding:0 16px;gap:10px;color:#d4c0a3;font-size:14px;border-bottom:1px solid #c8ad882e}
+.mock-dots{display:flex;gap:5px}.mock-dots i{width:5px;height:5px;border-radius:50%;background:#bda17c}.mock-dots i:nth-child(2){opacity:.6}.mock-dots i:nth-child(3){opacity:.35}.mock-lock{width:8px;height:8px;border:1px solid #bda17c;border-radius:2px}
+.mock-page{background:#ece5d9;color:#30281f;padding:24px 26px 20px;min-height:310px}
+.mock-page-nav{display:flex;align-items:center;justify-content:space-between}.mock-logo{font:38px/1 var(--serif);color:#87633e;letter-spacing:-4px}.mock-nav-lines{display:flex;gap:14px}.mock-nav-lines i{display:block;width:30px;height:2px;background:#9c886c66}
+.mock-page-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:0;align-items:center;margin-top:25px}.mock-page-grid>div{min-width:0}.mock-kicker{display:block;font-size:14px;line-height:1.5;max-width:24ch;color:#786147}.mock-title{display:block;font:36px/1.05 var(--serif);letter-spacing:-.02em;margin:13px 0}.mock-line{display:block;width:90%;height:3px;background:#8e7b6160;margin-top:9px}.mock-line-short{width:65%}.mock-button{display:inline-block;font-size:14px;line-height:1.5;border-bottom:1px solid #9f896c;margin-top:17px;padding-bottom:5px;color:#6a5031}
+.mock-object img{display:block;width:120%;height:auto;max-width:none;margin-left:-10%}
+.mock-page-bottom{display:flex;justify-content:space-between;border-top:1px solid #b3a38c50;padding-top:13px;margin-top:23px;font-size:14px;color:#786147}
+.product-phone{position:absolute;z-index:3;left:60%;top:32%;width:26%;aspect-ratio:.49;padding:10px 7px 17px;background:linear-gradient(145deg,#c0af9622,#131211 55%);border:1px solid #d6c09e;border-radius:27px;box-shadow:7px 9px 0 #13121188,0 22px 45px #0005;transform:translateY(calc((.5 - var(--scene-progress))*-85px)) rotate(7deg);transition:transform .12s linear}
+.phone-camera{display:block;width:30%;height:5px;border-radius:5px;background:#0b0b0a;position:absolute;top:9px;left:35%;z-index:1}
+.phone-screen{border-radius:19px;background:linear-gradient(160deg,#4c4135,#1d1c1a 65%);height:100%;padding:22px 12px 28px;overflow:hidden;position:relative}
+.phone-brand{display:block;font:35px/1 var(--serif);color:#d7bb93;letter-spacing:-4px}.phone-heading{display:block;font:28px/1.1 var(--serif);color:#eedcc3;margin:19px 0}.phone-message{background:#c8ad8814;border:1px solid #c8ad882e;padding:9px;border-radius:9px;font-size:14px;line-height:1.45;color:#e8d6bb;margin-top:13px}.phone-dot{display:inline-block;width:4px;height:4px;background:#c8ad88;margin-right:4px;border-radius:50%}.phone-message-reply{margin-left:10px;background:#c8ad88;color:#2e261d;border:0}.phone-input{position:absolute;bottom:13px;left:11px;right:11px;display:flex;justify-content:space-between;font-size:14px;color:#d1bd9f;gap:6px;border-top:1px solid #c8ad8830;padding-top:9px}.phone-home{position:absolute;bottom:6px;left:34%;width:32%;height:2px;background:#e8cba0;border-radius:3px}
+.product-bot{position:absolute;right:-1%;top:7%;width:150px;border:1px solid #c8ad8845;background:linear-gradient(135deg,#b8a18312,#23211fcc);backdrop-filter:blur(8px);border-radius:15px;padding:13px 15px;box-shadow:0 12px 35px #0003;animation:panel-drift 8s ease-in-out infinite;animation-delay:-2s;color:#e5cfaf;font-size:14px;line-height:1.5}
+.product-bot img{width:130px;height:100px;object-fit:contain;display:block;margin:-10px -6px -4px}.product-status-dot{position:absolute;width:5px;height:5px;right:17px;bottom:19px;background:#dfc194;border-radius:50%;box-shadow:0 0 10px #c8ad8850}
+.product-node{position:absolute;left:2%;bottom:1%;width:145px;animation:avatar-hover 9s ease-in-out infinite;animation-delay:-4s}.product-node img{width:100%;height:auto;display:block}
+.product-scene-caption{position:absolute;bottom:-12px;left:16%;right:0;text-align:center;color:#c5b49e;font-size:14px;line-height:1.7;margin:0}
+/* Services are selectable sculptures, without another wall of cards. */
+.avatar-intro{font-size:16px;line-height:1.8;color:var(--muted);margin:0 0 20px;max-width:60ch}
+.service-avatars{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;padding-bottom:45px;margin-bottom:22px}
+.avatar-service{display:flex;flex-direction:column;align-items:center;min-width:0;padding:0 5px 18px;background:none;text-align:center;border-bottom:1px solid var(--line);transition:border-color .25s}
+.avatar-pedestal{position:relative;display:block;width:100%;max-width:200px;aspect-ratio:1;perspective:800px}
+.avatar-float{position:absolute;inset:0;display:block;animation:avatar-hover 9s ease-in-out infinite;animation-delay:var(--avatar-delay,0s)}
+.avatar-float img{display:block;width:100%;height:auto;transition:transform .45s,filter .45s}
+.avatar-orbit{position:absolute;bottom:10%;left:14%;right:14%;height:14%;border:1px solid #97714530;border-radius:50%;transform:rotate(-7deg);pointer-events:none}
+.avatar-service-name{font-size:16px;line-height:1.5;font-weight:500;max-width:19ch;min-height:48px}
+.avatar-service-action{display:flex;align-items:center;justify-content:center;gap:18px;font-size:14px;line-height:1.7;color:#795b37;margin-top:12px;transition:gap .25s}
+.avatar-service:hover,.avatar-service[aria-pressed=true]{border-color:#927046}
+.avatar-service:hover .avatar-float img,.avatar-service:focus-visible .avatar-float img{transform:rotate(-5deg) translateY(-7px);filter:brightness(1.08)}
+.avatar-service:hover .avatar-service-action{gap:24px}
+.avatar-service[aria-pressed=true] .avatar-service-name{color:#795b37}
+.service{scroll-margin-top:24px}
+/* Motion stays independent of the reading layout. No scrolling is captured. */
+@keyframes mark-drift{0%,100%{transform:translateY(0) rotateY(-5deg) rotateZ(-1deg)}50%{transform:translateY(-12px) rotateY(5deg) rotateZ(1deg)}}
+@keyframes metal-sweep{0%,15%{background-position:150% 0;opacity:0}23%{opacity:.48}55%{background-position:-40% 0;opacity:0}100%{background-position:-40% 0;opacity:0}}
+@keyframes panel-drift{0%,100%{transform:translateY(0) rotateY(-5deg)}50%{transform:translateY(-12px) rotateY(7deg)}}
+@keyframes avatar-hover{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-8px) rotate(1.5deg)}}
+@keyframes browser-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes data-flow{from{stroke-dashoffset:750}to{stroke-dashoffset:0}}
+.motion-sleep *,[data-motion=off] .hero-composition *,[data-motion=off] .product-scene *,[data-motion=off] .service-avatars *{animation-play-state:paused!important}
+[data-motion=off] .hero-composition{transform:none}
+[data-motion=off] .product-depth{transform:rotateY(-9deg) rotateX(5deg) rotateZ(-3deg);transition:none}
+[data-motion=off] .product-phone{transform:rotate(7deg);transition:none}
+@media(min-width:1600px){.hero-composition{min-height:590px}.hero-art .element-mark{max-height:none}}
+@media(min-width:761px) and (max-width:1100px){
+ .hero-composition{min-height:500px}.orbit-card{width:126px;min-height:155px;padding:11px 10px}.hero-art .orbit-card img{width:125px;height:125px}.orbit-card-browser{left:-9%;top:12%}.orbit-card-message{right:-8%;bottom:10%}.orbit-label{font-size:14px}.hero-art figcaption{justify-content:flex-start;margin-left:0}
+ .product-layout{grid-template-columns:1fr;gap:15px}.product-copy{max-width:750px}.product-copy h2 br{display:none}.product-lead{max-width:62ch}.product-scene{height:670px;max-width:800px;width:100%;margin-inline:auto}.product-note{margin-top:24px}
+ .service-avatars{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.avatar-pedestal{max-width:210px}.avatar-service-name{min-height:24px}
+}
+@media(max-width:760px){
+ .hero-art{height:auto;overflow:visible;margin:25px 0 0;display:block}
+ .hero-composition{min-height:385px;max-width:440px;margin-inline:auto;transform:none}
+ .mark-rig{width:105%;margin:0}
+ .hero-art .element-mark{width:100%;height:auto;margin:0;max-width:none}
+ .orbit-card{width:115px;min-height:142px;border-radius:11px;padding:10px 8px;backdrop-filter:none;background:linear-gradient(145deg,#35302ad9,#26231fc9)}
+ .hero-art .orbit-card img{width:112px;height:112px;margin:-9px -10px -15px}
+ .orbit-card-browser{top:3%;left:0;rotate:-7deg}.orbit-card-message{right:0;bottom:8%;rotate:6deg}.orbit-label{font-size:14px}
+ .orbit-point-one{left:4%;bottom:20%}.hero-art figcaption{margin:0;gap:9px 18px;justify-content:space-between;align-items:center;text-align:left}
+ .hero-art figcaption>span{font-size:14px;text-align:left}.motion-toggle{font-size:14px;min-height:44px}
+ .product-layout{display:block}.product-copy h2{font-size:44px}.product-copy .eyebrow{font-size:14px}.product-lead{font-size:16px;margin:25px 0}.product-note{font-size:14px;margin-top:26px}
+ .product-scene{height:490px;max-width:470px;margin:35px auto 15px;perspective:none}
+ .product-depth{width:87%;left:0;top:19%;transform:translateY(calc((.5 - var(--scene-progress))*20px)) rotate(-3deg)}
+ .mock-toolbar{padding-inline:10px;font-size:14px;height:32px;gap:7px}.mock-dots{gap:3px}.mock-dots i{width:3px;height:3px}.mock-lock{display:none}
+ .mock-page{padding:16px 15px 14px;min-height:250px}.mock-logo{font-size:31px}.mock-page-grid{grid-template-columns:1.25fr .75fr;margin-top:16px}.mock-title{font-size:27px;margin:12px 0}.mock-kicker{font-size:14px;max-width:20ch;line-height:1.45}.mock-button{font-size:14px;max-width:19ch;line-height:1.5}.mock-page-bottom{font-size:14px;gap:9px;margin-top:18px}
+ .product-phone{width:30%;left:65%;top:40%;border-radius:19px;padding:8px 4px 12px;transform:translateY(calc((.5 - var(--scene-progress))*-25px)) rotate(7deg)}
+ .phone-screen{border-radius:13px;padding:21px 7px 20px}.phone-brand{font-size:27px}.phone-heading{font-size:23px;margin:13px 0}.phone-message{padding:6px;font-size:14px;line-height:1.4;margin-top:9px}.phone-message-reply{margin-left:0}.phone-input{display:none}.phone-home{height:2px;bottom:4px}.phone-camera{height:3px;top:7px}
+ .product-bot{width:116px;top:0;right:0;padding:8px 11px;font-size:14px;backdrop-filter:none}.product-bot img{width:110px;height:85px;margin:-9px -9px -9px}.product-status-dot{right:11px;bottom:15px;width:4px;height:4px}
+ .product-node{width:95px;left:-3%;bottom:0}.product-connections{opacity:.65}.product-scene-caption{font-size:14px;left:20%;bottom:-20px;text-align:right;max-width:35ch}.product-orbit{height:30%;bottom:0}
+ .avatar-intro{font-size:16px}.service-avatars{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px;padding-bottom:30px;margin-bottom:10px}
+ .avatar-service{padding-bottom:18px}.avatar-pedestal{max-width:185px}.avatar-service-name{font-size:16px;min-height:48px;max-width:18ch}.avatar-service-action{font-size:14px;gap:14px;margin-top:9px}
+ .connection-signal{animation:none}
+ [data-motion=off] .product-depth{transform:rotate(-3deg)}
+}
+@media(max-width:365px){.hero-composition{min-height:330px}.orbit-card{width:100px;min-height:128px}.hero-art .orbit-card img{width:98px;height:98px}.orbit-card-browser{top:0}.orbit-card-message{bottom:5%}.orbit-label{font-size:14px}.hero-art figcaption{justify-content:flex-start}.product-copy h2{font-size:39px}.product-scene{height:465px}.mock-page-grid{grid-template-columns:1fr}.mock-object{display:none}.mock-title{font-size:29px}.mock-kicker{max-width:21ch}.product-phone{top:43%;left:66%;width:31%}.phone-heading{font-size:21px}.phone-message{font-size:14px;padding:5px}.product-scene-caption{left:25%}.avatar-service-name{font-size:16px}}
+@media(prefers-reduced-motion:reduce){
+ .hero-composition,.mark-rig,.orbit-card,.avatar-float,.product-browser,.product-depth,.product-phone,.product-bot,.product-node{animation:none!important;transition:none!important;will-change:auto}
+ .mark-shine,.connection-signal{display:none}
+ .hero-composition{transform:none}
+ .product-depth{transform:rotate(-3deg)}.product-phone{transform:rotate(7deg)}
+ .avatar-service:hover .avatar-float img,.avatar-service:focus-visible .avatar-float img{transform:none;transition:none}
+}
+@media(forced-colors:active){.orbit-card,.product-browser,.product-phone,.product-bot{border:1px solid CanvasText;background:Canvas;box-shadow:none}.mark-shine,.hero-halo,.product-orbit,.product-connections{display:none}.avatar-service-name,.avatar-service-action{color:ButtonText}}
+
+@media(max-width:760px){
+ .phone-message{display:none}
+ .phone-heading{font-size:22px;line-height:1.15;margin-top:13px}
+ .phone-screen:after{content:'На связи';position:absolute;left:7px;right:7px;bottom:14px;font-size:14px;line-height:1.5;color:#e0c7a3;border-top:1px solid #c8ad8845;padding-top:9px}
+ .product-scene{margin-bottom:35px}
+ .product-scene-caption{bottom:-38px;left:12%;max-width:none;text-align:right}
+}
+
+.phone-title-mobile{display:none}
+.hero-composition{animation:scene-arrival 1.2s ease-out both}
+@keyframes scene-arrival{from{opacity:0}to{opacity:1}}
+[data-motion=off] .hero-composition{animation:none;opacity:1}
+@media(max-width:760px){.phone-title-desktop{display:none}.phone-title-mobile{display:block}.phone-heading{font-size:26px;line-height:1.1}}
+@media(prefers-reduced-motion:reduce){.hero-composition{animation:none!important;opacity:1}}
+
+/* Calm, consistent service icons on softly lit glass tiles. */
+.service-avatars{gap:18px}
+.service-avatars .avatar-pedestal{width:132px;max-width:100%;aspect-ratio:1;margin:22px auto 25px;border:1px solid #fffdf4;border-radius:32px;background:linear-gradient(145deg,#ffffffa8,#efe7db45);box-shadow:0 8px 24px #69513308,inset 0 1px 0 #fff,inset 0 -1px 0 #b9a38720;perspective:none}
+.service-avatars .avatar-float{inset:0;animation:icon-breathe 10s ease-in-out infinite;animation-delay:var(--avatar-delay,0s)}
+.service-avatars .avatar-float img{width:100%;height:100%;object-fit:contain;transition:transform .3s ease}
+.service-avatars .avatar-orbit{display:none}
+.service-avatars .avatar-service:hover .avatar-float img,.service-avatars .avatar-service:focus-visible .avatar-float img{transform:translateY(-3px);filter:none}
+.service-avatars .avatar-service:hover .avatar-pedestal,.service-avatars .avatar-service[aria-pressed=true] .avatar-pedestal{border-color:#d6c1a2;box-shadow:0 10px 28px #6951330d,inset 0 1px 0 #fff}
+.service-avatars .avatar-service-action{color:#795f3f}
+@keyframes icon-breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@media(max-width:760px){.service-avatars{gap:22px 20px}.service-avatars .avatar-pedestal{width:116px;border-radius:28px;margin:15px auto 22px}.service-avatars .avatar-service-name{min-height:48px}}
+@media(prefers-reduced-motion:reduce){.service-avatars .avatar-float{animation:none!important}.service-avatars .avatar-service:hover .avatar-float img,.service-avatars .avatar-service:focus-visible .avatar-float img{transform:none;transition:none}}
+@media(forced-colors:active){.service-avatars .avatar-pedestal{border:1px solid CanvasText;background:Canvas;box-shadow:none}}
+
+/* New premium 3D sculptures. The transparent 3×2 atlas is cropped only in CSS. */
+.service-avatars .avatar-pedestal{width:196px;max-width:100%;margin:10px auto 19px;border:0;border-radius:0;background:none;box-shadow:none;transition:transform .35s ease}
+.service-avatars .avatar-sprite{position:absolute;inset:0;overflow:hidden;border-radius:0;isolation:isolate}
+.service-avatars .avatar-sprite img{position:absolute;max-width:none;width:300%;height:200%;left:calc(var(--icon-column)*-100%);top:calc(var(--icon-row)*-100%);object-fit:fill;transform:none!important;filter:none!important;transition:none}
+.service-avatars .avatar-service:hover .avatar-pedestal,.service-avatars .avatar-service:focus-visible .avatar-pedestal{transform:translateY(-4px);box-shadow:none;border:0}
+.service-avatars .avatar-service[aria-pressed=true] .avatar-pedestal{box-shadow:none;border:0}
+@media(max-width:760px){.service-avatars .avatar-pedestal{width:152px;max-width:100%;margin:9px auto 18px}}
+@media(prefers-reduced-motion:reduce){.service-avatars .avatar-service:hover .avatar-pedestal,.service-avatars .avatar-service:focus-visible .avatar-pedestal{transform:none;transition:none}}
+
+/* The Bereg cabin separates into architectural parts inside the complete artwork. */
+.house-illustration{display:block;position:relative;width:100%;height:auto}
+.house-canvas{position:relative;display:block;width:100%;isolation:isolate}
+.house-canvas>svg{display:block;width:100%;height:auto;aspect-ratio:1440/640}
+.house-hotspot{position:absolute;left:53.3%;top:34.4%;width:32.7%;height:54.2%;padding:0;background:transparent;border:0;border-radius:12px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.house-hotspot:focus-visible{outline:2px dashed #f2d7a8;outline-offset:4px;background:#d5bb9108}
+.house-hotspot:disabled{cursor:default}
+.house-part{transform-box:fill-box;transform-origin:center;transform:translate(0,0) rotate(0deg);transition:transform .85s cubic-bezier(.22,.7,.2,1);pointer-events:none}
+.house-ghost{opacity:0;transition:opacity .6s ease;pointer-events:none}
+.is-exploded .house-roof-left{transform:translate(-35px,-51px) rotate(-5deg)}
+.is-exploded .house-roof-right{transform:translate(37px,-51px) rotate(5deg)}
+.is-exploded .house-wall-left{transform:translate(-30px,11px) rotate(-2deg);transition-delay:.06s}
+.is-exploded .house-wall-right{transform:translate(32px,12px) rotate(2deg);transition-delay:.09s}
+.is-exploded .house-wall-middle{transform:translate(0,9px);transition-delay:.04s}
+.is-exploded .house-frame{transform:translate(0,-19px);transition-delay:.08s}
+.is-exploded .house-base{transform:translate(0,22px)}
+.is-exploded .house-door{transform:translate(8px,29px) rotate(3deg);transition-delay:.1s}
+.is-exploded .house-ghost{opacity:.35}
+.house-hint{margin:0;padding:13px 20px;background:#f1ede4;color:#65563f;font:14px/1.7 var(--sans);border-top:1px solid #c6b69e45;text-align:left}
+.house-hint-touch,.house-hint-static{display:none}
+.house-static .house-hint-pointer,.house-static .house-hint-touch{display:none}
+.house-static .house-hint-static{display:inline}
+.house-illustration.dialog-image{margin:25px 0}
+.project[data-house-project] .view-project{width:100%}
+@media(hover:none),(pointer:coarse){.house-hint-pointer{display:none}.house-hint-touch{display:inline}.house-static .house-hint-touch{display:none}}
+[data-motion=off] .house-part{transform:none!important;transition:none}
+[data-motion=off] .house-ghost{opacity:0!important;transition:none}
+@media(prefers-reduced-motion:reduce){.house-part{transform:none!important;transition:none!important}.house-ghost{opacity:0!important;transition:none!important}}
+
+/* Bereg hot tub: independent, bounded hover/touch effect. */
+.tub-hotspot{position:absolute;left:48.3%;top:77.2%;width:11%;height:21%;min-width:44px;min-height:44px;transform:translate(-50%,-50%);z-index:2;padding:0;border:0;border-radius:14px;background:transparent;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.tub-hotspot:focus-visible{outline:2px dashed #f2d7a8;outline-offset:3px;background:#d5bb9109}
+.tub-hotspot:disabled{cursor:default}
+.hot-tub{pointer-events:none}
+.tub-fire,.tub-steam{opacity:0;transition:opacity .45s ease;pointer-events:none}
+.is-heated .tub-fire,.is-heated .tub-steam{opacity:1}
+.tub-flame{transform-box:fill-box;transform-origin:center bottom;animation:tub-fire-dance 1.2s ease-in-out infinite alternate;animation-play-state:paused}
+.tub-flame-left{animation-duration:1.35s;animation-delay:-.5s}
+.tub-flame-right{animation-duration:1.1s;animation-delay:-.8s}
+.tub-flame-core{animation-duration:.95s;animation-delay:-.3s}
+.tub-smoke-wisp{opacity:0;transform-box:fill-box;transform-origin:center bottom;animation:tub-steam-rise 3.8s ease-out infinite;animation-play-state:paused}
+.tub-smoke-two{animation-delay:-1.25s;animation-duration:4.2s}
+.tub-smoke-three{animation-delay:-2.6s;animation-duration:3.9s}
+.is-heated .tub-flame,.is-heated .tub-smoke-wisp{animation-play-state:running}
+@keyframes tub-fire-dance{from{transform:scale(.94,.78) skewX(-4deg)}to{transform:scale(1.04,1.08) skewX(4deg)}}
+@keyframes tub-steam-rise{0%{opacity:0;transform:translate(0,12px) scale(.8,.7)}20%{opacity:.45}60%{opacity:.3}100%{opacity:0;transform:translate(12px,-40px) scale(1.18,1.2)}}
+[data-motion=off] .tub-fire,[data-motion=off] .tub-steam{opacity:0!important;transition:none}
+[data-motion=off] .tub-flame,[data-motion=off] .tub-smoke-wisp{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.tub-fire,.tub-steam{opacity:0!important;transition:none!important}.tub-flame,.tub-smoke-wisp{animation-play-state:paused!important}}
+@media(forced-colors:active){.tub-hotspot:focus-visible{outline-color:Highlight}}
