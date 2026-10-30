@@ -129,3 +129,28 @@ npm run start   # Просмотр уже собранной папки dist/
 Обновлённый блок `contact-conversation` в `src/index.html`: приглашение к разговору, три темы обсуждения и форма на светлой панели. Стили ограничены этим блоком в конце `src/style.css`. Состояния отправки, ошибки и подтверждённого успеха оформляются через `data-state` элемента `#form-status`; при редактировании поля старое сообщение очищается. Серверная доставка остаётся прежней.
 
 Каталог услуг `.service-catalog` оформлен общей светлой панелью. В заголовке каждой строки показаны название, краткая польза (`short`) и статичные метки бизнеса (`audienceTags`). Метки не являются кнопками. Подробности открываются нативным `details`, включая управление с клавиатуры.
+
+## GitHub Pages
+
+Для просмотра сайта используется отдельная ветка `gh-pages` с готовой статической сборкой.
+В GitHub откройте Settings → Pages → Deploy from a branch → gh-pages → /(root) → Save.
+Адрес после успешной публикации: https://kerbalis1.github.io/element-digital/
+
+Повторная сборка для этого адреса:
+
+```sh
+SITE_URL=https://kerbalis1.github.io/element-digital npm run build:static
+```
+
+Содержимое `dist/` публикуется в корне ветки `gh-pages`; файл `.nojekyll` создаётся сборкой.
+Ссылки на ресурсы работают в подпапке `/element-digital/`, включая страницу аватара.
+
+GitHub Pages не исполняет серверный обработчик Telegram. Для автоматических заявок
+разверните `scripts/leads.mjs` на отдельном сервере/Worker и задайте при сборке
+`PUBLIC_LEADS_ENDPOINT=https://your-backend.example/api/leads`. Endpoint публичный,
+токен бота и ID получателя остаются в секретах сервера. Backend должен принимать
+Origin https://kerbalis1.github.io и отвечать на CORS preflight OPTIONS с нужными
+Access-Control-Allow-Origin, Access-Control-Allow-Methods и Access-Control-Allow-Headers.
+Текущий обработчик для одного домена требует такой адаптации перед подключением.
+Пока endpoint не задан, форма честно сообщает о недоступной отправке и сохраняет поля;
+прямая ссылка на Telegram работает. Версия в Sites и её настроенная доставка не изменяются.

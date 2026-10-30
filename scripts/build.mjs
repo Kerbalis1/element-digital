@@ -1,19 +1,21 @@
 import { mkdir, rm, cp, readFile, writeFile, readdir } from 'node:fs/promises';
 import { site } from '../src/config.js';
+const staticBuild = process.argv.includes('--static');
+const publicUrl = (process.env.SITE_URL || site.url).replace(/\/$/, '');
 const escape = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 await rm('dist', {recursive:true, force:true});
 await mkdir('dist', {recursive:true});
 await cp('public', 'dist', {recursive:true});
 await cp('src', 'dist', {recursive:true});
 let html = await readFile('src/index.html','utf8');
-html = html.replaceAll('{{title}}',escape(site.title)).replaceAll('{{description}}',escape(site.description)).replaceAll('{{url}}',escape(site.url));
+html = html.replaceAll('{{title}}',escape(site.title)).replaceAll('{{description}}',escape(site.description)).replaceAll('{{url}}',escape(publicUrl));
 for (const [key,value] of Object.entries(site.hero)) html=html.replace(new RegExp('(data-hero=\"'+key+'\">)[^<]*'), (_,prefix)=>prefix+escape(value));
 html=html.replaceAll('{{location}}',escape([site.city,site.geography].filter(Boolean).join(' ↗ ')));
 await writeFile('dist/index.html',html);
 const houseArt = await readFile('public/assets/project-bereg.svg','utf8');
 await writeFile('dist/house-art.js','export const houseArt = '+JSON.stringify(houseArt)+';\n');
 await rm('dist/config.js.map',{force:true});
-if (!process.argv.includes('--static')) {
+if (!staticBuild) {
   const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.jpg':'image/jpeg','.gif':'image/gif','.mp4':'video/mp4','.zip':'application/zip','.png':'image/png','.webp':'image/webp','.woff':'font/woff','.txt':'text/plain; charset=utf-8','.json':'application/json'};
   const assets={};
   async function embed(dir,prefix='') {
@@ -31,4 +33,11 @@ if (!process.argv.includes('--static')) {
   await writeFile('dist/server/index.js',worker);
   await cp('.openai/hosting.json','dist/.openai/hosting.json');
   console.log('Built self-contained Sites Worker in dist/server/index.js');
-} else console.log('Built static fallback in dist/ (automatic sending requires a server)');
+} else {
+  const publicEndpoint = process.env.PUBLIC_LEADS_ENDPOINT || '';
+  if (publicEndpoint && !/^https:\/\//.test(publicEndpoint)) throw new Error('PUBLIC_LEADS_ENDPOINT must use HTTPS');
+  const config = await readFile('dist/config.js','utf8');
+  await writeFile('dist/config.js',config+'\nsite.url = '+JSON.stringify(publicUrl)+';\nsite.staticHosting = true;\nsite.leadsEndpoint = '+JSON.stringify(publicEndpoint)+';\n');
+  await writeFile('dist/.nojekyll','');
+  console.log('Built static site in dist/. Telegram submission needs a separate HTTPS backend.');
+}

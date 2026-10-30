@@ -35,6 +35,8 @@ $('#project-list').addEventListener('click',e=>{const b=e.target.closest('[data-
 const briefForm=$('#brief-form'), submitBrief=briefForm.querySelector('[type="submit"]');
 const formStatus=$('#form-status');
 function setFormStatus(message,state='') {formStatus.textContent=message;formStatus.dataset.state=state;}
+const leadsEndpoint=site.leadsEndpoint || (site.staticHosting ? '' : '/api/leads');
+if(site.staticHosting && !leadsEndpoint) $('#form-note').textContent='Отправка формы пока не подключена. Для обсуждения проекта напишите нам в Telegram.';
 let submitting=false;
 briefForm.addEventListener('input',()=>{if(!submitting)setFormStatus('');});
 briefForm.addEventListener('submit',async e=>{
@@ -43,10 +45,11 @@ briefForm.addEventListener('submit',async e=>{
   const name=String(fields.get('name')).trim(),contact=String(fields.get('contact')).trim(),description=String(fields.get('description')).trim();
   if(!name||!contact||!description){setFormStatus('Заполните поля текстом: пробелов недостаточно.','error');return;}
   setFormStatus('');
+  if(!leadsEndpoint){setFormStatus('В этой версии сайта отправка формы ещё не подключена. Напишите нам по ссылке Telegram слева — введённый текст сохранён.','error');return;}
   submitting=true;submitBrief.disabled=true;briefForm.setAttribute('aria-busy','true');
   const idle=submitBrief.innerHTML;submitBrief.textContent='Отправляем…';setFormStatus('Отправляем вашу заявку…','pending');
   try {
-    const response=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,contact,description,website:String(fields.get('website')||'')}),signal:AbortSignal.timeout(16000)});
+    const response=await fetch(leadsEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,contact,description,website:String(fields.get('website')||'')}),signal:AbortSignal.timeout(16000)});
     const result=await response.json();
     if(response.ok&&result.ok===true){setFormStatus('Спасибо! Заявка отправлена. Свяжемся по указанному контакту, чтобы обсудить детали.','success');briefForm.reset();return;}
     if(response.status===429){setFormStatus('Пожалуйста, подождите минуту перед повторной отправкой. Введённый текст сохранён.','error');return;}
