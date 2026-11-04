@@ -30,6 +30,8 @@ if(form){
   e.preventDefault();if(submitting||!form.reportValidity())return;
   const values=new FormData(form);const data=Object.fromEntries(['name','contact','description','website'].map(key=>[key,String(values.get(key)||'').trim()]));
   if(!data.name||!data.contact||!data.description){setStatus('Заполните поля текстом: пробелов недостаточно.','error');return;}
+  const projectType=values.get('projectType');
+  if(projectType){const prefix='Формат: '+String(projectType)+'\n\n';if(data.description.length+prefix.length>3000){setStatus('Сократите описание: с выбранным форматом допустимо до 3000 символов.','error');return;}data.description=prefix+data.description;}
   data.consent=values.get('consent')==='on';
   if(data.website){setStatus('Не удалось подготовить обращение.','error');return;}
   if(!config.leadsEndpoint){prepare(data);return;}
@@ -86,3 +88,9 @@ if(config.analyticsId){
  function showSettings(){if($('.analytics-banner'))return;const box=document.createElement('aside');box.className='analytics-banner';box.setAttribute('aria-label','Настройки аналитики');const p=document.createElement('p');p.textContent='Разрешить необязательную аналитику посещений? Она помогает улучшать сайт. Тексты обращений не передаются.';const actions=document.createElement('div');actions.className='actions';for(const [label,value]of [['Разрешить','yes'],['Отказаться','no']]){const button=document.createElement('button');button.type='button';button.textContent=label;button.addEventListener('click',()=>choose(value));actions.append(button);}box.append(p,actions);document.body.append(box);}
  document.querySelectorAll('[data-analytics-settings]').forEach(b=>{b.hidden=false;b.addEventListener('click',showSettings);});if(readConsent()==='yes')loadAnalytics();else if(readConsent()===null)showSettings();
 }
+
+// Carry the chosen design service into the brief without replacing typed text.
+document.querySelectorAll('[data-design-service]').forEach(link=>link.addEventListener('click',()=>{
+ const choice=[...document.querySelectorAll('input[name="projectType"]')].find(input=>input.value===link.dataset.designService);
+ if(choice)choice.checked=true;
+}));
