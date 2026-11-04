@@ -6,7 +6,7 @@ const server=http.createServer(async(req,res)=>{
   const body=[];let size=0;
   for await(const part of req){size+=part.length;if(size>12000){res.writeHead(413).end();return;}body.push(part);}
   const request=new Request(`http://${req.headers.host}${req.url}`,{method:req.method,headers:req.headers,...(['GET','HEAD'].includes(req.method)?{}:{body:Buffer.concat(body)})});
-  const response=await worker.fetch(request,{TELEGRAM_BOT_TOKEN:process.env.TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_ID:process.env.TELEGRAM_CHAT_ID});
+  const response=await worker.fetch(request,{TELEGRAM_BOT_TOKEN:process.env.TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_ID:process.env.TELEGRAM_CHAT_ID,LEADS_ALLOWED_ORIGINS:process.env.LEADS_ALLOWED_ORIGINS});
   res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));
  }catch {res.writeHead(500).end('Ошибка локального сервера');}
 });

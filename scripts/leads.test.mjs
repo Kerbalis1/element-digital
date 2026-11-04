@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { handleLeads } from './leads.mjs';
 const env={TELEGRAM_BOT_TOKEN:'12345:test_token_abcdefghijklmnopqrstuvwxyz',TELEGRAM_CHAT_ID:'123456789'};
-const body={name:'Анна',contact:'@anna',description:'Нужен сайт для мастерской'};
+const body={consent:true,name:'Анна',contact:'@anna',description:'Нужен сайт для мастерской'};
 const request=(data=body,headers={})=>new Request('https://studio.example/api/leads',{method:'POST',headers:{Origin:'https://studio.example','Content-Type':'application/json',...headers},body:JSON.stringify(data)});
 test('disabled until both server secrets exist; no delivery attempt',async()=>{
   const response=await handleLeads(request(),{},()=>{throw Error('must not send');});assert.equal(response.status,503);
@@ -33,4 +33,22 @@ test('throttles repeat requests from the same platform IP',async()=>{
   let sent=0;const send=async()=>{sent++;return Response.json({ok:true,result:{message_id:12}});};
   assert.equal((await handleLeads(request(body,{'CF-Connecting-IP':'192.0.2.1'}),env,send)).status,200);
   assert.equal((await handleLeads(request(body,{'CF-Connecting-IP':'192.0.2.1'}),env,send)).status,429);assert.equal(sent,1);
+});
+test('separate static host requires an explicit exact origin, including preflight and error CORS',async()=>{
+ const configured={...env,LEADS_ALLOWED_ORIGINS:'https://kerbalis1.github.io'};
+ const headers={Origin:'https://kerbalis1.github.io','Sec-Fetch-Site':'cross-site'};
+ const preflight=await handleLeads(new Request('https://studio.example/api/leads',{method:'OPTIONS',headers}),configured);
+ assert.equal(preflight.status,204);assert.equal(preflight.headers.get('Access-Control-Allow-Origin'),headers.Origin);
+ const failed=await handleLeads(request(body,headers),{LEADS_ALLOWED_ORIGINS:configured.LEADS_ALLOWED_ORIGINS});
+ assert.equal(failed.status,503);assert.equal(failed.headers.get('Access-Control-Allow-Origin'),headers.Origin);
+ const sent=await handleLeads(request(body,headers),configured,async()=>Response.json({ok:true,result:{message_id:3}}));assert.equal(sent.status,200);
+ const blocked=await handleLeads(request(body,{Origin:'https://kerbalis1.github.io.attacker.example'}),configured);assert.equal(blocked.status,403);
+});
+test('subpath status endpoint reports configuration without attempting delivery',async()=>{
+ const res=await handleLeads(new Request('https://studio.example/element-digital/api/leads/status'),env);
+ assert.deepEqual(await res.json(),{enabled:true});
+});
+
+test('does not deliver without explicit form consent',async()=>{
+ const response=await handleLeads(request({...body,consent:false}),env,()=>{throw Error('must not send');});assert.equal(response.status,422);
 });

@@ -5,7 +5,7 @@ export const site = {
   geography: 'Работаем удалённо',
   telegram: 'https://t.me/spectransport38',
   email: '',
-  url: 'https://element-digital-studio.svetlanavasilievna07.chatgpt.site',
+  url: 'https://kerbalis1.github.io/element-digital',
   title: 'ELEMENT DIGITAL — сайты и цифровые сервисы для бизнеса',
   description: 'Создаём сайты, интернет-магазины, Telegram-ботов и веб-сервисы для малого и среднего бизнеса. От задачи и прототипа до запуска и развития.',
   hero: {
