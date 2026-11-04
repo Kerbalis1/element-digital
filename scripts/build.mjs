@@ -13,7 +13,7 @@ if(analyticsId&&!/^\d{1,12}$/.test(analyticsId))throw Error('Invalid analytics I
 const config={telegram:site.telegram,leadsEndpoint:endpoint||(staticBuild?'':base+'api/leads'),analyticsId:analyticsId?Number(analyticsId):null};
 const json=value=>JSON.stringify(value).replace(/</g,'\\u003c');
 await rm('dist',{recursive:true,force:true});await mkdir('dist',{recursive:true});await cp('public','dist',{recursive:true});
-for(const file of ['premium.css','design.css','premium.js','house.js'])await cp('src/'+file,'dist/'+file);
+for(const file of ['premium.css','design.css','premium.js','cloud-motion.js','house.js'])await cp('src/'+file,'dist/'+file);
 const houseArt=await readFile('public/assets/project-bereg.svg','utf8');await writeFile('dist/house-art.js','export const houseArt = '+json(houseArt)+';\n');
 const template=await readFile('src/index.html','utf8');
 for(const key of routes){
