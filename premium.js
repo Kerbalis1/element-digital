@@ -1,3 +1,4 @@
+import { setupCloudMotion } from './cloud-motion.js?v=cloud2';
 const $ = s => document.querySelector(s);
 const config = JSON.parse($('#site-config').textContent);
 const menu = $('#mobile-nav'), toggle = $('.menu-toggle');
@@ -8,11 +9,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden)closeM
 document.addEventListener('click',e=>{if(!menu.hidden&&!e.target.closest('.header'))closeMenu();});
 menu.addEventListener('focusout',()=>{queueMicrotask(()=>{if(!menu.hidden&&!$('.header').contains(document.activeElement))closeMenu();});});
 matchMedia('(min-width: 901px)').addEventListener('change',e=>{if(e.matches)closeMenu();});
-const motion=$('#motion-toggle'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
-function setMotion(off){document.documentElement.dataset.motion=off?'off':'on';if(motion){motion.setAttribute('aria-pressed',String(off));motion.textContent=off?'Включить облака':'Остановить облака';}}
-setMotion(reduced.matches);reduced.addEventListener('change',e=>setMotion(e.matches));
-motion?.addEventListener('click',()=>setMotion(document.documentElement.dataset.motion!=='off'));
-document.addEventListener('visibilitychange',()=>{document.querySelectorAll('.cloud').forEach(el=>el.style.animationPlayState=document.hidden?'paused':'');});
+setupCloudMotion(document,window);
 // Never include contact data or free text in analytics events.
 function track(event){if(window.ym&&config.analyticsId)window.ym(config.analyticsId,'reachGoal',event);}
 const form=$('#brief-form');
