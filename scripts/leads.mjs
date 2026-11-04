@@ -7,37 +7,46 @@ const ready = env => /^\d+:[A-Za-z0-9_-]{20,}$/.test(env.TELEGRAM_BOT_TOKEN || '
 
 export async function handleLeads(request, env, send = fetch) {
   const url = new URL(request.url);
-  if (url.pathname === '/api/leads/status') {
-    return request.method === 'GET' ? json({enabled:ready(env)}) : json({ok:false},405,{Allow:'GET'});
-  }
-  if (request.method !== 'POST') return json({ok:false},405,{Allow:'POST'});
   const origin = request.headers.get('Origin');
-  if (!origin || origin !== url.origin || request.headers.get('Sec-Fetch-Site') === 'cross-site') return json({ok:false,error:'origin'},403);
-  if (!ready(env)) return json({ok:false,error:'unavailable'},503);
-  if (request.headers.get('Content-Type')?.split(';')[0].trim() !== 'application/json') return json({ok:false,error:'content_type'},415);
-  if (Number(request.headers.get('Content-Length')) > 12000) return json({ok:false,error:'too_large'},413);
+  const allowedOrigins = String(env.LEADS_ALLOWED_ORIGINS || '').split(',').map(s=>s.trim()).filter(s=>{try {const u=new URL(s);return u.protocol==='https:'&&u.origin===s;}catch{return false;}});
+  const explicitOrigin = allowedOrigins.includes(origin);
+  const trustedOrigin = origin === url.origin || explicitOrigin;
+  const cors = explicitOrigin ? {'Access-Control-Allow-Origin':origin,'Vary':'Origin'} : {};
+  const respond = (data,status=200,extra={}) => json(data,status,{...cors,...extra});
+  if (request.method === 'OPTIONS') {
+    return explicitOrigin ? new Response(null,{status:204,headers:{...cors,'Access-Control-Allow-Methods':'POST, GET, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Access-Control-Max-Age':'600'}}) : respond({ok:false,error:'origin'},403);
+  }
+  if (url.pathname.endsWith('/api/leads/status')) {
+    return request.method === 'GET' ? respond({enabled:ready(env)}) : respond({ok:false},405,{Allow:'GET'});
+  }
+  if (request.method !== 'POST') return respond({ok:false},405,{Allow:'POST'});
+  if (!origin || !trustedOrigin || (request.headers.get('Sec-Fetch-Site') === 'cross-site' && !explicitOrigin)) return respond({ok:false,error:'origin'},403);
+  if (!ready(env)) return respond({ok:false,error:'unavailable'},503);
+  if (request.headers.get('Content-Type')?.split(';')[0].trim() !== 'application/json') return respond({ok:false,error:'content_type'},415);
+  if (Number(request.headers.get('Content-Length')) > 12000) return respond({ok:false,error:'too_large'},413);
   let data;
   try {
     // Bound streaming requests as well as requests with a Content-Length header.
     const reader=request.body?.getReader();
-    if (!reader) return json({ok:false,error:'invalid'},400);
+    if (!reader) return respond({ok:false,error:'invalid'},400);
     const parts=[];let size=0;
-    while (true) {const {value,done}=await reader.read();if(done)break;size+=value.byteLength;if(size>12000){await reader.cancel();return json({ok:false,error:'too_large'},413);}parts.push(value);}
+    while (true) {const {value,done}=await reader.read();if(done)break;size+=value.byteLength;if(size>12000){await reader.cancel();return respond({ok:false,error:'too_large'},413);}parts.push(value);}
     const bytes=new Uint8Array(size);let offset=0;for(const part of parts){bytes.set(part,offset);offset+=part.byteLength;}
     data=JSON.parse(new TextDecoder().decode(bytes));
-  } catch {return json({ok:false,error:'invalid'},400);}
-  if (!data || typeof data !== 'object' || Array.isArray(data)) return json({ok:false,error:'invalid'},400);
+  } catch {return respond({ok:false,error:'invalid'},400);}
+  if (!data || typeof data !== 'object' || Array.isArray(data)) return respond({ok:false,error:'invalid'},400);
   const fields = [['name',100],['contact',200],['description',3000]];
   for (const [key,max] of fields) {
-    if (typeof data[key] !== 'string' || !data[key].trim() || data[key].trim().length > max || /[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(data[key])) return json({ok:false,error:'validation'},422);
+    if (typeof data[key] !== 'string' || !data[key].trim() || data[key].trim().length > max || /[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(data[key])) return respond({ok:false,error:'validation'},422);
     data[key]=data[key].trim();
   }
-  if (data.website) return json({ok:false,error:'validation'},422);
+  if (data.consent !== true) return respond({ok:false,error:'validation'},422);
+  if (data.website) return respond({ok:false,error:'validation'},422);
   const now=Date.now();
   for(const [key,expires] of recent) if(expires<=now)recent.delete(key);
   const client=request.headers.get('CF-Connecting-IP') || request.headers.get('oai-authenticated-user-id');
   if(client) {
-    if(recent.has(client))return json({ok:false,error:'rate_limit'},429,{'Retry-After':'60'});
+    if(recent.has(client))return respond({ok:false,error:'rate_limit'},429,{'Retry-After':'60'});
     if(recent.size>=1024)recent.delete(recent.keys().next().value);
     recent.set(client,now+60000);
   }
@@ -53,9 +62,9 @@ export async function handleLeads(request, env, send = fetch) {
       const code=Number(result.error_code)||response.status;
       const category=code===401||code===404?'bot_credentials':code===403?'recipient_permission':code===400?'recipient_or_request':code===429?'provider_rate_limit':'provider_response';
       console.error(JSON.stringify({event:'lead_delivery_failed',provider:'telegram',code,category}));
-      return json({ok:false,error:'delivery'},502);
+      return respond({ok:false,error:'delivery'},502);
     }
-    return json({ok:true});
-  } catch {return json({ok:false,error:'delivery_unknown'},504);}
+    return respond({ok:true});
+  } catch {return respond({ok:false,error:'delivery_unknown'},504);}
   finally {clearTimeout(timer);}
 }
