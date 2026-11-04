@@ -51,21 +51,22 @@ if(form){
  $('#copy-brief').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#prepared-text').value);setStatus('Текст скопирован. Отправьте его в чате студии.');}catch{$('#prepared-text').focus();$('#prepared-text').select();setStatus('Выделили текст — скопируйте его вручную.');}});
 }
 const bubble=$('[data-bubble-state]');let bubbleVersion=0,bubbleTimer;
-async function popBubble(){
+async function setBubble(action){
  if(!bubble)return;const version=++bubbleVersion;clearTimeout(bubbleTimer);
  const after=bubble.querySelector('.bubble-after img');
  try{await after.decode();}catch{return;}
  if(version!==bubbleVersion)return;
+ const finish=()=>{if(version!==bubbleVersion)return;bubble.dataset.bubbleState=action==='inflate'?'idle':'popped';$('#bubble-status').textContent=action==='inflate'?'Пузырь надут.':'Хлоп! Пузырь лопнул.';};
+ if(reduced.matches){finish();return;}
  bubble.dataset.bubbleState='ready';
- // A new frame restarts a repeated click without forcing synchronous layout.
  requestAnimationFrame(()=>requestAnimationFrame(()=>{
   if(version!==bubbleVersion)return;
-  bubble.dataset.bubbleState=reduced.matches?'popped':'popping';
-  $('#bubble-status').textContent='Хлоп! Пузырь лопнул.';
-  bubbleTimer=setTimeout(()=>{bubble.dataset.bubbleState='popped';},700);
+  bubble.dataset.bubbleState=action==='inflate'?'inflating':'popping';
+  $('#bubble-status').textContent=action==='inflate'?'Пузырь надувается.':'Хлоп! Пузырь лопнул.';
+  bubbleTimer=setTimeout(finish,action==='inflate'?950:700);
  }));
 }
-document.querySelectorAll('button[data-palette]').forEach(b=>b.addEventListener('click',()=>{document.body.dataset.designPalette=b.dataset.palette;document.querySelectorAll('button[data-palette]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));popBubble();}));
+document.querySelectorAll('button[data-palette]').forEach(b=>b.addEventListener('click',()=>{document.body.dataset.designPalette=b.dataset.palette;document.querySelectorAll('button[data-palette]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));setBubble(b.dataset.palette==='rose'?'inflate':'pop');}));
 document.querySelectorAll('[data-comparison-view]').forEach(button=>button.addEventListener('click',()=>{
  const comparison=$('.design-comparison');if(!comparison)return;
  comparison.dataset.view=button.dataset.comparisonView;
