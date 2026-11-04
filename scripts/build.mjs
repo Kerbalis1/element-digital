@@ -20,7 +20,7 @@ for(const key of routes){
  const page=renderPage(key,base,{manual:!config.leadsEndpoint});
  const canonical=publicUrl+'/'+(key?key+'/':'');
  const schema={'@context':'https://schema.org','@type':'WebPage',name:page.title,description:page.description,url:canonical,isPartOf:{'@type':'WebSite',name:'Element Digital',url:publicUrl+'/'},publisher:{'@type':'Organization',name:'Element Digital',url:publicUrl+'/',logo:publicUrl+'/assets/favicon.svg'}};
- const values={pageStyles:key==='design'?`<link rel="stylesheet" href="${base}design.css">`:'',title:esc(page.title),description:esc(page.description),canonical:esc(canonical),url:esc(publicUrl),base:esc(base),schema:json(schema),config:json(config),theme:page.theme,demo:key.startsWith('demo/')?`data-demo="${esc(key.split('/')[1])}"`:'',body:page.html};
+ const values={pageStyles:key==='design'?`<link rel="stylesheet" href="${base}design.css?v=flight2">`:'',title:esc(page.title),description:esc(page.description),canonical:esc(canonical),url:esc(publicUrl),base:esc(base),schema:json(schema),config:json(config),theme:page.theme,demo:key.startsWith('demo/')?`data-demo="${esc(key.split('/')[1])}"`:'',body:page.html};
  const html=(key.startsWith('demo/')?template.replace('<meta name="theme-color"', '<meta name="robots" content="noindex, follow"><meta name="theme-color"'):template).replace(/\{\{(\w+)\}\}/g,(_,key)=>values[key]);
  const dir='dist'+(key?'/'+key:'');await mkdir(dir,{recursive:true});await writeFile(dir+'/index.html',html);
 }
