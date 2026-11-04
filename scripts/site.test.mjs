@@ -27,7 +27,8 @@ try{
   }
  });
  await test('indexing, public payload and static form fallback are honest',async()=>{
-  const sitemap=await readFile(join(root,'dist/sitemap.xml'),'utf8');assert.equal((sitemap.match(/<loc>/g)||[]).length,8);assert.doesNotMatch(sitemap,/demo\//);
+  const sitemap=await readFile(join(root,'dist/sitemap.xml'),'utf8');assert.equal((sitemap.match(/<loc>/g)||[]).length,routes.filter(p=>p!=='privacy'&&!p.startsWith('demo/')).length);assert.doesNotMatch(sitemap,/demo\//);
+  for(const path of ['development/websites','development/landing-pages','development/recreation']){assert.ok(sitemap.includes(origin+'/'+path+'/'));const page=await readFile(join(root,'dist',path,'index.html'),'utf8');assert.match(page,/BreadcrumbList/);assert.match(page,/Стоимость и сроки/);assert.doesNotMatch(page,/noindex/);}
   const robots=await readFile(join(root,'dist/robots.txt'),'utf8');assert.ok(robots.includes(origin+'/sitemap.xml'));
   const html=await readFile(join(root,'dist/index.html'),'utf8');assert.match(html,/Подготовить сообщение/);assert.match(html,/"leadsEndpoint":""/);assert.doesNotMatch(html,/TELEGRAM_BOT_TOKEN|chatgpt|codex|нейросет|искусственн/i);
  });

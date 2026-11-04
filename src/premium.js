@@ -17,6 +17,7 @@ document.addEventListener('visibilitychange',()=>{document.querySelectorAll('.cl
 function track(event){if(window.ym&&config.analyticsId)window.ym(config.analyticsId,'reachGoal',event);}
 const form=$('#brief-form');
 if(form){
+ form.addEventListener('input',()=>track('brief_started'),{once:true});
  const submit=form.querySelector('[type=submit]'),status=$('#form-status');let submitting=false;
  const setStatus=(text,state='')=>{status.textContent=text;status.dataset.state=state;};
  function prepare(fields){
@@ -125,3 +126,5 @@ document.querySelectorAll('[data-design-service]').forEach(link=>link.addEventLi
  const choice=[...document.querySelectorAll('input[name="projectType"]')].find(input=>input.value===link.dataset.designService);
  if(choice)choice.checked=true;
 }));
+
+document.addEventListener('click',event=>{if(event.target.closest('a[href^="https://t.me/"]'))track('telegram_click');});
