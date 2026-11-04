@@ -185,3 +185,33 @@ body[data-page=design] .study-description .button{font-size:12px;min-height:46px
 .comparison-enlarge{position:absolute;top:8px;right:8px;border:1px solid #ffffff80;border-radius:50%;width:38px;height:38px;display:grid;place-items:center;font-size:20px;color:#fff;background:#20102de6;cursor:zoom-in}
 @media(max-width:1100px){.design-studies{grid-template-columns:1fr;gap:24px;max-width:850px;margin-inline:auto}.design-study{display:grid;grid-template-columns:1fr 1fr;column-gap:26px;padding:25px}.design-study>header{grid-column:1/-1;min-height:0;margin-bottom:22px}.design-study h3{font-size:27px}.study-tag{margin-top:8px}.design-study .study-media,.design-study .design-comparison{grid-column:1;grid-row:2;align-self:start}.design-study .study-description{grid-column:2;grid-row:2/5;margin-top:0;display:flex}.design-study .comparison-controls{grid-column:1;grid-row:3;align-self:start}.design-study .comparison-note{grid-column:1;grid-row:4}.design-comparison:not([data-view=both]) .comparison-visual{width:100%}}
 @media(max-width:640px){.design-studies{gap:20px}.design-study{display:flex;padding:18px}.design-study>header{margin-bottom:18px}.design-study h3{font-size:24px}.study-label{margin-bottom:10px}.design-study .study-description{margin-top:18px;font-size:14px;gap:14px}.study-description ul{font-size:13px}.study-description .button{margin-top:4px!important}.study-tag{font-size:12px}.comparison-note{font-size:12px}}
+
+/* Glass redesign panel and a vivid editorial accent. */
+body[data-page=design] .design-redesign{background:radial-gradient(ellipse at 8% 30%,#dbb7ff 0,transparent 55%),radial-gradient(ellipse at 92% 70%,#b5dbff 0,transparent 52%),linear-gradient(115deg,#ede2f8,#f8e4ef);padding-inline:var(--gutter)}
+.design-redesign .redesign-glass{padding:clamp(26px,3.5vw,58px);border:1px solid #ffffffd9;border-radius:30px;background:linear-gradient(125deg,#ffffffad,#ffffff62);backdrop-filter:blur(20px) saturate(140%);box-shadow:0 22px 65px #6c39851a,inset 0 1px 0 #fff,inset 0 -1px 0 #ffffff80}
+body[data-page=design] .design-redesign h2{font-size:clamp(42px,4.4vw,70px);font-weight:550;line-height:1.12}
+body[data-page=design] .design-redesign h2 em{color:#8425ac}
+body[data-page=design] .design-redesign p:not(.eyebrow){font-size:18px;font-weight:550;color:#4e395e;max-width:460px;line-height:1.7}
+body[data-page=design] .redesign-checklist li{font-size:17px;font-weight:550;color:#392b47;border-color:#8f6ca632;gap:18px;padding-block:22px}
+body[data-page=design] .redesign-checklist span{font-size:14px;font-weight:650;color:#7b348c}
+body[data-page=design] .design-work .section-aside{max-width:370px;width:100%}
+.rainbow-statement{display:block;position:relative;font-size:clamp(25px,2.5vw,38px);line-height:1.13;letter-spacing:-.035em;font-weight:750;padding:20px 24px 24px;border-radius:20px;background:linear-gradient(135deg,#fff9db,#fff0fa 48%,#eaf6ff);border:1px solid #e7cee9;box-shadow:0 10px 30px #784da00c;overflow:hidden}
+.rainbow-statement:after{content:'';position:absolute;inset:auto 0 0;height:5px;background:linear-gradient(90deg,#d522a3 0 20%,#8240db 20% 40%,#2366b5 40% 60%,#168048 60% 80%,#e49c15 80%)}
+.rainbow-statement>span{display:block}.rainbow-statement>span:nth-child(1){color:#b91d8d}.rainbow-statement>span:nth-child(2){color:#7741b9}.rainbow-statement>span:nth-child(3){color:#145e9d}
+.concept-note{display:block;font-size:14px;font-weight:600;line-height:1.65;color:#5b4868;margin-top:16px}
+body[data-page=design] .eyebrow,body[data-page=design] .study-label,body[data-page=design] .format-number,body[data-page=design] .format-result>span,body[data-page=design] .format-result small,body[data-page=design] .study-tag,body[data-page=design] .comparison-note,body[data-page=design] .design-process .steps small,body[data-page=design] .design-related article>span{font-size:14px;font-weight:600;line-height:1.6;color:#634d72}
+body[data-page=design] .study-description,body[data-page=design] .study-description ul{font-size:15px;font-weight:550;color:#47374f}
+body[data-page=design] .design-copy .eyebrow,body[data-page=design] .design-art figcaption,body[data-page=design] .design-art .palette-picker,body[data-page=design] .design-index,body[data-page=design] .design-navigation a{font-size:14px;font-weight:600;color:#dacbe5}
+body[data-page=design] .design-benefits .eyebrow,body[data-page=design] .design-benefit-grid article>span{font-size:14px;font-weight:600;color:#d8b9ed}
+body[data-page=design] .contact label,body[data-page=design] .contact .form-note,body[data-page=design] .contact .eyebrow{font-size:14px;font-weight:600;color:#d9c6e7}
+.design-image-wrap[data-bubble-state=ready] .bubble-after,.design-image-wrap[data-bubble-state=inflating] .bubble-after{opacity:1}
+[data-bubble-state=inflating] .gum-pop{opacity:1}
+[data-bubble-state=inflating] .gum-orb{animation:gum-inflate .95s cubic-bezier(.2,.65,.3,1) both}
+@keyframes gum-inflate{0%{transform:scale(.04);opacity:.3}35%{transform:scale(.4,.5);opacity:.85}75%{transform:scale(.85,.92);opacity:1}100%{transform:scale(1);opacity:1}}
+@media(max-width:1100px){.design-study>header{min-height:0}.design-redesign .split{gap:35px}}
+@media(max-width:640px){body[data-page=design] .design-redesign h2{font-size:39px}body[data-page=design] .design-redesign p:not(.eyebrow){font-size:16px}body[data-page=design] .redesign-checklist li{font-size:15px;padding-block:18px}.design-redesign .redesign-glass{border-radius:22px;padding:25px 21px}.rainbow-statement{font-size:30px;padding:20px 22px}.concept-note{font-size:14px}body[data-page=design] .study-label{font-size:13px}body[data-page=design] .design-copy .eyebrow{font-size:12px}body[data-page=design] .design-index{font-size:13px}}
+@media(prefers-reduced-motion:reduce){[data-bubble-state=inflating] .gum-orb{animation:none}}
+body[data-page=design] .design-breadcrumb{font-size:14px;font-weight:600;color:#cdbed9}
+body[data-page=design] .design-format-grid article>p,body[data-page=design] .design-format-grid ul,body[data-page=design] .design-process .steps p,body[data-page=design] .design-faq .faq-list p{font-size:15px;font-weight:550;color:#51415d}
+body[data-page=design] .design-benefit-grid p{font-size:15px;font-weight:500;color:#c9bdd5}
+body[data-page=design] .footer p,body[data-page=design] .footer a,body[data-page=design] .footer-bottom{font-size:14px;font-weight:550}
