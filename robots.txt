@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://kerbalis1.github.io/element-digital/sitemap.xml
