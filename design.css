@@ -163,3 +163,25 @@ body[data-page=design] .study-description .button{font-size:13px;gap:16px;align-
 @media(max-width:900px){.design-format-grid{grid-template-columns:1fr}.design-format-grid h3,.design-format-grid article>p,.format-result strong{min-height:0}.design-format-grid .button{align-self:flex-start;width:auto}.design-art .palette-picker span{flex-basis:100%;margin-top:4px}}
 @media(max-width:640px){.design-study>header{display:block}.study-tag{display:block;text-align:left;max-width:none;margin-top:12px}.design-studies{gap:55px}.design-study{padding-top:23px}.study-description{grid-template-columns:1fr;gap:18px;font-size:15px}.study-description ul{font-size:14px}.study-zoom{font-size:12px;right:12px;bottom:12px;padding:9px 13px}.comparison-label{font-size:12px;padding:6px 12px;bottom:10px}.comparison-label.before{left:10px}.comparison-label.after{right:10px}.comparison-note{font-size:13px}.viewer-toolbar h3{font-size:18px}.design-viewer{padding:14px}.viewer-toolbar{gap:12px}.viewer-close{font-size:13px;white-space:nowrap}body[data-page=design] .design-copy .design-lead{font-size:15px}body[data-page=design] .design-copy .button,body[data-page=design] .design-work-link{font-size:13px}body[data-page=design] .design-navigation a{font-size:13px}}
 @media(prefers-reduced-motion:reduce){[data-bubble-state=popping] .gum-orb,[data-bubble-state=popping] .gum-shard,.study-media img{animation:none;transition:none}}
+
+/* Compact concept cards: keep details available in the large viewer. */
+.design-studies{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.design-study{display:flex;flex-direction:column;border:1px solid #dfd7e7;border-radius:18px;padding:22px;background:#faf9fc}
+.design-study>header{display:block;min-height:125px;margin-bottom:20px}
+.design-study h3{font-size:25px;line-height:1.22;letter-spacing:-.035em}
+.study-label{font-size:12px;margin-bottom:12px;letter-spacing:.055em}
+.study-tag{display:block;text-align:left;max-width:none;font-size:12px;margin-top:12px;line-height:1.5}
+.study-media,.design-comparison{order:1;border-radius:10px;flex-shrink:0}
+.study-zoom{right:10px;bottom:10px;font-size:12px;padding:8px 12px}
+.study-description{display:flex;flex-direction:column;flex:1;order:4;gap:16px;margin-top:20px;font-size:14px;line-height:1.75}
+.study-description ul{font-size:13px;line-height:1.8;margin-bottom:4px}
+body[data-page=design] .study-description .button{font-size:12px;min-height:46px;padding:12px 17px;gap:12px;margin-top:auto;align-self:flex-start}
+.comparison-controls{order:2;margin:14px 0 0;gap:6px}
+.comparison-controls button{font-size:12px;padding:8px 12px;min-height:40px}
+.comparison-note{order:3;font-size:12px;line-height:1.6;margin:12px 0 0}
+.design-comparison:not([data-view=both]) .comparison-visual{width:100%;aspect-ratio:3/4}
+.comparison-label{font-size:12px;padding:5px 9px;bottom:8px}
+.comparison-label.before{left:8px}.comparison-label.after{right:8px}
+.comparison-enlarge{position:absolute;top:8px;right:8px;border:1px solid #ffffff80;border-radius:50%;width:38px;height:38px;display:grid;place-items:center;font-size:20px;color:#fff;background:#20102de6;cursor:zoom-in}
+@media(max-width:1100px){.design-studies{grid-template-columns:1fr;gap:24px;max-width:850px;margin-inline:auto}.design-study{display:grid;grid-template-columns:1fr 1fr;column-gap:26px;padding:25px}.design-study>header{grid-column:1/-1;min-height:0;margin-bottom:22px}.design-study h3{font-size:27px}.study-tag{margin-top:8px}.design-study .study-media,.design-study .design-comparison{grid-column:1;grid-row:2;align-self:start}.design-study .study-description{grid-column:2;grid-row:2/5;margin-top:0;display:flex}.design-study .comparison-controls{grid-column:1;grid-row:3;align-self:start}.design-study .comparison-note{grid-column:1;grid-row:4}.design-comparison:not([data-view=both]) .comparison-visual{width:100%}}
+@media(max-width:640px){.design-studies{gap:20px}.design-study{display:flex;padding:18px}.design-study>header{margin-bottom:18px}.design-study h3{font-size:24px}.study-label{margin-bottom:10px}.design-study .study-description{margin-top:18px;font-size:14px;gap:14px}.study-description ul{font-size:13px}.study-description .button{margin-top:4px!important}.study-tag{font-size:12px}.comparison-note{font-size:12px}}

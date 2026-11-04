@@ -74,7 +74,7 @@ document.querySelectorAll('[data-comparison-view]').forEach(button=>button.addEv
 const viewer=$('#design-viewer');
 if(viewer){
  document.querySelectorAll('[data-design-preview]').forEach(button=>button.addEventListener('click',()=>{
-  const source=button.querySelector('img');const image=$('#viewer-image');image.src=source.src;image.alt=source.alt;
+  const source=button.querySelector('img')||button.closest('article').querySelector('.design-comparison img');const image=$('#viewer-image');image.src=source.src;image.alt=source.alt;
   $('#viewer-title').textContent=button.closest('article').querySelector('h3').textContent;
   viewer.showModal();
  }));
