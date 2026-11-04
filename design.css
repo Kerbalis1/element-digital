@@ -215,3 +215,38 @@ body[data-page=design] .design-breadcrumb{font-size:14px;font-weight:600;color:#
 body[data-page=design] .design-format-grid article>p,body[data-page=design] .design-format-grid ul,body[data-page=design] .design-process .steps p,body[data-page=design] .design-faq .faq-list p{font-size:15px;font-weight:550;color:#51415d}
 body[data-page=design] .design-benefit-grid p{font-size:15px;font-weight:500;color:#c9bdd5}
 body[data-page=design] .footer p,body[data-page=design] .footer a,body[data-page=design] .footer-bottom{font-size:14px;font-weight:550}
+
+/* A continuous dark ending, with content aligned to the rest of Design. */
+body[data-page=design] .footer{max-width:none;width:100%;background:linear-gradient(#08080b,#141018);border-top:1px solid #ffffff1c;padding-top:42px;padding-bottom:26px;color:#d6cadd}
+body[data-page=design] .footer-top,body[data-page=design] .footer-bottom{max-width:calc(1680px - 2 * var(--gutter));margin-inline:auto;gap:24px}
+body[data-page=design] .footer .brand{font-size:21px;line-height:1.3}
+body[data-page=design] .footer .brand-icon{color:#edcfef;font-size:57px}
+body[data-page=design] .footer p,body[data-page=design] .footer-bottom{color:#c8bacf}
+body[data-page=design] .footer-bottom{border-color:#ffffff24;align-items:center;flex-wrap:wrap;line-height:1.7}
+body[data-page=design] .design-work .concept-header{display:grid;grid-template-columns:1.3fr .85fr 1fr;gap:30px;align-items:center;margin-bottom:40px}
+body[data-page=design] .concept-header h2{font-size:clamp(34px,3.2vw,49px);line-height:1.16}
+.rainicorn-flight{margin:0;min-width:0;pointer-events:none;animation:rainicorn-hover 7s ease-in-out infinite}
+.rainicorn-flight picture,.rainicorn-flight img{display:block;width:100%;height:auto}.rainicorn-flight img{filter:drop-shadow(0 12px 18px #ac50a61a)}
+@keyframes rainicorn-hover{0%,100%{transform:translateY(4px) rotate(-2deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+.concept-header .rainbow-statement{margin:0}.concept-header .concept-note{margin-bottom:0}
+.faq-intro{max-width:770px;font-size:18px;line-height:1.8;color:#675071;margin:-15px 0 35px}
+body[data-page=design] .design-faq .faq-list details{padding-inline:24px;border:1px solid #e2d8e9;border-radius:14px;margin:12px 0;background:#fcfaff}
+body[data-page=design] .design-faq .faq-list details[open]{background:#f7f1fc;border-color:#c7abd9}
+body[data-page=design] .design-faq .faq-list summary{font-size:19px;font-weight:550;line-height:1.5;padding-block:22px;gap:24px}
+body[data-page=design] .design-faq .faq-list p{max-width:930px;font-size:16px;line-height:1.85;font-weight:450;color:#51405c;margin:0 0 20px}
+body[data-page=design] .design-faq .faq-list p:last-child{padding-bottom:7px}
+body[data-page=design] .design-faq .text-link{display:inline;font-size:inherit;white-space:normal;color:#78369f}
+@media(max-width:1100px){body[data-page=design] .design-work .concept-header{grid-template-columns:1fr 1fr;gap:25px}.concept-header>div:first-child{grid-column:1/-1}.rainicorn-flight{max-width:380px;justify-self:center}.concept-header .section-aside{justify-self:end}}
+@media(max-width:640px){body[data-page=design] .design-work .concept-header{grid-template-columns:1fr;gap:20px}.concept-header>div:first-child{grid-column:auto}.rainicorn-flight{max-width:330px;width:100%}.concept-header .section-aside{max-width:none!important;justify-self:stretch}.faq-intro{font-size:16px;margin-top:-5px}body[data-page=design] .design-faq .faq-list details{padding-inline:17px}body[data-page=design] .design-faq .faq-list summary{font-size:17px;padding-block:20px}body[data-page=design] .design-faq .faq-list p{font-size:15px}body[data-page=design] .footer-top{display:flex;flex-wrap:wrap;align-items:center;gap:22px}body[data-page=design] .footer-top>p{order:3;width:100%;margin:0}body[data-page=design] .footer-top>a:last-child{margin-left:auto}body[data-page=design] .footer-bottom{gap:14px 24px}body[data-page=design] .footer-bottom>span{width:100%}}
+@media(prefers-reduced-motion:reduce){.rainicorn-flight{animation:none}}
+
+/* Fly through the open space above the heading, following a shallow arc. */
+body[data-page=design] .design-work .concept-header{position:relative;grid-template-columns:1.7fr 1fr;column-gap:75px;padding-top:255px;align-items:start}
+body[data-page=design] .concept-header h2{font-size:clamp(34px,3.7vw,58px)}
+.concept-header .section-aside{margin-top:-160px;justify-self:end}
+.rainicorn-flight{position:absolute;left:17%;top:-40px;width:51%;height:245px;max-width:none;container-type:inline-size;animation:none;overflow:visible}
+.rainicorn-flight picture{position:absolute;width:370px;left:0;top:0;animation:rainicorn-path 13s linear infinite}
+@keyframes rainicorn-path{0%{transform:translate(0,0) rotate(0deg);opacity:0}8%{opacity:1}25%{transform:translate(calc((100cqw - 370px)*.27),5px) rotate(4deg)}50%{transform:translate(calc((100cqw - 370px)*.55),55px) rotate(1deg)}72%{transform:translate(calc((100cqw - 370px)*.78),45px) rotate(-6deg)}92%{opacity:1}100%{transform:translate(calc(100cqw - 370px),0) rotate(-8deg);opacity:0}}
+@media(max-width:1100px){body[data-page=design] .design-work .concept-header{grid-template-columns:1.3fr 1fr;gap:30px;padding-top:225px}.concept-header>div:first-child{grid-column:auto}.concept-header .section-aside{margin-top:0}.rainicorn-flight{left:8%;width:70%;top:-40px}.rainicorn-flight picture{width:300px}@keyframes rainicorn-path{0%{transform:translate(0,0);opacity:0}8%{opacity:1}50%{transform:translate(calc((100cqw - 300px)*.55),40px) rotate(4deg)}92%{opacity:1}100%{transform:translate(calc(100cqw - 300px),0) rotate(-8deg);opacity:0}}}
+@media(max-width:640px){body[data-page=design] .design-work .concept-header{grid-template-columns:1fr;padding-top:255px;gap:24px}.concept-header>div:first-child{grid-column:auto}.concept-header .section-aside{margin-top:0}.rainicorn-flight{left:0;width:100%;top:0;height:210px}.rainicorn-flight picture{width:240px;animation-name:rainicorn-phone}@keyframes rainicorn-phone{0%{transform:translate(0,0);opacity:0}8%{opacity:1}50%{transform:translate(calc((100cqw - 240px)*.55),22px) rotate(4deg)}92%{opacity:1}100%{transform:translate(calc(100cqw - 240px),0) rotate(-8deg);opacity:0}}}
+@media(prefers-reduced-motion:reduce){.rainicorn-flight picture{animation:none;left:0;transform:none;opacity:1}}
