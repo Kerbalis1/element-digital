@@ -50,7 +50,37 @@ if(form){
  });
  $('#copy-brief').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#prepared-text').value);setStatus('Текст скопирован. Отправьте его в чате студии.');}catch{$('#prepared-text').focus();$('#prepared-text').select();setStatus('Выделили текст — скопируйте его вручную.');}});
 }
-document.querySelectorAll('button[data-palette]').forEach(b=>b.addEventListener('click',()=>{document.body.dataset.designPalette=b.dataset.palette;document.querySelectorAll('button[data-palette]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));}));
+const bubble=$('[data-bubble-state]');let bubbleVersion=0,bubbleTimer;
+async function popBubble(){
+ if(!bubble)return;const version=++bubbleVersion;clearTimeout(bubbleTimer);
+ const after=bubble.querySelector('.bubble-after img');
+ try{await after.decode();}catch{return;}
+ if(version!==bubbleVersion)return;
+ bubble.dataset.bubbleState='ready';
+ // A new frame restarts a repeated click without forcing synchronous layout.
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  if(version!==bubbleVersion)return;
+  bubble.dataset.bubbleState=reduced.matches?'popped':'popping';
+  $('#bubble-status').textContent='Хлоп! Пузырь лопнул.';
+  bubbleTimer=setTimeout(()=>{bubble.dataset.bubbleState='popped';},700);
+ }));
+}
+document.querySelectorAll('button[data-palette]').forEach(b=>b.addEventListener('click',()=>{document.body.dataset.designPalette=b.dataset.palette;document.querySelectorAll('button[data-palette]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));popBubble();}));
+document.querySelectorAll('[data-comparison-view]').forEach(button=>button.addEventListener('click',()=>{
+ const comparison=$('.design-comparison');if(!comparison)return;
+ comparison.dataset.view=button.dataset.comparisonView;
+ document.querySelectorAll('[data-comparison-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+}));
+const viewer=$('#design-viewer');
+if(viewer){
+ document.querySelectorAll('[data-design-preview]').forEach(button=>button.addEventListener('click',()=>{
+  const source=button.querySelector('img');const image=$('#viewer-image');image.src=source.src;image.alt=source.alt;
+  $('#viewer-title').textContent=button.closest('article').querySelector('h3').textContent;
+  viewer.showModal();
+ }));
+ viewer.querySelector('.viewer-close').addEventListener('click',()=>viewer.close());
+ viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();});
+}
 const seoContent={technical:['ТЕХНИЧЕСКАЯ ОСНОВА','Сайт, доступный поиску.',['Индексация и канонические URL','Скорость и мобильная версия','Структура и внутренние ссылки']],content:['СЕМАНТИКА И СОДЕРЖАНИЕ','Ответы на реальный спрос.',['Карта поисковых запросов','Посадочные страницы по темам','Полезные тексты и метаданные']],measure:['ИЗМЕРЕНИЕ И РАЗВИТИЕ','От наблюдений к решениям.',['Видимость и переходы из поиска','Обращения и целевые действия','Отчёт и следующий план работ']]};
 document.querySelectorAll('[data-seo-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-seo-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const [label,title,items]=seoContent[b.dataset.seoTab];const panel=$('#seo-panel');panel.replaceChildren();const p=document.createElement('p');p.className='console-label';p.textContent=label;const h=document.createElement('h3');h.textContent=title;const ul=document.createElement('ul');ul.className='console-checks';for(const item of items){const li=document.createElement('li');li.textContent=item;const span=document.createElement('span');span.textContent='↗';li.append(span);ul.append(li);}panel.append(p,h,ul);}));
 if($('#house-demo')){import('./house.js').then(({renderHouse,initHouses})=>{$('#house-demo').innerHTML=renderHouse('demo-house');initHouses();}).catch(()=>{$('#house-demo').textContent='Иллюстрация временно недоступна. Вы можете выбрать домик ниже.';});}
