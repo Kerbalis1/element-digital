@@ -58,7 +58,7 @@ const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveA
 
 export function renderSeoArc({ asset, cta }) {
  const caseVisual = (key, number, label) => `<div class="arc-case-visual" aria-hidden="true">
-  <img src="${asset('assets/seo-scene-'+key+'.webp')}" width="960" height="640" loading="lazy" decoding="async" alt="">
+  <img src="${asset('assets/seo-scene-'+key+'.webp?v=2')}" width="960" height="640" loading="lazy" decoding="async" alt="">
   <span class="arc-case-visual-caption"><b>${number}</b>${label}</span>
  </div>`;
  return `<section class="arc-hero">
