@@ -1,5 +1,3 @@
-import { servicePages } from './service-pages.mjs';
-
 const solutions = [
  ['Стратегия и позиционирование','Уточняем, кому и какую ценность даёт компания. Фиксируем приоритеты.','compass'],
  ['Разработка цифровых продуктов','Проектируем сайты, сервисы и инструменты для клиентов и команды.','cube'],
@@ -58,7 +56,7 @@ const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveA
   <ellipse class="arc-crown-light" cx="980" cy="466" rx="90" ry="165" fill="url(#arc-gold-spot)"/>
  </svg>`;
 
-export function renderSeoArc({ asset, cta, href }) {
+export function renderSeoArc({ asset, cta }) {
  const caseVisual = (key, number) => `<div class="arc-case-visual" aria-hidden="true">
   <img src="${asset('assets/seo-scene-'+key+'.webp')}" width="960" height="640" loading="lazy" decoding="async" alt="">
   <span>${number}</span>
@@ -86,46 +84,32 @@ export function renderSeoArc({ asset, cta, href }) {
   <p class="arc-feedback arc-label">Данные и обратная связь</p>
  </div></section>
  <section class="arc-band arc-projects arc-dark" id="projects"><div class="wrap">
-  ${intro('03 / SEO на практике','От поиска<br>к обращению.','На примере сайта Element Digital показываем, как структура страниц, техническое SEO и форма помогают выстроить этот путь.')}
+  ${intro('03 / SEO-продвижение','Чтобы клиенты находили<br>вас в поиске.','Продвигаем страницы ваших услуг в Яндексе и Google. Смотрим, по каким запросам вас находят и какие страницы приводят обращения.')}
   <div class="arc-case">
-   <div class="arc-case-header"><span class="arc-label">Собственный сайт студии</span><span>Структура · SEO · Обращения</span></div>
    <div class="arc-case-grid">
     <article class="arc-case-step">
      ${caseVisual('structure','01')}
-     <p class="arc-label">Структура под запросы</p>
-     <h3>Отдельная страница под каждую задачу</h3>
-     <p>В разделе разработки выделили три направления. На каждой странице объяснили, кому подходит услуга и что входит в работу.</p>
-     <div class="arc-case-detail">
-      <a class="arc-case-parent" href="${href('development')}">Разработка <span aria-hidden="true">↗</span></a>
-      <ul class="arc-case-tree">${Object.entries(servicePages).map(([path,{label}])=>`<li><a href="${href(path)}">${label} <span aria-hidden="true">↗</span></a></li>`).join('')}</ul>
-     </div>
+     <p class="arc-label">Поисковый спрос</p>
+     <h3>Находим спрос на ваши услуги</h3>
+     <p>Изучаем запросы по вашим услугам и регионам, сравниваем выдачу и выбираем, какие страницы продвигать в первую очередь.</p>
+     <p class="arc-case-detail"><strong>Что получите</strong> Карту запросов и список приоритетных страниц.</p>
     </article>
     <article class="arc-case-step">
      ${caseVisual('technical','02')}
-     <p class="arc-label">Техническое SEO</p>
-     <h3>Подготовили страницы для поиска</h3>
-     <p>Собрали карту сайта, указали её в файле для поисковых роботов и задали основной адрес для каждой страницы.</p>
-     <div class="arc-case-detail">
-      <ul class="arc-case-files">
-       <li><a href="${asset('sitemap.xml')}"><code>sitemap.xml</code><span>Карта сайта ↗</span></a></li>
-       <li><a href="${asset('robots.txt')}"><code>robots.txt</code><span>Правила обхода ↗</span></a></li>
-       <li><span><code>canonical</code><span>Основной URL</span></span></li>
-      </ul>
-     </div>
+     <p class="arc-label">Видимость в поиске</p>
+     <h3>Продвигаем страницы услуг</h3>
+     <p>Дорабатываем заголовки, содержание и внутренние ссылки. Создаём отдельные страницы там, где у клиентов есть отдельный запрос.</p>
+     <p class="arc-case-detail"><strong>Что увидите в отчёте</strong> Динамику позиций и переходов из поиска.</p>
     </article>
     <article class="arc-case-step">
      ${caseVisual('contact','03')}
-     <p class="arc-label">Путь к заявке</p>
-     <h3>Помогли перейти от услуги к разговору</h3>
-     <p>Со страниц услуг ведём к короткой форме. Для первого обращения достаточно имени, контакта и описания задачи.</p>
-     <div class="arc-case-detail">
-      <ol class="arc-case-form">
-       <li>Имя</li><li>Контакт для ответа</li><li>Описание задачи</li>
-      </ol>
-      <a class="arc-case-parent" href="#contact">Посмотреть форму <span aria-hidden="true">↓</span></a>
-     </div>
+     <p class="arc-label">Обращения из поиска</p>
+     <h3>Помогаем посетителям обратиться</h3>
+     <p>Настраиваем отслеживание отправок форм и кликов по контактам. Проверяем, где посетители прерывают путь, и упрощаем обращение.</p>
+     <p class="arc-case-detail"><strong>Что увидите в отчёте</strong> Обращения из поиска и план следующих доработок.</p>
     </article>
    </div>
+   <div class="arc-case-action">${cta('Обсудить SEO-продвижение')}</div>
   </div>
  </div></section>
  <section class="arc-band arc-dark" id="team"><div class="wrap">
