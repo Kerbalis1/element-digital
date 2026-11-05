@@ -25,7 +25,7 @@ body[data-page=seo] .brand-icon span { color:#ff763d; }
   z-index:-2;
 }
 .arc-hero-art img, .arc-hero-light { position:absolute; inset:0; width:100%; height:100%; }
-.arc-hero-art img { object-fit:cover; object-position:center top; }
+.arc-hero-art img { object-fit:contain; object-position:right bottom; }
 .arc-hero-light { pointer-events:none; mix-blend-mode:screen; }
 .arc-stair-light, .arc-ring-light, .arc-crown-light { opacity:0; }
 .arc-ring-light { stroke-dasharray:17 100; }
@@ -56,7 +56,7 @@ body[data-page=seo] .brand-icon span { color:#ff763d; }
   position:absolute;
   inset:0;
   z-index:-1;
-  background:linear-gradient(90deg,#171817 31%,#171817f5 42%,#17181785 56%,transparent 75%),linear-gradient(0deg,#171817 0%,transparent 16%);
+  background:linear-gradient(90deg,#171817 31%,#171817f5 42%,#17181785 56%,transparent 75%),linear-gradient(0deg,#171817 0%,transparent 8%);
 }
 .arc-hero-inner { padding-block:76px 54px; }
 .arc-label { margin:0; font-size:12px; line-height:1.5; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#ff763d; }
