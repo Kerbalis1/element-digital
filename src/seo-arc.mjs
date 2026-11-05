@@ -56,10 +56,16 @@ const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveA
   <ellipse class="arc-crown-light" cx="980" cy="466" rx="90" ry="165" fill="url(#arc-gold-spot)"/>
  </svg>`;
 
+const caseSearch = `<svg viewBox="0 0 24 24" focusable="false"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4 4"/></svg>`;
+const caseQuery = 'Создание сайтов для баз отдыха';
+
 export function renderSeoArc({ asset, cta }) {
- const caseVisual = (key, number, label) => `<div class="arc-case-visual" aria-hidden="true">
+ const caseVisual = (key, label, screen) => `<div class="arc-case-visual" aria-hidden="true">
   <img src="${asset('assets/seo-scene-'+key+'.webp?v=2')}" width="960" height="640" loading="lazy" decoding="async" alt="">
-  <span class="arc-case-visual-caption"><b>${number}</b>${label}</span>
+  <div class="arc-case-screen">
+   <span class="arc-case-screen-label">${label}</span>
+   ${screen}
+  </div>
  </div>`;
  return `<section class="arc-hero">
   <div class="arc-hero-art">
@@ -88,21 +94,29 @@ export function renderSeoArc({ asset, cta }) {
   <div class="arc-case">
    <div class="arc-case-grid">
     <article class="arc-case-step">
-     ${caseVisual('structure','01','Что ищут клиенты')}
+     ${caseVisual('structure','01 / Клиент ищет',`
+      <div class="arc-case-query">${caseSearch}<b>${caseQuery}</b></div>
+      <div class="arc-case-suggestion">сайт для загородного отеля</div>
+      <div class="arc-case-suggestion">сайт базы отдыха с бронированием</div>`)}
      <p class="arc-label">Поисковый спрос</p>
      <h3>Находим спрос на ваши услуги</h3>
      <p>Изучаем запросы по вашим услугам и регионам, сравниваем выдачу и выбираем, какие страницы продвигать в первую очередь.</p>
      <p class="arc-case-detail"><strong>Что получите</strong> Карту запросов и список приоритетных страниц.</p>
     </article>
     <article class="arc-case-step">
-     ${caseVisual('technical','02','Как вас находят')}
+     ${caseVisual('technical','02 / Пример выдачи',`
+      <div class="arc-case-query">${caseSearch}<span>${caseQuery}</span></div>
+      <div class="arc-case-result"><small>Element Digital · Разработка</small><b>${caseQuery}</b><span>Домики, условия проживания и запрос бронирования.</span></div>`)}
      <p class="arc-label">Видимость в поиске</p>
      <h3>Продвигаем страницы услуг</h3>
      <p>Дорабатываем заголовки, содержание и внутренние ссылки. Создаём отдельные страницы там, где у клиентов есть отдельный запрос.</p>
      <p class="arc-case-detail"><strong>Что увидите в отчёте</strong> Динамику позиций и переходов из поиска.</p>
     </article>
     <article class="arc-case-step">
-     ${caseVisual('contact','03','Как к вам обращаются')}
+     ${caseVisual('contact','03 / Посетитель оставляет заявку',`
+      <div class="arc-case-field">Имя и контакт</div>
+      <div class="arc-case-field">Нужен сайт для базы отдыха</div>
+      <div class="arc-case-send">Отправить заявку <span>↗</span></div>`)}
      <p class="arc-label">Обращения из поиска</p>
      <h3>Упрощаем путь до заявки</h3>
      <p>Настраиваем отслеживание отправок форм и кликов по контактам. Проверяем, где посетители прерывают путь, и упрощаем обращение.</p>
