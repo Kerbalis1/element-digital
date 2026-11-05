@@ -21,9 +21,29 @@ body[data-page=seo] .brand-icon span { color:#ff763d; }
   inset:0 0 0 auto;
   width:68%;
   height:100%;
-  object-fit:cover;
-  object-position:center 17%;
+  overflow:hidden;
   z-index:-2;
+}
+.arc-hero-art img, .arc-hero-light { position:absolute; inset:0; width:100%; height:100%; }
+.arc-hero-art img { object-fit:cover; object-position:center top; }
+.arc-hero-light { pointer-events:none; mix-blend-mode:screen; }
+.arc-stair-light, .arc-crown-light { opacity:0; }
+.arc-hero-art.is-lit .arc-stair-light { animation:arc-stair-rise 1.5s linear; }
+.arc-hero-art.is-lit .arc-crown-light { animation:arc-crown-glint 1.7s ease-out; }
+@keyframes arc-stair-rise {
+  0% { transform:translate(180px,900px); opacity:0; }
+  18% { transform:translate(385px,865px); opacity:.8; }
+  42% { transform:translate(660px,790px); opacity:.88; }
+  70% { transform:translate(970px,702px); opacity:.82; }
+  88% { transform:translate(1175px,634px); opacity:.46; }
+  100% { transform:translate(1320px,585px); opacity:0; }
+}
+@keyframes arc-crown-glint {
+  0%, 59%, 100% { opacity:0; }
+  78% { opacity:.42; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .arc-hero-light { visibility:hidden; }
 }
 .arc-hero::after {
   content:"";
@@ -123,7 +143,8 @@ body[data-page=seo] .footer { background:#191b18; }
 }
 @media(max-width:700px) {
   .arc-hero { --hero-art-height:clamp(234px,66.67vw,430px); min-height:0; }
-  .arc-hero-art { width:100%; height:var(--hero-art-height); inset:auto 0 0; object-position:65% 17%; mask-image:linear-gradient(transparent,#000 13%); }
+  .arc-hero-art { width:100%; height:var(--hero-art-height); inset:auto 0 0; mask-image:linear-gradient(transparent,#000 13%); }
+  .arc-hero-light { opacity:.72; }
   .arc-hero::after { background:linear-gradient(0deg,#171817,transparent 14%); }
   .arc-hero-inner { padding-block:43px calc(var(--hero-art-height) + 24px); }
   .arc-hero h1 { font-size:clamp(45px,10.3vw,65px); margin-block:18px 20px; }
