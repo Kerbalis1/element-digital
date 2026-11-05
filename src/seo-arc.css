@@ -95,10 +95,22 @@ body[data-page=seo] .brand-icon span { color:#ff763d; }
 .arc-seo-more summary { cursor:pointer; font-weight:600; padding:17px 0; border-top:1px solid #c7c4b9; }
 .arc-seo-more .seo-console-section { max-width:800px; margin:28px auto; }
 .arc-seo-more .section.wrap { padding-inline:0; }
-body[data-page=seo] .contact { background:radial-gradient(ellipse at 84% 30%,#553323,#191b18 50%); color:#f1eee7; }
+body[data-page=seo] .contact {
+  background:radial-gradient(ellipse at 84% 30%,#553323,#191b18 50%);
+  color:#f1eee7;
+  --muted:#d0cbc2;
+  --accent:#ff9869;
+  --line:#ffffff33;
+}
 body[data-page=seo] .contact h2 { font-size:clamp(44px,4.6vw,68px); }
 body[data-page=seo] .contact .eyebrow { color:#ff9869; }
-body[data-page=seo] .contact .form-panel { color:inherit; }
+body[data-page=seo] .contact-panel { background:#23221f; border-color:var(--line); border-radius:6px; }
+body[data-page=seo] .contact :is(input,textarea) { border-color:#756d61; }
+body[data-page=seo] .contact :is(input,textarea)::placeholder { color:var(--muted); }
+body[data-page=seo] .contact .consent input { accent-color:var(--accent); }
+body[data-page=seo] .contact a:hover { color:var(--accent); }
+body[data-page=seo] #form-status[data-state=error] { color:#ffad96; }
+body[data-page=seo] #form-status[data-state=success] { color:#a8e4b8; }
 body[data-page=seo] .footer { background:#191b18; }
 @media(max-width:1050px) {
   .arc-four { grid-template-columns:repeat(2,minmax(0,1fr)); }
