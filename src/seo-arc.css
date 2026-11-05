@@ -5,7 +5,7 @@ body[data-page=seo] {
   --accent:#ff763d;
   --line:#ffffff26;
 }
-body[data-page=seo] .wrap { max-width:1440px; --gutter:clamp(22px,5.55vw,80px); }
+body[data-page=seo] .wrap:not(.header-inner, .mobile-nav) { max-width:1440px; --gutter:clamp(22px,5.55vw,80px); }
 body[data-page=seo] .header { background:#171817; }
 body[data-page=seo] .header-cta, body[data-page=seo] .button {
   background:#ff763d;
