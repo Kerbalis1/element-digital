@@ -121,7 +121,7 @@ body[data-page=seo] .footer { background:#191b18; }
 }
 @media(max-width:700px) {
   .arc-hero { min-height:0; }
-  .arc-hero-art { width:100%; height:47%; inset:auto 0 0; object-position:70% 50%; }
+  .arc-hero-art { width:100%; height:39%; inset:auto 0 0; object-position:70% 50%; }
   .arc-hero::after { background:linear-gradient(180deg,#171817 48%,#171817e6 57%,transparent 77%,#171817 100%); }
   .arc-hero-inner { padding-block:43px 225px; }
   .arc-hero h1 { font-size:clamp(45px,10.3vw,65px); margin-block:18px 20px; }
