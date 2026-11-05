@@ -110,11 +110,12 @@ body[data-page=seo] .arc-hero .button:hover { background:#ffe4ba; border-color:#
 .arc-feedback::before,.arc-feedback::after { content:""; height:1px; width:25%; background:#936047; }
 .arc-projects { background:#e9e8df; }
 .arc-photo { display:block; width:100%; height:auto; overflow:hidden; }
-.arc-case { background:#f6f4ed; border:1px solid #ceccc2; border-radius:8px; }
-.arc-case-header { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 20px; padding:15px clamp(16px,2vw,30px); border-bottom:1px solid #ceccc2; color:var(--muted); font-size:13px; }
-.arc-case-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
-.arc-case-step { display:flex; flex-direction:column; gap:12px; min-width:0; padding:clamp(16px,2vw,30px); }
-.arc-case-step + .arc-case-step { border-inline-start:1px solid #ceccc2; }
+.arc-case-header { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 20px; margin-bottom:14px; color:var(--muted); font-size:13px; }
+.arc-case-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(12px,1.5vw,22px); }
+.arc-case-step { --card-pad:clamp(16px,1.65vw,25px); display:flex; flex-direction:column; gap:12px; min-width:0; padding:0 var(--card-pad) var(--card-pad); background:#f6f4ed; border:1px solid #ceccc2; border-radius:8px; }
+.arc-case-visual { margin:0 calc(-1 * var(--card-pad)) 6px; overflow:hidden; border-radius:7px 7px 0 0; color:#f0cd98; background:radial-gradient(ellipse at 68% 44%,#614a35,transparent 72%),radial-gradient(circle,#e5bb8638 1px,transparent 1px) 0 0/16px 16px,#242420; }
+.arc-case-visual svg { display:block; width:100%; height:clamp(132px,12vw,181px); stroke:currentColor; stroke-width:1.45; stroke-linecap:round; stroke-linejoin:round; fill:none; }
+.arc-case-shape { fill:#332b24; }
 .arc-case-step h3 { margin:0; max-width:13em; font:500 clamp(26px,2.4vw,37px)/1.03 var(--serif); }
 .arc-case-step > p:not(.arc-label) { margin:0 0 8px; color:var(--muted); font-size:15px; line-height:1.55; }
 .arc-case-detail { margin-top:auto; padding:10px 14px; background:#ebe8dc; border-radius:5px; font-size:14px; }
@@ -176,7 +177,6 @@ body[data-page=seo] .footer { background:#191b18; }
   .arc-intro { grid-template-columns:1fr; gap:15px; margin-bottom:27px; }
   .arc-intro .arc-aside { font-size:15px; }
   .arc-case-grid { grid-template-columns:1fr; }
-  .arc-case-step + .arc-case-step { border-inline-start:0; border-top:1px solid #ceccc2; }
   .arc-flow { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
   .arc-solution { padding:15px; }
   .arc-grid p:not(.arc-label),.arc-flow p { font-size:14px; }
