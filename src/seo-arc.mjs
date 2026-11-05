@@ -39,7 +39,7 @@ const intro = (label, title, description = '') => `<div class="arc-intro"><div><
 const imageWindow = (src, viewBox, width, height) =>
  `<svg class="arc-photo" viewBox="${viewBox}" aria-hidden="true" focusable="false"><image href="${src}" width="${width}" height="${height}"/></svg>`;
 
-const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false">
+const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">
   <defs>
    <radialGradient id="arc-gold-spot">
     <stop stop-color="#fff8df"/>
