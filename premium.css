@@ -67,3 +67,13 @@ body[data-page=design],body[data-page=seo],body[data-page=smm],body[data-demo=be
 @media(max-width:1000px){.commercial-hero{grid-template-columns:1fr;gap:35px}.commercial-links{grid-template-columns:1fr}.commercial-hero aside{max-width:750px}}
 @media(max-width:640px){.commercial-hero{padding-block:45px}.commercial-hero h1{font-size:38px}.commercial-lead{font-size:16px}.commercial-hero aside{padding:23px}.commercial-scope,.commercial-terms{grid-template-columns:1fr;gap:24px}.commercial-scope article,.commercial-links article{padding:23px}.commercial-scope h3,.commercial-links h3,.commercial-terms h3{font-size:23px}.commercial-context>p,.commercial-result>p,.commercial-demo>p{font-size:16px}.commercial-breadcrumb{font-size:12px}}
 @media(max-width:640px){body[data-page=home] .section-head h2,body[data-page=home] .service-card h3{overflow-wrap:anywhere}}
+
+/* Keep the same mountain photograph sharp on high-density phones: render a
+   shorter landscape window rather than enlarging a 600 x 400 crop to 740px. */
+@media(max-width:640px){
+ .mountain-picture{inset:auto 0 0;height:340px;width:100%;mask-image:linear-gradient(180deg,transparent,#000 15%,#000)}
+ .mountain-picture img{object-fit:cover;object-position:100% center}
+ .hero-shade{background:linear-gradient(180deg,#171715 0%,#171715 35%,#17171599 52%,#17171515 68%,#17171555 100%)}
+ .cloud-one{bottom:-4%;height:34%}
+ .cloud-two{bottom:3%;height:23%}
+}

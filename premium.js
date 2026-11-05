@@ -48,14 +48,14 @@ if(form){
  });
  $('#copy-brief').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#prepared-text').value);setStatus('Текст скопирован. Отправьте его в чате студии.');}catch{$('#prepared-text').focus();$('#prepared-text').select();setStatus('Выделили текст — скопируйте его вручную.');}});
 }
-const bubble=$('[data-bubble-state]');let bubbleVersion=0,bubbleTimer;
+const bubble=$('[data-bubble-state]'),bubbleReduced=matchMedia('(prefers-reduced-motion: reduce)');let bubbleVersion=0,bubbleTimer;
 async function setBubble(action){
  if(!bubble)return;const version=++bubbleVersion;clearTimeout(bubbleTimer);
  const after=bubble.querySelector('.bubble-after img');
  try{await after.decode();}catch{return;}
  if(version!==bubbleVersion)return;
  const finish=()=>{if(version!==bubbleVersion)return;bubble.dataset.bubbleState=action==='inflate'?'idle':'popped';$('#bubble-status').textContent=action==='inflate'?'Пузырь надут.':'Хлоп! Пузырь лопнул.';};
- if(reduced.matches){finish();return;}
+ if(bubbleReduced.matches){finish();return;}
  bubble.dataset.bubbleState='ready';
  requestAnimationFrame(()=>requestAnimationFrame(()=>{
   if(version!==bubbleVersion)return;
