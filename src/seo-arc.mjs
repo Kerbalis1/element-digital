@@ -36,25 +36,6 @@ const intro = (label, title, description = '') => `<div class="arc-intro"><div><
 const imageWindow = (src, viewBox, width, height) =>
  `<svg class="arc-photo" viewBox="${viewBox}" aria-hidden="true" focusable="false"><image href="${src}" width="${width}" height="${height}"/></svg>`;
 
-const caseIllustrations = {
- structure:`<path d="M160 53v21M65 74h190M65 74v25m95-25v25m95-25v25"/>
-  <rect class="arc-case-shape" x="112" y="21" width="96" height="32" rx="5"/>
-  <path d="M133 37h54"/>
-  <rect class="arc-case-shape" x="25" y="99" width="80" height="34" rx="5"/>
-  <rect class="arc-case-shape" x="120" y="99" width="80" height="34" rx="5"/>
-  <rect class="arc-case-shape" x="215" y="99" width="80" height="34" rx="5"/>
-  <path d="M47 116h36m59 0h36m59 0h36"/>`,
- technical:`<rect class="arc-case-shape" x="59" y="19" width="201" height="120" rx="8"/>
-  <path d="M59 46h201M77 33h4m9 0h4m9 0h4M84 72h70m-70 24h84m-84 24h60"/>
-  <path d="m208 71 5 5 10-11m-15 30 5 5 10-11m-15 30 5 5 10-11"/>`,
- contact:`<path d="M101 79h36m51 0h34m-91-5 6 5-6 5m85-10 6 5-6 5"/>
-  <circle class="arc-case-shape" cx="69" cy="79" r="30"/>
-  <circle class="arc-case-shape" cx="163" cy="79" r="24"/>
-  <circle class="arc-case-shape" cx="252" cy="79" r="29"/>
-  <circle cx="66" cy="76" r="8"/><path d="m72 82 7 7M154 68h18v22h-18zM158 74h10m-10 5h10m-10 5h7m75-15h23v15h-9l-6 5v-5h-8z"/>`,
-};
-const caseIllustration = key => `<div class="arc-case-visual" aria-hidden="true"><svg viewBox="0 0 320 158" focusable="false">${caseIllustrations[key]}</svg></div>`;
-
 const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">
   <defs>
    <radialGradient id="arc-gold-spot">
@@ -78,6 +59,10 @@ const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveA
  </svg>`;
 
 export function renderSeoArc({ asset, cta, href }) {
+ const caseVisual = (key, number) => `<div class="arc-case-visual" aria-hidden="true">
+  <img src="${asset('assets/seo-scene-'+key+'.webp')}" width="960" height="640" loading="lazy" decoding="async" alt="">
+  <span>${number}</span>
+ </div>`;
  return `<section class="arc-hero">
   <div class="arc-hero-art">
    <img src="${asset('assets/seo-king-arch.webp')}" width="1320" height="880" alt="" fetchpriority="high">
@@ -100,14 +85,14 @@ export function renderSeoArc({ asset, cta, href }) {
   <ol class="arc-flow">${approach.map(([title,description],i)=>`<li><span class="arc-label">${index(i)}</span><h3>${title}</h3><p>${description}</p></li>`).join('')}</ol>
   <p class="arc-feedback arc-label">Данные и обратная связь</p>
  </div></section>
- <section class="arc-band arc-projects arc-paper" id="projects"><div class="wrap">
+ <section class="arc-band arc-projects arc-dark" id="projects"><div class="wrap">
   ${intro('03 / SEO на практике','От поиска<br>к обращению.','На примере сайта Element Digital показываем, как структура страниц, техническое SEO и форма помогают выстроить этот путь.')}
   <div class="arc-case">
    <div class="arc-case-header"><span class="arc-label">Собственный сайт студии</span><span>Структура · SEO · Обращения</span></div>
    <div class="arc-case-grid">
     <article class="arc-case-step">
-     ${caseIllustration('structure')}
-     <p class="arc-label">01 / Структура под запросы</p>
+     ${caseVisual('structure','01')}
+     <p class="arc-label">Структура под запросы</p>
      <h3>Отдельная страница под каждую задачу</h3>
      <p>В разделе разработки выделили три направления. На каждой странице объяснили, кому подходит услуга и что входит в работу.</p>
      <div class="arc-case-detail">
@@ -116,8 +101,8 @@ export function renderSeoArc({ asset, cta, href }) {
      </div>
     </article>
     <article class="arc-case-step">
-     ${caseIllustration('technical')}
-     <p class="arc-label">02 / Техническое SEO</p>
+     ${caseVisual('technical','02')}
+     <p class="arc-label">Техническое SEO</p>
      <h3>Подготовили страницы для поиска</h3>
      <p>Собрали карту сайта, указали её в файле для поисковых роботов и задали основной адрес для каждой страницы.</p>
      <div class="arc-case-detail">
@@ -129,8 +114,8 @@ export function renderSeoArc({ asset, cta, href }) {
      </div>
     </article>
     <article class="arc-case-step">
-     ${caseIllustration('contact')}
-     <p class="arc-label">03 / Путь к заявке</p>
+     ${caseVisual('contact','03')}
+     <p class="arc-label">Путь к заявке</p>
      <h3>Помогли перейти от услуги к разговору</h3>
      <p>Со страниц услуг ведём к короткой форме. Для первого обращения достаточно имени, контакта и описания задачи.</p>
      <div class="arc-case-detail">
