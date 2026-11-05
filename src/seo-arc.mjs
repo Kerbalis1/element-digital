@@ -1,3 +1,5 @@
+import { servicePages } from './service-pages.mjs';
+
 const solutions = [
  ['Стратегия и позиционирование','Уточняем, кому и какую ценность даёт компания. Фиксируем приоритеты.','compass'],
  ['Разработка цифровых продуктов','Проектируем сайты, сервисы и инструменты для клиентов и команды.','cube'],
@@ -16,29 +18,6 @@ const approach = [
  ['Дизайн','Что увидит клиент'],
  ['Технологии','Как это будет работать'],
  ['Маркетинг','Как привлечь аудиторию'],
-];
-const projects = [
- {
-  id:'bereg', label:'Сайт базы отдыха', title:'Берег',
-  alt:'Первый экран сайта «Берег» с интерактивной иллюстрацией домика',
-  task:'Гостю нужно выбрать домик и указать даты до разговора с администратором.',
-  solution:'Собрали варианты проживания и форму выбора дат. Выбранный домик подставляется в форму.',
-  action:'Попробовать бронирование', path:'demo/bereg/#cabins',
- },
- {
-  id:'forma', label:'Интернет-магазин', title:'Форма',
-  alt:'Каталог «Форма» с фильтрами и тремя товарами из керамики',
-  task:'Покупателю нужно быстро найти нужную вещь в коллекции керамики.',
-  solution:'Разделили каталог по категориям и сделали корзину, которая пересчитывает сумму при каждом изменении.',
-  action:'Открыть каталог', path:'demo/forma',
- },
- {
-  id:'flow', label:'Внутренний сервис', title:'Поток',
-  alt:'Доска «Поток» с колонками «Новые», «В работе» и «Готово»',
-  task:'Команде важно видеть, какие задачи только поступили, а какие уже закрыты.',
-  solution:'Собрали доску с тремя статусами, поиском и формой добавления задачи.',
-  action:'Открыть доску задач', path:'demo/flow/#flow-form',
- },
 ];
 const roles = [
  ['Руководитель стратегии','Бизнес-цели и приоритеты'],
@@ -103,19 +82,44 @@ export function renderSeoArc({ asset, cta, href }) {
   <p class="arc-feedback arc-label">Данные и обратная связь</p>
  </div></section>
  <section class="arc-band arc-projects arc-paper" id="projects"><div class="wrap">
-  ${intro('03 / Проекты','Решения, за которыми<br>стоит задача.','Три рабочих демо студии. Посмотрите, как устроен каждый проект, и пройдите его основной сценарий.')}
-  <div class="arc-grid arc-three">${projects.map(({id,label,title,alt,task,solution,action,path})=>`<article class="arc-project">
-   <div class="arc-project-preview">
-    <img src="${asset('assets/seo-demo-'+id+'.webp')}" width="960" height="413" loading="lazy" decoding="async" alt="${alt}">
+  ${intro('03 / Разбор проекта','Как мы собрали сайт<br>Element Digital.','Показываем на своём сайте, как связали страницы услуг, подготовили их для поиска и продумали путь до обращения.')}
+  <div class="arc-case">
+   <div class="arc-case-header"><span class="arc-label">Собственный сайт студии</span><span>Структура · SEO · Обращения</span></div>
+   <div class="arc-case-grid">
+    <article class="arc-case-step">
+     <p class="arc-label">01 / Структура</p>
+     <h3>Отдельная страница под каждую задачу</h3>
+     <p>В разделе разработки выделили три направления. На каждой странице объяснили, кому подходит услуга и что входит в работу.</p>
+     <div class="arc-case-detail">
+      <a class="arc-case-parent" href="${href('development')}">Разработка <span aria-hidden="true">↗</span></a>
+      <ul class="arc-case-tree">${Object.entries(servicePages).map(([path,{label}])=>`<li><a href="${href(path)}">${label} <span aria-hidden="true">↗</span></a></li>`).join('')}</ul>
+     </div>
+    </article>
+    <article class="arc-case-step">
+     <p class="arc-label">02 / Техническое SEO</p>
+     <h3>Подготовили страницы для поиска</h3>
+     <p>Собрали карту сайта, указали её в файле для поисковых роботов и задали основной адрес для каждой страницы.</p>
+     <div class="arc-case-detail">
+      <ul class="arc-case-files">
+       <li><a href="${asset('sitemap.xml')}"><code>sitemap.xml</code><span>Карта сайта ↗</span></a></li>
+       <li><a href="${asset('robots.txt')}"><code>robots.txt</code><span>Правила обхода ↗</span></a></li>
+       <li><span><code>canonical</code><span>Основной URL</span></span></li>
+      </ul>
+     </div>
+    </article>
+    <article class="arc-case-step">
+     <p class="arc-label">03 / Обращения</p>
+     <h3>Помогли перейти от услуги к разговору</h3>
+     <p>Со страниц услуг ведём к короткой форме. Для первого обращения достаточно имени, контакта и описания задачи.</p>
+     <div class="arc-case-detail">
+      <ol class="arc-case-form">
+       <li>Имя</li><li>Контакт для ответа</li><li>Описание задачи</li>
+      </ol>
+      <a class="arc-case-parent" href="#contact">Посмотреть форму <span aria-hidden="true">↓</span></a>
+     </div>
+    </article>
    </div>
-   <div class="arc-project-copy">
-    <p class="arc-label">${label} · Демо</p>
-    <h3>${title}</h3>
-    <p><strong>Задача.</strong> ${task}</p>
-    <p><strong>Решение.</strong> ${solution}</p>
-    <a class="arc-project-link" href="${href(path)}">${action}<span aria-hidden="true">↗</span></a>
-   </div>
-  </article>`).join('')}</div>
+  </div>
  </div></section>
  <section class="arc-band arc-dark" id="team"><div class="wrap">
   ${intro('04 / Команда','Люди, которые отвечают<br>за результат.','Пример распределения ролей в проекте. Иллюстративные портреты.')}
