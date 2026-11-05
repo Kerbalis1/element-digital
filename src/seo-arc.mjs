@@ -39,9 +39,34 @@ const intro = (label, title, description = '') => `<div class="arc-intro"><div><
 const imageWindow = (src, viewBox, width, height) =>
  `<svg class="arc-photo" viewBox="${viewBox}" aria-hidden="true" focusable="false"><image href="${src}" width="${width}" height="${height}"/></svg>`;
 
+const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false">
+  <defs>
+   <radialGradient id="arc-gold-spot">
+    <stop stop-color="#fff8df"/>
+    <stop offset=".42" stop-color="#ffd28a" stop-opacity=".75"/>
+    <stop offset="1" stop-color="#ffc474" stop-opacity="0"/>
+   </radialGradient>
+   <clipPath id="arc-stair-profile">
+    <path d="M92 880L432 845 487 816 598 789 710 759 832 729 941 700 1057 669 1138 636 1205 607 1268 578 1374 546 1384 575 1330 620 1250 683 1140 757 1021 827 1000 917 802 955 119 958Z"/>
+   </clipPath>
+   <filter id="arc-ring-halo" x="-12%" y="-14%" width="124%" height="128%">
+    <feGaussianBlur stdDeviation="9"/>
+   </filter>
+  </defs>
+  <g clip-path="url(#arc-stair-profile)">
+   <ellipse class="arc-stair-light" rx="258" ry="96" fill="url(#arc-gold-spot)"/>
+  </g>
+  <path class="arc-ring-light" d="M666 768C542 650 548 478 589 371C650 204 798 107 984 100C1204 91 1370 242 1373 448C1374 492 1366 522 1351 551" pathLength="100"
+    fill="none" stroke="#ffe1a1" stroke-width="30" stroke-linecap="round" filter="url(#arc-ring-halo)"/>
+  <ellipse class="arc-crown-light" cx="980" cy="466" rx="90" ry="165" fill="url(#arc-gold-spot)"/>
+ </svg>`;
+
 export function renderSeoArc({ asset, cta }) {
  return `<section class="arc-hero">
-  <img class="arc-hero-art" src="${asset('assets/seo-arc.webp')}" width="1320" height="880" alt="" fetchpriority="high">
+  <div class="arc-hero-art">
+   <img src="${asset('assets/seo-king-arch.webp')}" width="1320" height="880" alt="" fetchpriority="high">
+   ${heroLight}
+  </div>
   <div class="wrap arc-hero-inner">
    <p class="arc-label">Стратегическое сопровождение</p>
    <h1>Для тех, кто<br><span>создаёт масштаб.</span></h1>
