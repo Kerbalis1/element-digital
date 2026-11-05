@@ -57,9 +57,9 @@ const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveA
  </svg>`;
 
 export function renderSeoArc({ asset, cta }) {
- const caseVisual = (key, number) => `<div class="arc-case-visual" aria-hidden="true">
+ const caseVisual = (key, number, label) => `<div class="arc-case-visual" aria-hidden="true">
   <img src="${asset('assets/seo-scene-'+key+'.webp')}" width="960" height="640" loading="lazy" decoding="async" alt="">
-  <span>${number}</span>
+  <span class="arc-case-visual-caption"><b>${number}</b>${label}</span>
  </div>`;
  return `<section class="arc-hero">
   <div class="arc-hero-art">
@@ -88,23 +88,23 @@ export function renderSeoArc({ asset, cta }) {
   <div class="arc-case">
    <div class="arc-case-grid">
     <article class="arc-case-step">
-     ${caseVisual('structure','01')}
+     ${caseVisual('structure','01','Что ищут клиенты')}
      <p class="arc-label">Поисковый спрос</p>
      <h3>Находим спрос на ваши услуги</h3>
      <p>Изучаем запросы по вашим услугам и регионам, сравниваем выдачу и выбираем, какие страницы продвигать в первую очередь.</p>
      <p class="arc-case-detail"><strong>Что получите</strong> Карту запросов и список приоритетных страниц.</p>
     </article>
     <article class="arc-case-step">
-     ${caseVisual('technical','02')}
+     ${caseVisual('technical','02','Как вас находят')}
      <p class="arc-label">Видимость в поиске</p>
      <h3>Продвигаем страницы услуг</h3>
      <p>Дорабатываем заголовки, содержание и внутренние ссылки. Создаём отдельные страницы там, где у клиентов есть отдельный запрос.</p>
      <p class="arc-case-detail"><strong>Что увидите в отчёте</strong> Динамику позиций и переходов из поиска.</p>
     </article>
     <article class="arc-case-step">
-     ${caseVisual('contact','03')}
+     ${caseVisual('contact','03','Как к вам обращаются')}
      <p class="arc-label">Обращения из поиска</p>
-     <h3>Помогаем посетителям обратиться</h3>
+     <h3>Упрощаем путь до заявки</h3>
      <p>Настраиваем отслеживание отправок форм и кликов по контактам. Проверяем, где посетители прерывают путь, и упрощаем обращение.</p>
      <p class="arc-case-detail"><strong>Что увидите в отчёте</strong> Обращения из поиска и план следующих доработок.</p>
     </article>
