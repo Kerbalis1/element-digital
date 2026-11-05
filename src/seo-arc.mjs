@@ -41,7 +41,7 @@ const imageWindow = (src, viewBox, width, height) =>
 
 export function renderSeoArc({ asset, cta }) {
  return `<section class="arc-hero">
-  <img class="arc-hero-art" src="${asset('assets/seo-gold-king.webp')}" width="1320" height="880" alt="" fetchpriority="high">
+  <img class="arc-hero-art" src="${asset('assets/seo-king-arch.webp')}" width="1320" height="880" alt="" fetchpriority="high">
   <div class="wrap arc-hero-inner">
    <p class="arc-label">Стратегическое сопровождение</p>
    <h1>Для тех, кто<br><span>создаёт масштаб.</span></h1>
