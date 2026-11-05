@@ -18,9 +18,27 @@ const approach = [
  ['Маркетинг','Как привлечь аудиторию'],
 ];
 const projects = [
- ['Сайт компании','Сайт для сложной услуги','Объяснить предложение и сократить путь от первого визита до заявки.'],
- ['Аналитика','Дашборд для руководителя','Собрать ключевые данные в одном экране для регулярных решений.'],
- ['Внутренний сервис','Сервис обработки заявок','Разделить задачи по этапам и дать команде общий обзор работы.'],
+ {
+  id:'bereg', label:'Сайт базы отдыха', title:'Берег',
+  alt:'Первый экран сайта «Берег» с интерактивной иллюстрацией домика',
+  task:'Гостю нужно выбрать домик и указать даты до разговора с администратором.',
+  solution:'Собрали варианты проживания и форму выбора дат. Выбранный домик подставляется в форму.',
+  action:'Попробовать бронирование', path:'demo/bereg/#cabins',
+ },
+ {
+  id:'forma', label:'Интернет-магазин', title:'Форма',
+  alt:'Каталог «Форма» с фильтрами и тремя товарами из керамики',
+  task:'Покупателю нужно быстро найти нужную вещь в коллекции керамики.',
+  solution:'Разделили каталог по категориям и сделали корзину, которая пересчитывает сумму при каждом изменении.',
+  action:'Открыть каталог', path:'demo/forma',
+ },
+ {
+  id:'flow', label:'Внутренний сервис', title:'Поток',
+  alt:'Доска «Поток» с колонками «Новые», «В работе» и «Готово»',
+  task:'Команде важно видеть, какие задачи только поступили, а какие уже закрыты.',
+  solution:'Собрали доску с тремя статусами, поиском и формой добавления задачи.',
+  action:'Открыть доску задач', path:'demo/flow/#flow-form',
+ },
 ];
 const roles = [
  ['Руководитель стратегии','Бизнес-цели и приоритеты'],
@@ -61,7 +79,7 @@ const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveA
   <ellipse class="arc-crown-light" cx="980" cy="466" rx="90" ry="165" fill="url(#arc-gold-spot)"/>
  </svg>`;
 
-export function renderSeoArc({ asset, cta }) {
+export function renderSeoArc({ asset, cta, href }) {
  return `<section class="arc-hero">
   <div class="arc-hero-art">
    <img src="${asset('assets/seo-king-arch.webp')}" width="1320" height="880" alt="" fetchpriority="high">
@@ -85,8 +103,19 @@ export function renderSeoArc({ asset, cta }) {
   <p class="arc-feedback arc-label">Данные и обратная связь</p>
  </div></section>
  <section class="arc-band arc-projects arc-paper" id="projects"><div class="wrap">
-  ${intro('03 / Проекты','Решения, за которыми<br>стоит задача.','Три демонстрационные задачи с примерами цифровых решений.')}
-  <div class="arc-grid arc-three">${projects.map(([label,title,description],i)=>`<article class="arc-project">${imageWindow(asset('assets/seo-projects.webp'),`${i*520} 144 520 230`,1560,520)}<div><p class="arc-label">${label}</p><h3>${title}</h3><p>${description}</p></div></article>`).join('')}</div>
+  ${intro('03 / Проекты','Решения, за которыми<br>стоит задача.','Три рабочих демо студии. Посмотрите, как устроен каждый проект, и пройдите его основной сценарий.')}
+  <div class="arc-grid arc-three">${projects.map(({id,label,title,alt,task,solution,action,path})=>`<article class="arc-project">
+   <div class="arc-project-preview">
+    <img src="${asset('assets/seo-demo-'+id+'.webp')}" width="960" height="413" loading="lazy" decoding="async" alt="${alt}">
+   </div>
+   <div class="arc-project-copy">
+    <p class="arc-label">${label} · Демо</p>
+    <h3>${title}</h3>
+    <p><strong>Задача.</strong> ${task}</p>
+    <p><strong>Решение.</strong> ${solution}</p>
+    <a class="arc-project-link" href="${href(path)}">${action}<span aria-hidden="true">↗</span></a>
+   </div>
+  </article>`).join('')}</div>
  </div></section>
  <section class="arc-band arc-dark" id="team"><div class="wrap">
   ${intro('04 / Команда','Люди, которые отвечают<br>за результат.','Пример распределения ролей в проекте. Иллюстративные портреты.')}
