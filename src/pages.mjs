@@ -1,3 +1,4 @@
+import { renderForma } from './forma.mjs';
 import { renderFlow } from './flow.mjs';
 import { renderBereg } from './bereg.mjs';
 import { renderAutomation } from './automation.mjs';
@@ -131,7 +132,7 @@ export function renderPage(key,base,options={}) {
  const id=key.split('/')[1],p=site.projects.find(x=>x.id===id);title=`${p.title} — интерактивный демопроект Element Digital`;description=p.description;
  const notice=`<div class="demo-notice wrap"><span>ДЕМОНСТРАЦИОННЫЙ ПРОЕКТ / ${esc(p.title)}</span>${link('portfolio','Вернуться в портфолио')}<p>Учебный сценарий. Реальные бронирования, заказы и внешние интеграции не подключены. Данные в этой вкладке исчезнут после обновления.</p></div>`;
  if(id==='bereg') body=notice+renderBereg();
- if(id==='forma') body=notice+`<section class="forma-intro wrap"><p class="eyebrow">ФОРМА / КЕРАМИКА ДЛЯ ДОМА</p><h1>Простые вещи.<br><em>Особое чувство.</em></h1><p>Демонстрационный каталог. Попробуйте фильтры и корзину.</p></section><section class="section wrap"><div class="catalog-tools" role="group" aria-label="Категория товаров"><button data-filter="all" aria-pressed="true">Всё</button><button data-filter="cups" aria-pressed="false">Чашки</button><button data-filter="vases" aria-pressed="false">Вазы</button><button data-filter="plates" aria-pressed="false">Тарелки</button></div><div class="product-grid">${[['cup','cups','Чашка «Утро»',1800],['vase','vases','Ваза «Линия»',3200],['plate','plates','Тарелка «Круг»',2400]].map(([shape,category,name,price])=>`<article data-category="${category}"><div class="ceramic-scene"><div class="ceramic ceramic-${shape}"></div></div><h3>${name}</h3><p>${price.toLocaleString('ru-RU')} ₽ <small>Демо-цена</small></p><button class="button" data-add="${name}" data-price="${price}">В корзину +</button></article>`).join('')}</div><aside class="cart"><h2>Ваша корзина</h2><ul id="cart-items"><li>Корзина пока пуста</li></ul><p id="cart-total" role="status" aria-live="polite">Итого: 0 ₽</p><button class="button" id="demo-checkout" disabled>Проверить оформление</button><p id="checkout-status" role="status"></p></aside></section>`;
+ if(id==='forma') body=notice+renderForma();
  if(id==='flow') body=notice.replace('Данные в этой вкладке исчезнут после обновления.','Изменения сохраняются только в этом браузере.')+renderFlow();
  }
  if(key==='')body=body.replace('<section class="section portfolio-strip">',serviceDirectory(link)+'<section class="section portfolio-strip">');
