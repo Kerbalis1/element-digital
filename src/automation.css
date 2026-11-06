@@ -351,13 +351,19 @@ body[data-page="automation"] .contact .button:hover { background: #e4d9ff; color
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
-.auto-price { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.auto-solutions article, .auto-price article, .auto-steps li {
+.auto-price, .auto-industry-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.auto-industry-grid { display: grid; gap: 14px; }
+.auto-solutions article, .auto-price article, .auto-steps li, .auto-industry-grid article {
   padding: clamp(16px, 2vw, 25px);
   border: 1px solid #8e83de73;
   border-radius: 14px;
   background: linear-gradient(141deg, #1b1c38, #14162b);
 }
+.auto-industry-grid dl { display: grid; gap: 13px; margin: 14px 0 0; }
+.auto-industry-grid dt { color: #d8ccff; font-size: 13px; font-weight: 700; }
+.auto-industry-grid dd { margin: 3px 0 0; color: var(--muted); font-size: 15px; line-height: 1.52; }
+.auto-industry-grid dl > div:last-child { border-top: 1px solid var(--line); padding-top: 11px; }
+.auto-industry-actions { margin-top: 20px; }
 .auto-solutions svg { display: block; margin-bottom: 11px; }
 .auto-solutions p, .auto-price p, .auto-steps p { margin: 0; }
 .auto-price .auto-amount { margin-bottom: 10px; color: #d0bbff; font-size: clamp(22px, 2.5vw, 34px); font-weight: 700; }
@@ -394,7 +400,7 @@ body[data-page="automation"] #form-status[data-state="success"] { color: #a6ebc7
   .auto-benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 920px) {
-  .auto-solutions, .auto-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .auto-solutions, .auto-steps, .auto-industry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
   .auto-hero h1 { font-size: clamp(25px, 6.8vw, 42px); }
@@ -404,7 +410,7 @@ body[data-page="automation"] #form-status[data-state="success"] { color: #a6ebc7
   .auto-flow { grid-template-columns: 1fr 1fr; gap: 11px; }
   .auto-flow li:not(:last-child)::after { display: none; }
   .auto-flow li { padding-inline: 7px; }
-  .auto-price, .auto-tools { grid-template-columns: 1fr; }
+  .auto-price, .auto-tools, .auto-industry-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 440px) {
   .auto-solutions, .auto-steps, .auto-benefits { grid-template-columns: 1fr; }

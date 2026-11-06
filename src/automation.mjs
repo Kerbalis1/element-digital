@@ -24,6 +24,45 @@ const solutions = [
   ['sync', 'Рутинные операции', 'Связываем системы, чтобы команда меньше переносила данные вручную. Например, синхронизируем статусы и отправляем напоминания.'],
   ['report', 'Отчётность', 'Собираем отчёт по заявкам, источникам и этапам сделки. Руководителю видно, где обращения застревают.'],
 ];
+const industries = [
+  {
+    title: 'Продажа спецтехники',
+    workflow: 'Собираем запросы по технике в CRM, распределяем их по менеджерам и напоминаем, когда нужно отправить предложение или вернуться к клиенту.',
+    benefit: 'Видите, кто ведёт каждый запрос, где задержалось коммерческое предложение и какие модели чаще спрашивают.',
+    metric: 'Время до отправки предложения и запросы без следующего шага.',
+  },
+  {
+    title: 'Базы отдыха и отели',
+    workflow: 'Собираем запросы с сайта и из мессенджеров, фиксируем даты и тип размещения, напоминаем администратору о неподтверждённой брони.',
+    benefit: 'Видите путь гостя от первого сообщения до брони и понимаете, какие каналы приносят прямые бронирования.',
+    metric: 'Время ответа гостю, доля подтверждённых и прямых броней.',
+  },
+  {
+    title: 'Бухгалтерские компании и отделы',
+    workflow: 'Ведём список ожидаемых документов, напоминаем о сроках и создаём задачу для проверки, когда документы получены.',
+    benefit: 'Понимаете, у кого не хватает документов и какие задачи могут просрочиться. Команда тратит меньше времени на напоминания.',
+    metric: 'Просроченные задачи и время на сбор документов.',
+  },
+  {
+    title: 'Сервисные компании',
+    workflow: 'Направляем заявки диспетчеру или мастеру, сохраняем историю обращений и напоминаем о согласованном визите.',
+    benefit: 'Видите загрузку команды, обращения без ответа и заказы, по которым клиент ждёт решения.',
+    metric: 'Время до назначения мастера и доля завершённых заказов.',
+  },
+  {
+    title: 'Интернет-магазины',
+    workflow: 'Передаём заказы в учётную систему и выделяем исключения, например задержку оплаты или отсутствие товара.',
+    benefit: 'Видите проблемные заказы отдельно. Команда может связаться с покупателем до того, как он сам начнёт искать ответ.',
+    metric: 'Время обработки заказа и число отмен.',
+  },
+  {
+    title: 'Оптовые поставщики',
+    workflow: 'Собираем запросы на цены и наличие, назначаем ответственного и напоминаем о повторном контакте после отправки предложения.',
+    benefit: 'Видите, какие предложения ждут ответа, и можете разобрать причины, по которым сделки задерживаются или закрываются.',
+    metric: 'Сделки без следующего шага и доля предложений, ставших заказами.',
+  },
+];
+
 const prices = [
   ['Один сценарий', '29 900', 'Один источник заявок, запись в CRM и уведомление ответственному.'],
   ['Заявки и продажи', '49 900', 'Несколько источников, правила распределения, задачи и напоминания в CRM.'],
@@ -96,17 +135,33 @@ export function renderAutomation({ cta }) {
     <p class="auto-section-label">01 / Решения</p><h2 id="automation-solutions-title">Наши решения для автоматизации</h2>
     <div class="auto-solutions">${solutions.map(([symbol,title,description])=>`<article>${icon(symbol)}<h3>${title}</h3><p>${description}</p></article>`).join('')}</div>
   </section>
+  <section class="wrap auto-section" id="automation-industries" aria-labelledby="automation-industries-title">
+    <p class="auto-section-label">02 / По отраслям</p>
+    <h2 id="automation-industries-title">Что получает собственник</h2>
+    <p class="auto-section-intro">Начинаем с конкретного процесса, где заявки теряются, задачи застревают или команда тратит время на ручную работу.</p>
+    <div class="auto-industry-grid">
+      ${industries.map(({title,workflow,benefit,metric})=>`<article>
+        <h3>${title}</h3>
+        <dl>
+          <div><dt>Что автоматизируем</dt><dd>${workflow}</dd></div>
+          <div><dt>Выгода собственнику</dt><dd>${benefit}</dd></div>
+          <div><dt>Что измеряем</dt><dd>${metric}</dd></div>
+        </dl>
+      </article>`).join('')}
+    </div>
+    <div class="actions auto-industry-actions">${cta('Обсудить процесс в моём бизнесе')}</div>
+  </section>
   <section class="wrap auto-section" aria-labelledby="automation-price-title">
-    <p class="auto-section-label">02 / Стоимость</p><h2 id="automation-price-title">Сколько стоит внедрение</h2>
+    <p class="auto-section-label">03 / Стоимость</p><h2 id="automation-price-title">Сколько стоит внедрение</h2>
     <p class="auto-section-intro">Ориентиры для типовых задач. Состав и стоимость фиксируем после диагностики. Подписки на внешние сервисы согласуем отдельно.</p>
     <div class="auto-price">${prices.map(([title,amount,description])=>`<article><h3>${title}</h3><p class="auto-amount">от ${amount} ₽</p><p>${description}</p></article>`).join('')}</div>
   </section>
   <section class="wrap auto-section" aria-labelledby="automation-process-title">
-    <p class="auto-section-label">03 / Этапы</p><h2 id="automation-process-title">Как проходит внедрение</h2>
+    <p class="auto-section-label">04 / Этапы</p><h2 id="automation-process-title">Как проходит внедрение</h2>
     <ol class="auto-steps">${steps.map(([title,description],i)=>`<li><span class="auto-section-label" aria-hidden="true">0${i+1}</span><h3>${title}</h3><p>${description}</p></li>`).join('')}</ol>
   </section>
   <section class="wrap auto-section" aria-labelledby="automation-tools-title">
-    <div class="auto-tools"><div><p class="auto-section-label">04 / Интеграции</p><h2 id="automation-tools-title">Связываем то, чем пользуется команда</h2></div>
+    <div class="auto-tools"><div><p class="auto-section-label">05 / Интеграции</p><h2 id="automation-tools-title">Связываем то, чем пользуется команда</h2></div>
     <p>Подбираем решение под ваш процесс: n8n для сценариев, API и вебхуки для обмена данными, CRM для заявок и сделок. Перед внедрением проверяем доступные интеграции и согласуем права доступа.</p></div>
   </section>`;
 }
