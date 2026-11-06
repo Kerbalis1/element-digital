@@ -60,12 +60,10 @@ const caseSearch = `<svg viewBox="0 0 24 24" focusable="false"><circle cx="10.5"
 const casePin = `<svg viewBox="0 0 24 24" focusable="false"><path d="M12 21s6-5.5 6-11a6 6 0 1 0-12 0c0 5.5 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>`;
 
 export function renderSeoArc({ asset, cta }) {
- const caseVisual = (key, label, screen) => `<div class="arc-case-visual" aria-hidden="true">
-  <img src="${asset('assets/seo-scene-'+key+'.webp?v=2')}" width="960" height="640" loading="lazy" decoding="async" alt="">
-  <div class="arc-case-screen">
-   <span class="arc-case-screen-label">${label}</span>
-   ${screen}
-  </div>
+ const caseVisual = (kind, label, content, image) => `<div class="arc-case-visual arc-case-visual--${kind}" aria-hidden="true">
+  ${image ? `<img src="${asset(image)}" width="960" height="640" loading="lazy" decoding="async" alt="">` : ''}
+  <span class="arc-case-screen-label">${label}</span>
+  ${content}
  </div>`;
  return `<section class="arc-hero">
   <div class="arc-hero-art">
@@ -94,27 +92,37 @@ export function renderSeoArc({ asset, cta }) {
   <div class="arc-case">
    <div class="arc-case-grid">
     <article class="arc-case-step">
-     ${caseVisual('technical','01 / Пример поиска услуги',`
+     ${caseVisual('search','01 / Пример выдачи',`
+      <div class="arc-case-screen">
       <div class="arc-case-query">${caseSearch}<span>снять домик на Байкале</span></div>
-      <div class="arc-case-result"><small>Страница услуги</small><b>Аренда домиков на Байкале</b><span>Варианты проживания, цены и свободные даты.</span></div>`)}
+      <div class="arc-case-result"><small>Страница услуги</small><b>Аренда домиков<br>на Байкале</b><span>Домики · Цены · Свободные даты</span></div>
+      </div>`,'assets/seo-scene-technical.webp?v=2')}
      <p class="arc-label">Готовый спрос</p>
      <h3>Продвижение страниц услуг</h3>
      <p>Под запросы людей, которые уже выбирают услугу, создаём и продвигаем отдельные страницы с ценами, условиями и формой обращения.</p>
      <p class="arc-case-detail"><strong>Когда подходит</strong> Услугу уже ищут и сравнивают с предложениями конкурентов.</p>
     </article>
     <article class="arc-case-step">
-     ${caseVisual('structure','02 / Пример карточки на карте',`
-      <div class="arc-case-map"><svg viewBox="0 0 260 65" preserveAspectRatio="none" focusable="false"><path d="M0 26 68 14 131 29 202 12 260 28M0 54l59-8 63 10 61-15 77 13M48 0l11 46 9 19M156 0l-25 29-9 27m95-56-15 12-19 29-9 24"/></svg><span>${casePin}</span></div>
-      <div class="arc-case-result"><b>База отдыха на Байкале</b><span>Маршрут · Телефон · Сайт</span></div>`)}
+     ${caseVisual('local','02 / Пример на карте',`
+      <div class="arc-case-map"><svg viewBox="0 0 340 235" preserveAspectRatio="xMidYMid slice" focusable="false">
+       <path class="arc-case-lake" d="M340 0H244l-21 27 7 24-41 35-11 29 12 27-38 41-11 52h199Z"/>
+       <path class="arc-case-road" d="M-12 41 86 61 137 47 202 73M-10 96l68 6 55-23 43 21 32-10M-12 156l63-17 61 11 53-27M8 214l67-22 52 9 19-17M41 0l17 102-7 37 24 53 5 43M116 0l21 47-24 32-1 71 15 51"/>
+       <path class="arc-case-route" d="M8 214l67-22-24-53 7-37 55-23 43 21"/>
+      </svg><span class="arc-case-map-pin">${casePin}</span><span class="arc-case-map-name">Байкал</span></div>
+      <div class="arc-case-location"><b>База отдыха на Байкале</b><span>Маршрут · Телефон · Сайт</span></div>`)}
      <p class="arc-label">Поиск рядом</p>
      <h3>Локальное продвижение</h3>
      <p>Оформляем карточки компании в картах и справочниках. Сверяем контакты, часы работы и адрес, чтобы клиент мог позвонить или построить маршрут.</p>
      <p class="arc-case-detail"><strong>Когда подходит</strong> Клиенты выбирают по городу, району или расстоянию до вас.</p>
     </article>
     <article class="arc-case-step">
-     ${caseVisual('contact','03 / Пример статьи из поиска',`
-      <div class="arc-case-query">${caseSearch}<span>где отдохнуть на Байкале с детьми</span></div>
-      <div class="arc-case-result"><small>Гид для гостей</small><b>Как выбрать место для семейного отдыха</b><span>Сравнить варианты проживания →</span></div>`)}
+     ${caseVisual('editorial','03 / Пример статьи из поиска',`
+      <div class="arc-case-guide">
+       <span>Гид для гостей</span>
+       <b>На Байкал<br>с детьми</b>
+       <p>Как выбрать место<br>для семейного отдыха</p>
+       <svg viewBox="0 0 150 100" focusable="false"><path d="m0 78 35-36 18 17 32-43 40 46 12-13 13 15v36H0Z"/><path d="m49 64 36-48 20 24m-31-8 12 9 9-10M0 86l40-16 38 10 72-11M0 95l35-8 48 7 67-9"/></svg>
+      </div>`)}
      <p class="arc-label">Поиск ответов</p>
      <h3>Контентное продвижение</h3>
      <p>Готовим статьи, сравнения и ответы на вопросы. Из полезного материала ведём к подходящей услуге, когда читатель готов выбирать.</p>
