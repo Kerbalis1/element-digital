@@ -12,6 +12,13 @@ const results = [
   ['План развития', 'Что сработало, что меняем и что проверим дальше.'],
 ];
 
+const platformIcons = [
+  '<path fill="currentColor" d="M12.8 17.1c-5.6 0-8.7-3.8-8.8-10.2h2.8c.1 4.7 2.1 6.7 3.8 7.1V6.9h2.6v4c1.6-.2 3.3-2 3.9-4h2.6c-.4 2.5-2.3 4.3-3.6 5.1 1.3.6 3.4 2.2 4.2 5.1h-2.9c-.6-1.9-2.2-3.4-4.2-3.6v3.6z"/>',
+  '<path fill="currentColor" d="M20.4 4.7 3.9 11.1c-1.1.4-1.1 1.1-.2 1.4l4.2 1.3 9.8-6.2c.5-.3.9-.1.5.3l-7.9 7.1-.3 4.2c.4 0 .6-.2.9-.4l2-2 4.2 3.1c.8.5 1.4.2 1.6-.8l2.8-13.2c.2-1-.4-1.5-1.1-1.2Z"/>',
+  '<rect x="3.5" y="3.5" width="17" height="17" rx="4.7" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.1" cy="6.9" r="1.15" fill="currentColor"/>',
+  '<path fill="currentColor" fill-rule="evenodd" d="M20.8 7.4c-.2-.9-.9-1.6-1.8-1.8C17.4 5.2 12 5.2 12 5.2s-5.4 0-7 .4c-.9.2-1.6.9-1.8 1.8C2.8 9 2.8 12 2.8 12s0 3 .4 4.6c.2.9.9 1.6 1.8 1.8 1.6.4 7 .4 7 .4s5.4 0 7-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.6.4-4.6s0-3-.4-4.6Zm-10.6 7.5 4.9-2.9-4.9-2.9v5.8Z"/>',
+];
+
 export function renderSmm({ asset, cta, faq }) {
   return `<section class="smm-hero">
     <div class="wrap smm-hero-grid">
@@ -22,7 +29,10 @@ export function renderSmm({ asset, cta, faq }) {
         <div class="actions">${cta('Обсудить продвижение')}<a class="smm-secondary" href="#smm-services">Посмотреть услуги <span aria-hidden="true">↓</span></a></div>
       </div>
       <figure class="smm-hero-art">
-        <img src="${asset('assets/smm/hero.webp')}" width="1080" height="810" fetchpriority="high" alt="Два смартфона с лентой публикаций и коротким видео">
+        <img src="${asset('assets/smm/hero.webp?v=aqua1')}" width="1080" height="810" fetchpriority="high" alt="Два смартфона с лентой публикаций и коротким видео, рядом значки ВКонтакте, Telegram, Instagram и YouTube">
+        <div class="smm-platforms" aria-hidden="true">
+          ${platformIcons.map(icon=>`<span class="smm-platform"><svg viewBox="0 0 24 24">${icon}</svg></span>`).join('')}
+        </div>
       </figure>
     </div>
     <div class="wrap"><ul class="smm-highlights"><li>Узнаваемость бренда</li><li>Целевая аудитория</li><li>Регулярный контент</li><li>Работа с обращениями</li><li>Понятная отчётность</li></ul></div>
@@ -39,7 +49,7 @@ export function renderSmm({ asset, cta, faq }) {
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>
             <h3>${title}</h3><p>${description}</p>
           </div>
-          <img src="${asset('assets/smm/' + id + '.webp')}" width="512" height="512" alt="" loading="lazy" decoding="async">
+          <img src="${asset('assets/smm/' + id + '.webp?v=aqua1')}" width="512" height="512" alt="" loading="lazy" decoding="async">
         </article>`).join('')}
       </div>
     </div>
