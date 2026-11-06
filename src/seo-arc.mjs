@@ -74,7 +74,7 @@ export function renderSeoArc({ asset, cta }) {
  </div></section>
  ${renderPromotion({ asset })}
  <section class="arc-band arc-paper arc-process" id="process"><div class="wrap">
-  <div class="arc-process-panel">
+  <div class="arc-glass">
    ${intro('04 / Процесс','От задачи руководителя — к работающему решению.')}
    <ol class="arc-grid arc-four arc-timeline">${process.map(([title,description],i)=>`<li><p class="arc-label">${index(i)}</p><h3>${title}</h3><p>${description}</p></li>`).join('')}</ol>
   </div>
