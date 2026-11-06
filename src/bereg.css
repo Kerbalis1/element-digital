@@ -1,0 +1,90 @@
+body[data-demo=bereg] {
+  --bg: #f0ede4;
+  --text: #283d32;
+  --muted: #526356;
+  --accent: #294c39;
+}
+.bereg-hero h1 { line-height: 1.03; }
+.bereg-hero #house-demo { min-width: 0; }
+.bereg-hero .button { margin-top: 12px; width: fit-content; }
+.bereg-section { padding-block: clamp(44px, 6vw, 86px); }
+.bereg-section h2 {
+  margin: 0;
+  font-size: clamp(32px, 4.3vw, 62px);
+  line-height: 1.08;
+}
+.bereg-section-intro { margin: 14px 0 28px; color: var(--muted); }
+.bereg-cabins {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 28px);
+}
+.bereg-cabin {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fcfaf4;
+}
+.bereg-cabin[data-selected] { border-color: var(--accent); }
+.bereg-cabin-art { display: block; width: 100%; height: auto; }
+.bereg-cabin-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(18px, 2.5vw, 34px);
+}
+.bereg-cabin h3 { margin: 0 0 12px; font-size: clamp(23px, 2.5vw, 34px); }
+.bereg-cabin p, .bereg-booking p { color: var(--muted); font-size: 15px; line-height: 1.55; }
+.bereg-cabin p { margin: 0 0 14px; }
+.bereg-cabin .bereg-capacity { font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.bereg-features { font-weight: 600; }
+.bereg-cabin .button { margin-top: auto; width: 100%; }
+.bereg-cabin[data-selected] .button { color: #fff8ed; background: var(--accent); }
+.bereg-booking {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(24px, 5vw, 70px);
+  padding: clamp(18px, 4vw, 56px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #e4e9dc;
+}
+.bereg-booking h2 { font-size: clamp(28px, 3.7vw, 50px); }
+.bereg-booking .bereg-demo-note { font-size: 13px; }
+#bereg-booking-form { display: grid; gap: 14px; scroll-margin-top: 24px; }
+.bereg-dates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.bereg-field { display: grid; min-width: 0; gap: 5px; }
+.bereg-field label { font-size: 13px; font-weight: 700; }
+.bereg-field input, .bereg-field select {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px;
+  border: 1px solid #a3ae9f;
+  border-radius: 7px;
+  background: #fcfaf4;
+  color: var(--text);
+  font: inherit;
+}
+#booking-status { margin: 0; }
+#booking-status:empty { display: none; }
+#booking-status:not(:empty) {
+  padding: 12px 14px;
+  border: 1px solid #a3ae9f;
+  border-radius: 7px;
+  background: #fcfaf4;
+  color: var(--text);
+}
+body[data-demo=bereg] .footer { border-top: 1px solid #ffffff22; }
+body[data-demo=bereg] .footer-top, body[data-demo=bereg] .footer-bottom { column-gap: 16px; }
+
+@media (max-width: 760px) {
+  .bereg-cabins, .bereg-booking { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 390px) {
+  .bereg-dates { grid-template-columns: minmax(0, 1fr); }
+}
