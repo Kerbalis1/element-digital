@@ -29,29 +29,52 @@
   background: linear-gradient(154deg, #241d19, #1d1a19 65%, #30231b);
   box-shadow: 0 12px 20px #08060466, 0 15px 18px -23px #ff944e;
 }
+.promotion-motion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 1120px;
+  margin: 0 auto 12px;
+  color: #f0e5db;
+  font-size: 13px;
+  cursor: pointer;
+}
+.promotion-motion input { accent-color: #f1bd88; }
 .promotion-art {
   position: relative;
-  margin: 12px 12px 0;
+  overflow: hidden;
+  margin: 10px 10px 0;
   border-radius: 8px;
-  background: radial-gradient(ellipse at center, #65402660, #251e1a 74%);
-  color: #f1bd88;
+  background: #251e1a;
 }
 .promotion-art span {
   position: absolute;
+  z-index: 1;
   top: 8px;
-  left: 10px;
+  left: 8px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: #191716da;
+  color: #ffdfbb;
   font-size: 11px;
   letter-spacing: .1em;
 }
-.promotion-art svg {
+.promotion-art img {
   display: block;
   width: 100%;
   height: auto;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  animation: promotion-drift var(--drift-time, 8s) ease-in-out infinite;
+}
+.promotion-card:nth-child(2) { --drift-time: 9s; --drift-x: -1%; }
+.promotion-card:nth-child(3) { --drift-time: 10s; --drift-x: 1%; }
+.promotion-card:nth-child(4) { --drift-time: 8.5s; --drift-y: 1%; }
+.promotion-motion:has(input:checked) + .promotion-grid img {
+  animation-play-state: paused;
+}
+@keyframes promotion-drift {
+  0%, 100% { transform: scale(1.015); }
+  50% { transform: translate(var(--drift-x, 0), var(--drift-y, 0)) scale(1.07); }
 }
 .promotion-content {
   position: relative;
@@ -113,4 +136,6 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .promotion-link { transition: none; }
+  .promotion-motion { display: none; }
+  .promotion-art img { animation: none; }
 }
