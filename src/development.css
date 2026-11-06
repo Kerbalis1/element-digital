@@ -217,8 +217,33 @@ body[data-page="development"]:has(.dev-hero) main :is(h2, h3) {
   font-weight: 700;
 }
 body[data-page="development"]:has(.dev-hero) main h2 em { font-family: inherit; }
-body[data-page="development"]:has(.dev-hero) .contact { background: #0a0f1b; }
-body[data-page="development"]:has(.dev-hero) .contact-panel { background: #111827; }
+body[data-page="development"] .contact {
+  --accent: #f4d49a;
+  --muted: #e0c89c;
+  --line: #a68b60;
+  background: #0a0f1b;
+  color: #f4ddb0;
+}
+body[data-page="development"] .contact-panel {
+  border-color: #746345;
+  background: #111827;
+}
+body[data-page="development"] .contact .field label { font-size: 14px; }
+body[data-page="development"] .contact .consent,
+body[data-page="development"] .contact .form-note { font-size: 13px; }
+body[data-page="development"] .contact :is(input, textarea)::placeholder {
+  color: #c8b48f;
+  opacity: 1;
+}
+body[data-page="development"] .contact #form-status[data-state="error"] { color: #ffae9d; }
+body[data-page="development"] .contact #form-status[data-state="success"] { color: #a0ecc1; }
+body[data-page="development"] .contact .consent input { accent-color: var(--accent); }
+body[data-page="development"] .contact a:hover { color: #fff0d1; }
+body[data-page="development"] .contact .button { color: #21180c; }
+body[data-page="development"] .contact .button:hover {
+  background: #ffe4ae;
+  color: #21180c;
+}
 @media (max-width: 980px) {
   .dev-solutions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dev-highlights ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
