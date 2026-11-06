@@ -5,16 +5,8 @@ const services = [
   ['seo', 'SEO-продвижение', 'Улучшаем видимость сайта в поиске и системно увеличиваем поток целевых клиентов.', 'M16 10a6 6 0 1 1-12 0 6 6 0 0 1 12 0Zm-2 4 6 6'],
 ];
 
-export function renderPromotion({ asset, href, page }) {
-  const isSeo = page === 'seo';
-  const links = {
-    analysis: '#contact',
-    context: isSeo ? href('advertising/#promotion') : '#contact',
-    target: isSeo ? href('advertising/#promotion') : '#contact',
-    seo: isSeo ? '#contact' : href('seo'),
-  };
-
-  return `<section class="promotion" id="${isSeo ? 'projects' : 'promotion'}" aria-labelledby="promotion-title">
+export function renderPromotion({ asset }) {
+  return `<section class="promotion" id="projects" aria-labelledby="promotion-title">
   <div class="wrap">
     <h2 id="promotion-title">Услуги продвижения</h2>
     <div class="promotion-grid">
@@ -24,7 +16,7 @@ export function renderPromotion({ asset, href, page }) {
           <span class="promotion-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="${icon}"/></svg></span>
           <h3>${title}</h3>
           <p>${description}</p>
-          <a class="promotion-link" href="${links[id]}" aria-label="${links[id] === '#contact' ? 'Обсудить услугу' : 'Подробнее об услуге'} «${title}»">
+          <a class="promotion-link" href="#contact" aria-label="Обсудить услугу «${title}»">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
           </a>
         </div>
