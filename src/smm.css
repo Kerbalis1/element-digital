@@ -82,6 +82,20 @@ body[data-page=smm] .wrap:not(.header-inner, .mobile-nav) { max-width: 1530px; -
 .smm-cta h2 { max-width: 24ch; font-size: clamp(23px, 2.7vw, 38px); margin: 0; }
 body[data-page=smm] .contact { background: #1c211e; color: #f6f7f2; --muted: #c6cac4; --line: #d4dfd24a; }
 body[data-page=smm] .contact-panel { background: #232924; }
+body[data-page=smm] .footer {
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  color: var(--text);
+}
+body[data-page=smm] .footer-top { border-color: var(--line); }
+body[data-page=smm] .footer-top p,
+body[data-page=smm] .footer-bottom { color: var(--muted); }
+body[data-page=smm] .footer-top p,
+body[data-page=smm] .footer-top > a:last-child,
+body[data-page=smm] .footer-bottom,
+body[data-page=smm] .footer-bottom .text-link { font-size: 13px; }
+body[data-page=smm] .footer a:hover,
+body[data-page=smm] .footer .text-link:hover { color: var(--accent); }
 @media (max-width: 1050px) {
   .smm-service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .smm-results { grid-template-columns: 1fr; }
