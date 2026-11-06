@@ -77,3 +77,39 @@ body[data-page=design],body[data-page=seo],body[data-page=smm],body[data-demo=be
  .cloud-one{bottom:-4%;height:34%}
  .cloud-two{bottom:3%;height:23%}
 }
+
+/* Give the new service its own accent in both versions of the navigation. */
+:is(.desktop-nav, .mobile-nav) a.nav-new-service {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid #d9af68;
+  border-radius: 8px;
+  color: #f6e4be;
+  white-space: nowrap;
+}
+.desktop-nav { align-items: center; }
+:is(.desktop-nav, .mobile-nav) a.nav-new-service:hover,
+:is(.desktop-nav, .mobile-nav) a.nav-new-service[aria-current] {
+  background: #d9af6825;
+  color: #fff0d0;
+}
+.desktop-nav a.nav-new-service[aria-current]::after { content: none; }
+.nav-new-badge {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #163524;
+  color: #a0f4b4;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  line-height: 1.4;
+}
+.mobile-nav a.nav-new-service {
+  display: flex;
+  min-height: 44px;
+  margin-block: 6px;
+  padding-inline: 12px;
+}

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 820">
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#071945" stop-opacity="0"/>
+      <stop offset=".3" stop-color="#028fff"/>
+      <stop offset=".52" stop-color="#02f1ff"/>
+      <stop offset=".72" stop-color="#164dff"/>
+      <stop offset="1" stop-color="#6d25ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="pink" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#080d30" stop-opacity="0"/>
+      <stop offset=".4" stop-color="#8720ff"/>
+      <stop offset=".64" stop-color="#ff18e4"/>
+      <stop offset=".83" stop-color="#ad28ff"/>
+      <stop offset="1" stop-color="#260d62" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="halo" x="-50%" y="-40%" width="200%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>
+    <path id="wave-blue" d="M-95 -80C-46 89 200 104 171 265S-18 421 31 558s224 137 400 122"/>
+    <path id="wave-pink" d="M385 -48C271 67 158 98 111 224S-37 388 5 511s216 148 333 168"/>
+    <path id="wave-right" d="M1455 440C1360 553 1210 599 1178 653S1290 749 1510 722"/>
+  </defs>
+  <g fill="none" filter="url(#halo)" opacity=".91">
+    <use href="#wave-blue" stroke="#00dfff" stroke-width="22"/>
+    <use href="#wave-pink" stroke="#e311ff" stroke-width="17"/>
+    <use href="#wave-right" stroke="#008dff" stroke-width="16"/>
+  </g>
+  <g fill="none" stroke="url(#blue)" stroke-width="1.55">
+    <use href="#wave-blue" stroke-width="2.6"/>
+    <use href="#wave-blue" transform="translate(-6 7) scale(1.04 1)" opacity=".84"/>
+    <use href="#wave-blue" transform="translate(-12 14) scale(1.07 1)" opacity=".7"/>
+    <use href="#wave-blue" transform="translate(-18 21) scale(1.1 1)" opacity=".78"/>
+    <use href="#wave-blue" transform="translate(-24 28) scale(1.13 1)" opacity=".65"/>
+    <use href="#wave-blue" transform="translate(-30 35) scale(1.16 1)" opacity=".53"/>
+    <use href="#wave-blue" transform="translate(-36 42) scale(1.19 1)" opacity=".43"/>
+    <use href="#wave-blue" transform="translate(-42 49) scale(1.22 1)" opacity=".37"/>
+    <use href="#wave-blue" transform="translate(-48 56) scale(1.25 1)" opacity=".32"/>
+    <use href="#wave-blue" transform="translate(-54 63) scale(1.28 1)" opacity=".25"/>
+    <use href="#wave-right" opacity=".8"/>
+    <use href="#wave-right" transform="translate(4 9)" opacity=".65"/>
+    <use href="#wave-right" transform="translate(8 18)" opacity=".48"/>
+    <use href="#wave-right" transform="translate(12 27)" opacity=".32"/>
+  </g>
+  <g fill="none" stroke="url(#pink)" stroke-width="1.5">
+    <use href="#wave-pink" stroke-width="2.5"/>
+    <use href="#wave-pink" transform="translate(5 7) scale(.98 1)" opacity=".84"/>
+    <use href="#wave-pink" transform="translate(10 14) scale(.96 1)" opacity=".75"/>
+    <use href="#wave-pink" transform="translate(15 21) scale(.94 1)" opacity=".7"/>
+    <use href="#wave-pink" transform="translate(20 28) scale(.92 1)" opacity=".58"/>
+    <use href="#wave-pink" transform="translate(25 35) scale(.9 1)" opacity=".46"/>
+    <use href="#wave-pink" transform="translate(30 42) scale(.88 1)" opacity=".34"/>
+    <use href="#wave-pink" transform="translate(35 49) scale(.86 1)" opacity=".28"/>
+  </g>
+  <g fill="#37c7ff" opacity=".76"><circle cx="1240" cy="99" r="1.5"/><circle cx="1302" cy="181" r="2"/><circle cx="1410" cy="119" r="1.5"/><circle cx="1374" cy="291" r="1.3"/><circle cx="1071" cy="520" r="1.1"/><circle cx="263" cy="338" r="1.5"/><circle cx="339" cy="470" r="1.4"/></g>
+</svg>
