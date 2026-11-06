@@ -69,5 +69,21 @@ body[data-page=home] main h3 {
   text-underline-offset: .18em;
 }
 @media (max-width: 640px) {
+  .mountain-hero { display: flex; flex-direction: column; min-height: 0; }
+  .mountain-picture { position: relative; inset: auto; order: 1; }
   .mountain-picture img { object-position: center 38%; }
+  .hero-content { padding-bottom: 20px; }
+  .hero-principles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .hero-principles span { padding-right: 8px; }
+  .hero-principles span:last-child { padding-right: 0; }
+  .hero-principles b { font-size: 13px; font-weight: 600; }
 }
