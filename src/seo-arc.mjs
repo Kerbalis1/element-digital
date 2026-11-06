@@ -124,7 +124,7 @@ export function renderSeoArc({ asset, cta }) {
        <span>Гид для гостей</span>
        <b>На Байкал<br>с детьми</b>
        <p>Как выбрать место<br>для семейного отдыха</p>
-       <img src="${asset('assets/mountain-mobile.webp')}" width="600" height="400" loading="lazy" decoding="async" alt="">
+       <img src="${asset('assets/seo-baikal-olkhon.webp')}" width="640" height="425" loading="lazy" decoding="async" alt="">
       </div>`)}
      <p class="arc-label">Поиск ответов</p>
      <h3>Контентное продвижение</h3>
@@ -132,6 +132,7 @@ export function renderSeoArc({ asset, cta }) {
      <p class="arc-case-detail"><strong>Когда подходит</strong> Перед покупкой клиенты изучают тему и сравнивают варианты.</p>
     </article>
    </div>
+   <p class="arc-case-credit">Фото Байкала · <a href="https://commons.wikimedia.org/wiki/File:Baikal,_Cape_Burhan,_Shaman_Rock,_Olkhon_Island,_Lake_Baikal,_Russia.jpg">Вячеслав Аргенберг, Wikimedia Commons</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · кадрировано</p>
    <div class="arc-case-action">${cta('Подобрать SEO-стратегию')}</div>
   </div>
  </div></section>
