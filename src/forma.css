@@ -1,0 +1,99 @@
+.forma-intro .button { width: fit-content; margin-top: 12px; }
+.forma-catalog { padding-top: clamp(32px, 5vw, 64px); }
+.forma-catalog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 14px 26px;
+  margin-bottom: 26px;
+}
+.forma-catalog-head h2 { font-size: clamp(32px, 4.2vw, 58px); }
+.forma-catalog .catalog-tools button { border-radius: 20px; }
+.forma-catalog .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.5vw, 32px); }
+.forma-catalog .product-grid article {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fcf7ee;
+}
+.forma-catalog .product-grid article[hidden] { display: none; }
+.forma-product-info { display: flex; flex: 1; flex-direction: column; padding: clamp(16px, 2vw, 25px); }
+.forma-product-info h3 { margin: 0; font-size: clamp(21px, 2vw, 28px); line-height: 1.2; }
+.forma-product-info p { margin: 10px 0 20px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.forma-product-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; }
+.forma-product-bottom strong { font-size: 19px; }
+.forma-product-bottom .button { width: auto; gap: 12px; min-height: 44px; padding-inline: 14px; }
+.forma-catalog .cart { scroll-margin-top: 24px; }
+.forma-catalog .ceramic-scene {
+  position: relative;
+  isolation: isolate;
+  height: auto;
+  min-height: 210px;
+  aspect-ratio: 1.38;
+  background: radial-gradient(ellipse at 36% 25%, var(--scene-light), transparent 65%), linear-gradient(152deg, var(--scene-light), var(--scene-dark));
+}
+.forma-catalog .ceramic-scene::before {
+  position: absolute;
+  inset: 68% 0 0;
+  z-index: -1;
+  background: linear-gradient(160deg, #fff2db22, #4b312527);
+  content: '';
+}
+.forma-tone-sand { --scene-light: #e7d8be; --scene-dark: #bd9d7a; --glaze-light: #ead0ab; --glaze-mid: #c49d72; --glaze-dark: #8d6447; }
+.forma-tone-olive { --scene-light: #ddd9bb; --scene-dark: #9fa188; --glaze-light: #b9bc89; --glaze-mid: #82875e; --glaze-dark: #50593d; }
+.forma-tone-clay { --scene-light: #e6c5ac; --scene-dark: #c38f73; --glaze-light: #d9a584; --glaze-mid: #af7357; --glaze-dark: #784536; }
+.forma-tone-milk { --scene-light: #e7ddcc; --scene-dark: #b6a78f; --glaze-light: #f5e8cf; --glaze-mid: #d5c0a2; --glaze-dark: #a28b71; }
+.forma-catalog .ceramic {
+  background: linear-gradient(105deg, var(--glaze-dark), var(--glaze-light) 33%, var(--glaze-mid) 68%, var(--glaze-dark));
+  border-color: #563d2a35;
+  box-shadow: 13px 18px 24px #45332240;
+}
+.forma-catalog .ceramic-plate { width: 155px; height: 155px; background: radial-gradient(circle at 45% 40%, var(--glaze-light) 48%, var(--glaze-dark) 52%, var(--glaze-mid) 56%, var(--glaze-light) 65%, var(--glaze-dark) 72%); }
+.ceramic-pitcher { width: 100px; height: 132px; border-radius: 12% 21% 34% 38% / 12% 17% 31% 33%; }
+.ceramic-pitcher::before, .ceramic-bud::before {
+  position: absolute; top: -4px; inset-inline: 7px; height: 12px;
+  border-radius: 50%; background: var(--glaze-dark); box-shadow: inset 0 0 0 3px var(--glaze-light); content: '';
+}
+.ceramic-pitcher::after {
+  position: absolute; top: 22px; left: calc(100% - 3px); width: 36px; height: 65px;
+  border: 10px solid var(--glaze-mid); border-left: 0; border-radius: 0 50% 50% 0; content: '';
+}
+.ceramic-jar { width: 116px; height: 100px; border-radius: 34% 34% 27% 27%; }
+.ceramic-jar::before {
+  position: absolute; top: -11px; inset-inline: 9px; height: 25px;
+  border-bottom: 2px solid var(--glaze-dark); border-radius: 50%; background: var(--glaze-mid); content: '';
+}
+.ceramic-jar::after {
+  position: absolute; top: -23px; left: calc(50% - 10px); width: 20px; height: 17px;
+  border-radius: 50% 50% 38% 38%; background: var(--glaze-dark); content: '';
+}
+.ceramic-bowl { width: 160px; height: 84px; border-radius: 14% 14% 47% 47% / 13% 13% 82% 82%; }
+.ceramic-bowl::before {
+  position: absolute; top: -9px; inset-inline: 0; height: 28px;
+  border-radius: 50%; background: var(--glaze-dark); box-shadow: inset 0 0 0 4px var(--glaze-light); content: '';
+}
+.ceramic-bud { width: 72px; height: 142px; border-radius: 34% 34% 43% 43% / 23% 23% 34% 34%; }
+.ceramic-bud::before { inset-inline: 22px; top: 1px; height: 8px; }
+.ceramic-candle { width: 77px; height: 71px; border-radius: 20% 20% 42% 42%; transform: translateY(31px); }
+.ceramic-candle::before {
+  position: absolute; left: calc(50% - 7px); bottom: 90%; width: 14px; height: 74px;
+  border-radius: 5px 5px 0 0; background: linear-gradient(90deg, #cbb894, #fff2d7 55%, #dac6a5); content: '';
+}
+.ceramic-candle::after {
+  position: absolute; left: calc(50% - 1px); bottom: calc(90% + 73px); width: 2px; height: 6px;
+  background: #584636; content: '';
+}
+.forma-catalog .ceramic-pendant {
+  width: 90px; height: 90px; border: 0; border-radius: 50%;
+  background: transparent; box-shadow: -17px 11px 0 0 var(--glaze-mid); transform: rotate(-16deg) translate(8px, -5px);
+}
+.ceramic-pendant::before {
+  position: absolute; top: -21px; left: 12px; width: 21px; height: 30px;
+  border: 2px solid var(--glaze-dark); border-radius: 50%; transform: rotate(22deg); content: '';
+}
+
+@media (max-width: 900px) { .forma-catalog .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 570px) { .forma-catalog .product-grid { grid-template-columns: minmax(0, 1fr); } }
