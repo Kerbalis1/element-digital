@@ -63,6 +63,39 @@ const industries = [
   },
 ];
 
+const n8nScenarios = [
+  {
+    title: 'Поиск клиентов',
+    outcome: 'Соберите базу для работы отдела продаж.',
+    workflow: 'Объединяем входящие заявки и данные о компаниях из согласованных открытых источников. Убираем дубли и передаём менеджеру список для проверки.',
+  },
+  {
+    title: 'Продажи',
+    outcome: 'Возвращайтесь к покупателю, пока запрос актуален.',
+    workflow: 'Отправляем согласованные предложения по заданным правилам, фиксируем ответы в CRM и напоминаем менеджеру, когда пора связаться с клиентом.',
+  },
+  {
+    title: 'Тендеры',
+    outcome: 'Получайте подборку закупок по вашим условиям.',
+    workflow: 'Проверяем подключённые источники, отбираем закупки по виду работ, региону и срокам. Готовим черновик предложения для проверки перед отправкой.',
+  },
+  {
+    title: 'Спецтехника',
+    outcome: 'Быстрее находите технику под запрос заказчика.',
+    workflow: 'Сопоставляем тип техники, параметры, регион и даты с вашей базой владельцев. Менеджер получает список совпадений и подтверждает наличие.',
+  },
+  {
+    title: 'Базы отдыха',
+    outcome: 'Отвечайте на запрос о брони, пока гость выбирает.',
+    workflow: 'Сверяем даты с подключённым календарём, готовим варианты размещения и напоминаем гостю, если бронь ещё ждёт подтверждения.',
+  },
+  {
+    title: 'Управление',
+    outcome: 'Начинайте день с цифр и задач, требующих внимания.',
+    workflow: 'Собираем данные из подключённых систем и отправляем ежедневную сводку по заявкам, продажам, оплатам и просроченным задачам.',
+  },
+];
+
 const prices = [
   ['Один сценарий', '29 900', 'Один источник заявок, запись в CRM и уведомление ответственному.'],
   ['Заявки и продажи', '49 900', 'Несколько источников, правила распределения, задачи и напоминания в CRM.'],
@@ -151,17 +184,32 @@ export function renderAutomation({ cta }) {
     </div>
     <div class="actions auto-industry-actions">${cta('Подобрать решение для моего бизнеса')}</div>
   </section>
+  <section class="wrap auto-section" id="automation-n8n" aria-labelledby="automation-n8n-title">
+    <p class="auto-section-label">03 / Сценарии n8n</p>
+    <h2 id="automation-n8n-title">Что n8n может дать вашему бизнесу</h2>
+    <p class="auto-section-intro">n8n связывает сайт, CRM, таблицы и другие сервисы, чтобы данные передавались автоматически. Начать можно с одной задачи, которая каждый день отнимает время у команды.</p>
+    <div class="auto-industry-grid">
+      ${n8nScenarios.map(({title,outcome,workflow})=>`<article>
+        <h3>${title}</h3>
+        <dl>
+          <div><dt>Что вы получите</dt><dd>${outcome}</dd></div>
+          <div><dt>Как это работает</dt><dd>${workflow}</dd></div>
+        </dl>
+      </article>`).join('')}
+    </div>
+    <div class="actions auto-industry-actions">${cta('Обсудить мой сценарий')}</div>
+  </section>
   <section class="wrap auto-section" aria-labelledby="automation-price-title">
-    <p class="auto-section-label">03 / Стоимость</p><h2 id="automation-price-title">Сколько стоит внедрение</h2>
+    <p class="auto-section-label">04 / Стоимость</p><h2 id="automation-price-title">Сколько стоит внедрение</h2>
     <p class="auto-section-intro">Ориентиры для типовых задач. Состав и стоимость фиксируем после диагностики. Подписки на внешние сервисы согласуем отдельно.</p>
     <div class="auto-price">${prices.map(([title,amount,description])=>`<article><h3>${title}</h3><p class="auto-amount">от ${amount} ₽</p><p>${description}</p></article>`).join('')}</div>
   </section>
   <section class="wrap auto-section" aria-labelledby="automation-process-title">
-    <p class="auto-section-label">04 / Этапы</p><h2 id="automation-process-title">Как проходит внедрение</h2>
+    <p class="auto-section-label">05 / Этапы</p><h2 id="automation-process-title">Как проходит внедрение</h2>
     <ol class="auto-steps">${steps.map(([title,description],i)=>`<li><span class="auto-section-label" aria-hidden="true">0${i+1}</span><h3>${title}</h3><p>${description}</p></li>`).join('')}</ol>
   </section>
   <section class="wrap auto-section" aria-labelledby="automation-tools-title">
-    <div class="auto-tools"><div><p class="auto-section-label">05 / Интеграции</p><h2 id="automation-tools-title">Связываем то, чем пользуется команда</h2></div>
+    <div class="auto-tools"><div><p class="auto-section-label">06 / Интеграции</p><h2 id="automation-tools-title">Связываем то, чем пользуется команда</h2></div>
     <p>Подбираем решение под ваш процесс: n8n для сценариев, API и вебхуки для обмена данными, CRM для заявок и сделок. Перед внедрением проверяем доступные интеграции и согласуем права доступа.</p></div>
   </section>`;
 }
