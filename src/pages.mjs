@@ -58,7 +58,7 @@ export function renderPage(key,base,options={}) {
  title='Разработка сайтов, ботов и веб-сервисов — Element Digital';
  description='Разрабатываем сайты, интернет-магазины, Telegram-ботов и веб-сервисы. Продумываем сценарии, запускаем и помогаем развивать.';
  const serviceDetails=()=>`<div class="service-details">${site.services.map(s=>`<details id="${s.id==='support'?'support':'service-'+s.id}"><summary>${esc(s.title)}<span>+</span></summary><p>${esc(s.short)}</p><dl><dt>Кому подходит</dt><dd>${esc(s.for)}</dd><dt>Что входит</dt><dd>${esc(s.includes)}</dd><dt>Результат</dt><dd>${esc(s.result)}</dd></dl></details>`).join('')}</div>`;
- body=renderDevelopment({asset,link,cta,projects,serviceDetails})+process();
+ body=renderDevelopment({asset,link,cta,serviceDetails})+process();
  } else if(key==='portfolio') {
  title='Портфолио и работающие демопроекты — Element Digital';description='Открытые интерактивные демонстрации: сайт загородного отдыха, магазин керамики и сервис заявок. Честные примеры подхода Element Digital.';
  body=`<section class="page-intro wrap"><p class="eyebrow">ELEMENT / SELECTED CONCEPTS</p><h1>Не просто смотреть.<br><em>Попробовать.</em></h1><p>Три демонстрационных проекта с работающими сценариями. Это примеры подхода студии, а не клиентские заказы. Заказы, платежи и внешние интеграции в демо не подключены.</p></section><section class="section wrap">${projects()}</section><section class="section wrap"><div class="statement"><h2>Ваш проект<br>может стать следующим.</h2><p>Обсудим задачу и создадим решение с вашим характером, содержанием и бизнес-логикой.</p>${cta()}</div></section>`;

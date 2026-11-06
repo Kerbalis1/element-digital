@@ -20,20 +20,20 @@ const reasons = [
   'Передаём исходники и доступы, согласовываем поддержку после запуска.',
 ];
 
-export function renderDevelopment({ asset, link, cta, projects, serviceDetails }) {
+export function renderDevelopment({ asset, link, cta, serviceDetails }) {
   return `<section class="dev-hero">
     <div class="wrap dev-hero-grid">
       <div class="dev-hero-copy">
         <p class="dev-kicker">Разработка <span>/</span> Development</p>
         <h1>Создаём цифровые продукты <em>для роста бизнеса</em></h1>
         <p class="dev-lead">Разрабатываем сайты, магазины и веб-сервисы. Продумываем путь клиента от первого экрана до заявки или покупки и помогаем развивать продукт после запуска.</p>
-        <div class="actions">${cta('Рассчитать проект')}<a class="button dev-outline" href="#development-projects">Смотреть демо <span aria-hidden="true">↓</span></a></div>
+        <div class="actions">${cta('Рассчитать проект')}<a class="button dev-outline" href="#development-solutions">Смотреть услуги <span aria-hidden="true">↓</span></a></div>
       </div>
       <img class="dev-hero-image" src="${asset('assets/development/hero.webp')}" width="1200" height="800" fetchpriority="high" alt="">
     </div>
   </section>
   <div class="dev-highlights"><ul class="wrap">${highlights.map(([label, path])=>`<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>${label}</li>`).join('')}</ul></div>
-  <section class="wrap dev-section" aria-labelledby="dev-solutions-title">
+  <section class="wrap dev-section" id="development-solutions" aria-labelledby="dev-solutions-title">
     <h2 class="dev-heading" id="dev-solutions-title">Решения под задачи бизнеса</h2>
     <div class="dev-solutions">${solutions.map(([id, title, description, path])=>`<article class="dev-solution">
       <img src="${asset('assets/development/'+id+'.webp')}" width="600" height="400" loading="lazy" decoding="async" alt="">
@@ -48,11 +48,6 @@ export function renderDevelopment({ asset, link, cta, projects, serviceDetails }
     <div><h2 class="dev-heading" id="dev-reasons-title">Почему выбирают нас</h2>
     <ul>${reasons.map(reason=>`<li>${reason}</li>`).join('')}</ul></div>
     <img src="${asset('assets/development/target.webp')}" width="900" height="600" loading="lazy" decoding="async" alt="">
-  </section>
-  <section class="wrap dev-section dev-projects" id="development-projects">
-    <h2 class="dev-heading">Демопроекты</h2>
-    <p class="dev-section-note">Попробуйте сценарии бронирования, покупки и обработки заявок в демонстрационных проектах студии.</p>
-    ${projects()}
   </section>
   <section class="wrap dev-section" aria-labelledby="dev-scope-title">
     <h2 class="dev-heading" id="dev-scope-title">Что входит в разработку</h2>
