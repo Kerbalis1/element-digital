@@ -57,17 +57,17 @@ body[data-page=home] main h3 {
 
 .mountain-picture img { object-position: 65% 42%; }
 .mountain-credit {
-  margin: 22px 0 0;
-  color: #e8e3d9;
+  margin-top: 16px;
+  color: #b9b0a2;
   font-size: 12px;
   line-height: 1.5;
-  text-shadow: 0 1px 4px #000;
 }
+.mountain-credit summary { width: fit-content; cursor: pointer; }
+.mountain-credit p { margin: 8px 0 0; }
 .mountain-credit a {
   text-decoration: underline;
   text-underline-offset: .18em;
 }
 @media (max-width: 640px) {
   .mountain-picture img { object-position: center 38%; }
-  .mountain-credit { margin-top: 14px; }
 }
