@@ -19,12 +19,6 @@ const approach = [
  ['Технологии','Как это будет работать'],
  ['Маркетинг','Как привлечь аудиторию'],
 ];
-const roles = [
- ['Руководитель стратегии','Бизнес-цели и приоритеты'],
- ['Арт-директор','Визуальная система и качество'],
- ['Руководитель разработки','Архитектура и реализация'],
- ['Руководитель маркетинга','Каналы и аналитика'],
-];
 const process = [
  ['Погружаемся в бизнес','Разбираем задачу, ограничения и критерии успеха.'],
  ['Формируем стратегию','Фиксируем приоритеты, этапы и состав работ.'],
@@ -33,9 +27,6 @@ const process = [
 ];
 const index = i => String(i + 1).padStart(2,'0');
 const intro = (label, title, description = '') => `<div class="arc-intro"><div><p class="arc-label">${label}</p><h2>${title}</h2></div>${description ? `<p class="arc-aside">${description}</p>` : ''}</div>`;
-const imageWindow = (src, viewBox, width, height) =>
- `<svg class="arc-photo" viewBox="${viewBox}" aria-hidden="true" focusable="false"><image href="${src}" width="${width}" height="${height}"/></svg>`;
-
 const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">
   <defs>
    <radialGradient id="arc-gold-spot">
@@ -82,12 +73,10 @@ export function renderSeoArc({ asset, cta }) {
   <p class="arc-feedback arc-label">Данные и обратная связь</p>
  </div></section>
  ${renderPromotion({ asset })}
- <section class="arc-band arc-dark" id="team"><div class="wrap">
-  ${intro('04 / Команда','Люди, которые отвечают<br>за результат.','Пример распределения ролей в проекте. Иллюстративные портреты.')}
-  <div class="arc-grid arc-four">${roles.map(([title,description],i)=>`<article class="arc-role">${imageWindow(asset('assets/seo-roles.webp'),`${(i%2)*560} ${Math.floor(i/2)*560+45} 560 445`,1120,1120)}<h3>${title}</h3><p>${description}</p></article>`).join('')}</div>
- </div></section>
- <section class="arc-band arc-paper" id="process"><div class="wrap">
-  ${intro('05 / Процесс','От задачи руководителя —<br>к работающему решению.')}
-  <ol class="arc-grid arc-four arc-timeline">${process.map(([title,description],i)=>`<li><p class="arc-label">${index(i)}</p><h3>${title}</h3><p>${description}</p></li>`).join('')}</ol>
+ <section class="arc-band arc-paper arc-process" id="process"><div class="wrap">
+  <div class="arc-process-panel">
+   ${intro('04 / Процесс','От задачи руководителя — к работающему решению.')}
+   <ol class="arc-grid arc-four arc-timeline">${process.map(([title,description],i)=>`<li><p class="arc-label">${index(i)}</p><h3>${title}</h3><p>${description}</p></li>`).join('')}</ol>
+  </div>
  </div></section>`;
 }
