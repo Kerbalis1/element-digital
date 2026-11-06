@@ -4,6 +4,11 @@ const icons = {
   crm: 'M4 7c0-2 4-3 8-3s8 1 8 3-4 3-8 3-8-1-8-3Zm0 0v10c0 2 4 3 8 3s8-1 8-3V7M4 12c0 2 4 3 8 3s8-1 8-3',
   notify: 'M6 16h12l-2-3V9a4 4 0 0 0-8 0v4l-2 3Zm4 3a2 2 0 0 0 4 0',
   report: 'M4 20h16M7 16v-4m5 4V8m5 8V4',
+  plane: 'm3 10 18-7-5 18-4-7-9-4Zm9 4 9-11',
+  chat: 'M5 5h14v11H9l-4 4v-4H3V7a2 2 0 0 1 2-2Zm3 5h1m3 0h1m3 0h1',
+  check: 'M4 4h16v16H4zM8 12l3 3 5-6',
+  bolt: 'm13 2-9 12h7l-1 8 10-12h-7l1-8Z',
+  link: 'M10 13a3 3 0 0 0 4 0l4-4a3 3 0 0 0-4-4l-2 2m0 4a3 3 0 0 0-4 0l-4 4a3 3 0 0 0 4 4l2-2',
   sync: 'M20 8a8 8 0 0 0-14-2L4 9m0-5v5h5m-5 7a8 8 0 0 0 14 2l2-3m0 5v-5h-5',
 };
 const icon = name => `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${icons[name]}"/></svg>`;
@@ -30,27 +35,45 @@ const steps = [
   ['Тест и запуск', 'Проверяем обычные и проблемные ситуации на тестовых данных. Запускаем согласованный объём.'],
   ['Передача', 'Передаём документацию и показываем команде, что делать при сбое. Поддержку согласуем отдельно.'],
 ];
-const waves = `<svg class="auto-waves" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-  <defs><linearGradient id="auto-wave"><stop stop-color="#39dfff"/><stop offset=".48" stop-color="#725cff"/><stop offset="1" stop-color="#ed64ff"/></linearGradient></defs>
-  <g fill="none" stroke="url(#auto-wave)">${Array.from({length:16},(_,i)=>`<path opacity="${0.16+i*.014}" d="M-80 ${-130+i*22} C${250+i*11} ${48+i*7} ${74+i*10} 315 ${-25+i*17} 470 S${66+i*19} ${810+i*6} ${330+i*22} 810 S${1150+i*12} ${550+i*9} 1500 ${740+i*8}"/>`).join('')}</g>
-</svg>`;
+const orbit = [
+  [['crm', 'CRM'], ['plane', 'Telegram'], ['chat', 'Сообщения']],
+  [['report', 'Аналитика'], ['check', 'Задачи'], ['link', 'Интеграции'], ['bolt', 'Автоматизация']],
+];
+const benefits = [
+  ['inbox', 'Заявки в одном месте', 'Собираем обращения из подключённых каналов.'],
+  ['crm', 'Интеграции с CRM', 'Связываем сайт, мессенджеры и CRM.'],
+  ['bolt', 'Меньше ручной работы', 'Передаём повторяющиеся действия сценариям.'],
+  ['report', 'Прозрачная аналитика', 'Показываем, откуда приходят заявки и сделки.'],
+];
+
+const renderOrbit = i => `<div class="auto-orbit auto-orbit-${i+1}" aria-hidden="true">${orbit[i].map(([symbol,label])=>`<div>${icon(symbol)}<span>${label}</span></div>`).join('')}</div>`;
 
 export function renderAutomation({ cta }) {
   return `<section class="auto-hero">
-    ${waves}
     <div class="wrap auto-hero-inner">
-      <p class="auto-kicker">Element Digital / Business Automation</p>
+      <p class="auto-kicker">AI / n8n / CRM</p>
       <h1>Автоматизируем <span>бизнес-процессы</span></h1>
-      <p class="auto-lead">Автоматизируем рутинные процессы, чтобы ваш бизнес работал быстрее и тратил меньше ресурсов. Заявки, CRM и уведомления работают по понятным правилам.</p>
+      <p class="auto-lead">Автоматизируем заявки, работу с CRM, коммуникации и рутинные задачи, чтобы бизнес экономил время и тратил меньше ресурсов.</p>
       <div class="actions auto-actions">${cta('Обсудить автоматизацию')}<a class="button outline" href="#automation-solutions">Смотреть решения <span aria-hidden="true">↓</span></a></div>
+      <div class="auto-stage">
+      ${renderOrbit(0)}
       <section class="auto-workflow" data-automation-demo aria-labelledby="automation-demo-title">
         <div class="auto-window-bar">
-          <div><p class="auto-window-label"><span aria-hidden="true"></span> Интерактивная демонстрация</p><h2 id="automation-demo-title">Что происходит после заявки</h2></div>
+          <span class="auto-window-brand" aria-hidden="true"><i></i> ELEMENT <b>/</b> DIGITAL</span>
+          <h2 id="automation-demo-title">Обработка заявок</h2>
           <span class="auto-env">Тестовый режим</span>
         </div>
+        <div class="auto-console">
+        <div class="auto-console-rail" aria-hidden="true">
+          ${[['inbox','Обзор'],['route','Сценарии'],['link','Интеграции'],['report','Аналитика'],['check','Задачи']].map(([symbol,label])=>`<span>${icon(symbol)}${label}</span>`).join('')}
+        </div>
+        <div class="auto-console-main">
         <ol class="auto-flow">
           ${flow.map(([symbol,title,description])=>`<li>${icon(symbol)}<strong>${title}</strong><span>${description}</span></li>`).join('')}
         </ol>
+        <div class="auto-branches" aria-hidden="true">
+          <span>${icon('check')} Назначение менеджера</span><span>${icon('notify')} Уведомление команды</span>
+        </div>
         <div class="auto-demo-control" data-demo-controls hidden>
           <label for="automation-source">Источник тестовой заявки</label>
           <div><select id="automation-source"><option value="site">Форма на сайте</option><option value="telegram">Сообщение в Telegram</option></select><button type="button" class="button" data-demo-run>Запустить заявку <span aria-hidden="true">→</span></button></div>
@@ -62,11 +85,15 @@ export function renderAutomation({ cta }) {
           <div><dt>Уведомление</dt><dd data-record-notice></dd></div>
         </dl>
         <p class="auto-demo-status" data-demo-status role="status" aria-atomic="true">Сценарий использует тестовые данные. Реальная CRM и отправка уведомлений здесь отключены.</p>
+        </div></div>
       </section>
+      ${renderOrbit(1)}
+      </div>
+      <ul class="auto-benefits" aria-label="Что получает бизнес">${benefits.map(([symbol,title,description])=>`<li>${icon(symbol)}<div><strong>${title}</strong><p>${description}</p></div></li>`).join('')}</ul>
     </div>
   </section>
   <section class="wrap auto-section" id="automation-solutions" aria-labelledby="automation-solutions-title">
-    <p class="auto-section-label">01 / Решения</p><h2 id="automation-solutions-title">Где автоматизация снимает ручную работу</h2>
+    <p class="auto-section-label">01 / Решения</p><h2 id="automation-solutions-title">Наши решения для автоматизации</h2>
     <div class="auto-solutions">${solutions.map(([symbol,title,description])=>`<article>${icon(symbol)}<h3>${title}</h3><p>${description}</p></article>`).join('')}</div>
   </section>
   <section class="wrap auto-section" aria-labelledby="automation-price-title">

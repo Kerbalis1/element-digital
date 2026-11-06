@@ -34,7 +34,7 @@ export function renderPage(key,base,options={}) {
  const nav=navItems.map(([p,label])=>{
    const featured=p==='automation';
    const current=key===p||(p==='development'&&key.startsWith('development/'));
-   return `<a href="${href(p)}"${featured?' class="nav-new-service"':''}${current?' aria-current="page"':''}>${label}${featured?'<span class="nav-new-badge" aria-label="Новое направление">NEW</span>':''}</a>`;
+   return `<a href="${href(p)}"${featured?' class="nav-new-service"':''}${current?' aria-current="page"':''}>${label}${featured?'<span class="nav-new-badge" aria-label="Новое направление">Next</span>':''}</a>`;
  }).join('');
  const brand=`<a class="brand" href="${href()}" aria-label="Element Digital — главная"><span class="brand-icon" aria-hidden="true">e<span>↗</span></span><span>Element Digital</span></a>`;
  const header=`<a class="skip" href="#main">Перейти к содержимому</a><header class="header"><div class="wrap header-inner">${brand}<nav class="desktop-nav" aria-label="Основная навигация">${nav}</nav><a class="header-cta" href="#contact">Обсудить проект ↗</a><button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Открыть меню"><span></span><span></span></button></div><nav class="mobile-nav wrap" id="mobile-nav" aria-label="Мобильная навигация" hidden>${nav}${link('studio','О студии')}<a href="#contact">Обсудить проект ↗</a></nav></header>`;
