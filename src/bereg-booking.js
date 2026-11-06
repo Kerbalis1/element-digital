@@ -40,5 +40,5 @@ booking.addEventListener('submit',event=>{
  updateDates();
  if(!booking.reportValidity())return;
  const dates=[arrival.value,departure.value].map(date=>formatDate.format(localDate(date))).join(' — ');
- status.textContent=`Запрос сформирован. ${cabin.selectedOptions[0].textContent}, ${dates}. Количество гостей: ${guests.value}. Демо-запрос не отправлен.`;
+ status.textContent=`Запрос сформирован. ${cabin.selectedOptions[0].textContent} (${dates}). Количество гостей: ${guests.value}. Демо-запрос не отправлен.`;
 });
