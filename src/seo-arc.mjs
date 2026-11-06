@@ -17,11 +17,6 @@ const approach = [
  ['Технологии','Как это будет работать'],
  ['Маркетинг','Как привлечь аудиторию'],
 ];
-const projects = [
- ['Сайт компании','Сайт для сложной услуги','Объяснить предложение и сократить путь от первого визита до заявки.'],
- ['Аналитика','Дашборд для руководителя','Собрать ключевые данные в одном экране для регулярных решений.'],
- ['Внутренний сервис','Сервис обработки заявок','Разделить задачи по этапам и дать команде общий обзор работы.'],
-];
 const roles = [
  ['Руководитель стратегии','Бизнес-цели и приоритеты'],
  ['Арт-директор','Визуальная система и качество'],
@@ -61,7 +56,15 @@ const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveA
   <ellipse class="arc-crown-light" cx="980" cy="466" rx="90" ry="165" fill="url(#arc-gold-spot)"/>
  </svg>`;
 
+const caseSearch = `<svg viewBox="0 0 24 24" focusable="false"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4 4"/></svg>`;
+const casePin = `<svg viewBox="0 0 24 24" focusable="false"><path d="M12 21s6-5.5 6-11a6 6 0 1 0-12 0c0 5.5 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>`;
+
 export function renderSeoArc({ asset, cta }) {
+ const caseVisual = (kind, label, content, image) => `<div class="arc-case-visual arc-case-visual--${kind}" aria-hidden="true">
+  ${image ? `<img src="${asset(image)}" width="960" height="640" loading="lazy" decoding="async" alt="">` : ''}
+  <span class="arc-case-screen-label">${label}</span>
+  ${content}
+ </div>`;
  return `<section class="arc-hero">
   <div class="arc-hero-art">
    <img src="${asset('assets/seo-king-arch.webp')}" width="1320" height="880" alt="" fetchpriority="high">
@@ -84,9 +87,54 @@ export function renderSeoArc({ asset, cta }) {
   <ol class="arc-flow">${approach.map(([title,description],i)=>`<li><span class="arc-label">${index(i)}</span><h3>${title}</h3><p>${description}</p></li>`).join('')}</ol>
   <p class="arc-feedback arc-label">Данные и обратная связь</p>
  </div></section>
- <section class="arc-band arc-projects arc-paper" id="projects"><div class="wrap">
-  ${intro('03 / Проекты','Решения, за которыми<br>стоит задача.','Три демонстрационные задачи с примерами цифровых решений.')}
-  <div class="arc-grid arc-three">${projects.map(([label,title,description],i)=>`<article class="arc-project">${imageWindow(asset('assets/seo-projects.webp'),`${i*520} 144 520 230`,1560,520)}<div><p class="arc-label">${label}</p><h3>${title}</h3><p>${description}</p></div></article>`).join('')}</div>
+ <section class="arc-band arc-projects arc-dark" id="projects"><div class="wrap">
+  ${intro('03 / Стратегии SEO-продвижения','Три стратегии.<br>Разные задачи бизнеса.','Помогаем выбрать, где искать клиентов: среди тех, кто уже выбирает услугу, ищет бизнес поблизости или пока изучает варианты.')}
+  <div class="arc-case">
+   <div class="arc-case-grid">
+    <article class="arc-case-step">
+     ${caseVisual('search','01 / Пример выдачи',`
+      <div class="arc-case-screen">
+      <div class="arc-case-query">${caseSearch}<span>снять домик на Байкале</span></div>
+      <div class="arc-case-result"><small>Страница услуги <span>↗</span></small><b>Аренда домиков<br>на Байкале</b><span>Домики · Цены · Свободные даты</span></div>
+      </div>`,'assets/seo-scene-technical.webp?v=2')}
+     <p class="arc-label">Готовый спрос</p>
+     <h3>Продвижение страниц услуг</h3>
+     <p>Под запросы людей, которые уже выбирают услугу, создаём и продвигаем отдельные страницы с ценами, условиями и формой обращения.</p>
+     <p class="arc-case-detail"><strong>Когда подходит</strong> Услугу уже ищут и сравнивают с предложениями конкурентов.</p>
+    </article>
+    <article class="arc-case-step">
+     ${caseVisual('local','02 / Пример на карте',`
+      <div class="arc-case-map"><svg viewBox="0 0 340 235" preserveAspectRatio="xMidYMid slice" focusable="false">
+       <defs><linearGradient id="arc-map-water" x2=".92" y2="1"><stop stop-color="#527471"/><stop offset="1" stop-color="#263d42"/></linearGradient></defs>
+       <path class="arc-case-lake" d="M340 0H244q-26 22-19 42 8 17-21 31-15 9-22 31-7 17 5 34 7 14-21 31-20 14-25 66h199Z"/>
+       <path class="arc-case-contours" d="M-8 15q49 30 91 13t108-8M-8 24q48 28 93 13t106-9M-8 33q47 26 95 12t103-10M-10 165q47-20 87-5t75-16M-10 174q47-20 87-5t73-16M-10 183q47-20 87-5t71-15M-12 192q47-20 89-5t68-14"/>
+       <path class="arc-case-waterline" d="M265 0q-29 23-23 45 5 18-24 37-17 11-23 28-8 18 7 36 8 14-19 30-20 16-23 59M278 0q-29 24-23 45 5 20-23 39-18 13-23 29-7 16 7 35 10 15-17 32-21 16-22 55"/>
+       <path class="arc-case-road" d="M-12 41 86 61 137 47 202 73M-10 96l68 6 55-23 43 21 27-8M-12 156l63-17 61 11 53-27M8 214l67-22 52 9 19-17M41 0l17 102-7 37 24 53 5 43M116 0l21 47-24 32-1 71 15 51"/>
+       <path class="arc-case-route" d="M8 214l67-22-24-53 7-37 55-23 43 21"/><circle cx="156" cy="100" r="4" fill="#f4c992"/>
+      </svg><span class="arc-case-map-pin">${casePin}</span><span class="arc-case-map-name">Байкал</span></div>
+      <div class="arc-case-location"><b>База отдыха на Байкале</b><span>Маршрут · Телефон · Сайт</span></div>`)}
+     <p class="arc-label">Поиск рядом</p>
+     <h3>Локальное продвижение</h3>
+     <p>Оформляем карточки компании в картах и справочниках. Сверяем контакты, часы работы и адрес, чтобы клиент мог позвонить или построить маршрут.</p>
+     <p class="arc-case-detail"><strong>Когда подходит</strong> Клиенты выбирают по городу, району или расстоянию до вас.</p>
+    </article>
+    <article class="arc-case-step">
+     ${caseVisual('editorial','03 / Пример статьи из поиска',`
+      <div class="arc-case-guide">
+       <span>Гид для гостей</span>
+       <b>На Байкал<br>с детьми</b>
+       <p>Как выбрать место<br>для семейного отдыха</p>
+       <img src="${asset('assets/seo-baikal-olkhon.webp')}" width="640" height="425" loading="lazy" decoding="async" alt="">
+      </div>`)}
+     <p class="arc-label">Поиск ответов</p>
+     <h3>Контентное продвижение</h3>
+     <p>Готовим статьи, сравнения и ответы на вопросы. Из полезного материала ведём к подходящей услуге, когда читатель готов выбирать.</p>
+     <p class="arc-case-detail"><strong>Когда подходит</strong> Перед покупкой клиенты изучают тему и сравнивают варианты.</p>
+    </article>
+   </div>
+   <p class="arc-case-credit">Фото Байкала · <a href="https://commons.wikimedia.org/wiki/File:Baikal,_Cape_Burhan,_Shaman_Rock,_Olkhon_Island,_Lake_Baikal,_Russia.jpg">Вячеслав Аргенберг, Wikimedia Commons</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · кадрировано</p>
+   <div class="arc-case-action">${cta('Подобрать SEO-стратегию')}</div>
+  </div>
  </div></section>
  <section class="arc-band arc-dark" id="team"><div class="wrap">
   ${intro('04 / Команда','Люди, которые отвечают<br>за результат.','Пример распределения ролей в проекте. Иллюстративные портреты.')}
