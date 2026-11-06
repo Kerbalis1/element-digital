@@ -29,7 +29,7 @@ export function renderPage(key,base,options={}) {
    return key==='design'?`<article class="project-card"><a href="${href('demo/'+p.id)}">${picture}</a><div class="project-info"><a href="${href('demo/'+p.id)}">${caption}</a><p>${esc(p.description)}</p>${details}</div></article>`:`<article class="project-card"><a href="${href('demo/'+p.id)}">${picture}${caption}</a><p>${esc(p.description)}</p>${details}</article>`;
  }).join('')}</div>`;
  const faq=(items=site.faq)=>`<div class="faq-list">${items.map(([q,a])=>`<details><summary>${esc(q)}<span aria-hidden="true">+</span></summary><p>${esc(a)}</p></details>`).join('')}</div>`;
- const process=()=>`<section class="section wrap"${key===''?' id="home-process"':''}>${heading('ПРОЦЕСС','От первого разговора<br>до работающего решения.')}<ol class="steps">${site.steps.map(([title,text,result],i)=>`<li><span class="step-num">0${i+1}</span><h3>${esc(title)}</h3><p>${esc(text)}</p><small>${esc(result)}</small></li>`).join('')}</ol></section>`;
+ const process=()=>`<section class="section wrap"${key===''?' id="home-process"':''}>${heading(key==='studio'?'02 / ПРОЦЕСС':'ПРОЦЕСС','От первого разговора<br>до работающего решения.')}<ol class="steps">${site.steps.map(([title,text,result],i)=>`<li><span class="step-num">0${i+1}</span><h3>${esc(title)}</h3><p>${esc(text)}</p><small>${esc(result)}</small></li>`).join('')}</ol></section>`;
  const navItems=[['','Главная'],['design','Design'],['seo','SEO'],['smm','SMM'],['development','Development'],['automation','Business Automation'],['portfolio','Портфолио']];
  const nav=navItems.map(([p,label])=>{
    const featured=p==='automation';
@@ -39,6 +39,7 @@ export function renderPage(key,base,options={}) {
  const brand=`<a class="brand" href="${href()}" aria-label="Element Digital — главная"><span class="brand-icon" aria-hidden="true">e<span>↗</span></span><span>Element Digital</span></a>`;
  const header=`<a class="skip" href="#main">Перейти к содержимому</a><header class="header"><div class="wrap header-inner">${brand}<nav class="desktop-nav" aria-label="Основная навигация">${nav}</nav><a class="header-cta" href="#contact">Обсудить проект ↗</a><button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Открыть меню"><span></span><span></span></button></div><nav class="mobile-nav wrap" id="mobile-nav" aria-label="Мобильная навигация" hidden>${nav}${link('studio','О студии')}<a href="#contact">Обсудить проект ↗</a></nav></header>`;
  const contact=`<section class="contact section" id="contact"><div class="wrap contact-grid"><div><p class="eyebrow">ВАШ СЛЕДУЮЩИЙ ШАГ</p><h2>Большие идеи<br>начинаются<br><em>с разговора.</em></h2><p class="contact-lead">Расскажите о бизнесе и задаче. Обсудим подход, состав работ, сроки и бюджет.</p><a class="text-link" href="${esc(site.telegram)}" target="_blank" rel="noopener noreferrer">Написать в Telegram ↗</a><p class="small muted">${esc(site.geography)}</p></div><div class="contact-panel"><p class="eyebrow">НАЧНЁМ С ВАШЕЙ ЗАДАЧИ ↗</p><form id="brief-form">${key==='design'?'<fieldset class="design-project-types"><legend>Что планируете?</legend><label><input type="radio" name="projectType" value="Дизайн с нуля" checked><span>Дизайн с нуля</span></label><label><input type="radio" name="projectType" value="Редизайн сайта"><span>Редизайн</span></label><label><input type="radio" name="projectType" value="Коммуникации"><span>Коммуникации</span></label><label><input type="radio" name="projectType" value="Другая задача"><span>Другая задача</span></label></fieldset>':''}<div class="field"><label for="name">Как к вам обращаться</label><input id="name" name="name" autocomplete="name" placeholder="Ваше имя" maxlength="100" required></div><div class="field"><label for="reply">Где вам ответить</label><input id="reply" name="contact" autocomplete="email" placeholder="Телефон, email или Telegram" maxlength="200" required></div><div class="field"><label for="description">Что хотите сделать?</label><textarea id="description" name="description" rows="3" placeholder="О проекте, задаче и ваших ожиданиях" maxlength="3000" required></textarea></div><div class="form-trap" aria-hidden="true"><label for="website">Оставьте пустым</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div><label class="consent"><input name="consent" type="checkbox" required><span>Согласен на обработку данных для ответа на обращение. <a href="${href('privacy')}">Условия обработки</a></span></label><button class="button" type="submit">${options.manual?'Подготовить сообщение':'Отправить заявку'} <span aria-hidden="true">↗</span></button><p class="form-note small">${options.manual?'Подготовим текст для Telegram. Вы отправите его самостоятельно.':'Ответим по указанному контакту. Если форма недоступна, можно подготовить сообщение для Telegram.'}</p><p id="form-status" role="status" aria-live="polite"></p><div class="prepared" id="prepared" hidden><label for="prepared-text">Текст обращения</label><textarea id="prepared-text" readonly rows="6"></textarea><div class="actions"><button type="button" class="button outline" id="copy-brief">Скопировать</button><a class="button" id="telegram-brief" target="_blank" rel="noopener noreferrer">Открыть Telegram ↗</a></div><p class="small">Сообщение подготовлено. Отправьте его в открывшемся чате.</p></div></form><noscript><p>Для формы включите JavaScript или напишите нам в Telegram по ссылке рядом.</p></noscript></div></div></section>`;
+ const studioContact=contact.replace('ВАШ СЛЕДУЮЩИЙ ШАГ','05 / КОНТАКТЫ').replace('Большие идеи<br>начинаются<br><em>с разговора.</em>','Обсудим ваш проект').replace('Расскажите о бизнесе и задаче. Обсудим подход, состав работ, сроки и бюджет.','Расскажите, чем занимается ваш бизнес и что хотите изменить. Обсудим, с чего начать, какие работы понадобятся и как оценить проект.');
  const seoContact=contact.replace('ВАШ СЛЕДУЮЩИЙ ШАГ','05 / СОТРУДНИЧЕСТВО').replace('Большие идеи<br>начинаются<br><em>с разговора.</em>','Обсудим следующий этап<br>развития вашего бизнеса.').replace('Расскажите о бизнесе и задаче. Обсудим подход, состав работ, сроки и бюджет.','Расскажите о задаче — предложим подход, состав работ и следующие шаги.');
  const automationContact=contact.replace('ВАШ СЛЕДУЮЩИЙ ШАГ','ДИАГНОСТИКА ПРОЦЕССА').replace('Большие идеи<br>начинаются<br><em>с разговора.</em>','Разберём вашу задачу').replace('Расскажите о бизнесе и задаче. Обсудим подход, состав работ, сроки и бюджет.','Опишите, что команда делает вручную и какие системы уже использует. Определим, с какого сценария стоит начать.');
  const smmFooter=key==='smm';
@@ -73,8 +74,54 @@ export function renderPage(key,base,options={}) {
  title='Портфолио и работающие демопроекты — Element Digital';description='Открытые интерактивные демонстрации: сайт загородного отдыха, магазин керамики и сервис заявок. Честные примеры подхода Element Digital.';
  body=`<section class="page-intro wrap"><p class="eyebrow">ELEMENT / SELECTED CONCEPTS</p><h1>Не просто смотреть.<br><em>Попробовать.</em></h1><p>Три демонстрационных проекта с работающими сценариями. Это примеры подхода студии, а не клиентские заказы. Заказы, платежи и внешние интеграции в демо не подключены.</p></section><section class="section wrap">${projects()}</section><section class="section wrap"><div class="statement"><h2>Ваш проект<br>может стать следующим.</h2><p>Обсудим задачу и создадим решение с вашим характером, содержанием и бизнес-логикой.</p>${cta()}</div></section>`;
  } else if(key==='studio') {
- title='О студии и процессе работы — Element Digital';description='Как работает Element Digital: погружаемся в бизнес, согласуем этапы, проектируем, разрабатываем и поддерживаем цифровые продукты.';
- body=`<section class="page-intro wrap"><p class="eyebrow">ELEMENT / STUDIO</p><h1>Хороший digital<br>начинается<br><em>с понимания.</em></h1><p>Element Digital — студия сайтов и цифровых решений для бизнеса. Соединяем стратегию, дизайн, разработку и продвижение.</p></section><section class="section wrap split"><img class="architecture" src="${asset('assets/digital-architecture.png')}" width="1728" height="910" alt="Архитектура сайта, мобильного интерфейса и связанных сервисов" loading="lazy"><div><h2>Внимание<br>к вашей задаче.</h2><p>Сначала разбираемся, как устроена ваша работа и что нужно клиентам. Затем предлагаем решение, объясняем выбор и собираем продукт, который можно развивать.</p><p>Фиксируем договорённости и показываем промежуточный результат. Вы видите состав работ и понимаете следующий шаг.</p></div></section>${process()}<section class="section wrap">${heading('ВОПРОСЫ И ОТВЕТЫ','Сначала — ясность.')}${faq()}</section>`;
+ title='О студии Element Digital — сайты, продвижение и автоматизация';
+ description='Создаём сайты и цифровые сервисы, продвигаем бизнес и автоматизируем рабочие процессы. Узнайте, как Element Digital ведёт проекты и что получает клиент.';
+ const studioServices=[
+  ['design','Дизайн','Фирменный стиль и интерфейсы, в которых клиент легко находит нужное.'],
+  ['development','Разработка','Сайты, магазины и веб-сервисы с понятным путём от первого визита до обращения.'],
+  ['seo','SEO-продвижение','Помогаем клиентам находить ваши услуги в поиске и выбирать подходящее предложение.'],
+  ['smm','Социальные сети','Разрабатываем стратегию, оформляем площадки и готовим контент.'],
+  ['automation','Автоматизация','Связываем сайт, CRM и мессенджеры, чтобы заявки и задачи попадали к ответственным.'],
+  ['development/#support','Поддержка','Обновляем сайт и добавляем функции по мере развития бизнеса.']
+ ];
+ body=`<section class="wrap studio-hero">
+  <div class="studio-intro">
+   <p class="eyebrow">О СТУДИИ</p>
+   <h1>Element Digital</h1>
+   <p class="studio-lead">Сайты, продвижение и автоматизация для бизнеса</p>
+   <p>Помогаем клиентам найти вас, понять ваше предложение и обратиться. После запуска можем взять на себя развитие проекта и автоматизировать работу с заявками.</p>
+   <div class="actions">${cta()}${link('portfolio','Посмотреть работы','button outline')}</div>
+  </div>
+  <figure class="studio-visual"><img src="${asset('assets/digital-architecture.png')}" width="1728" height="910" alt="Концепция цифрового продукта с экранами сайта и мобильного интерфейса"></figure>
+ </section>
+ <section class="section wrap studio-section" aria-labelledby="studio-services">
+  <p class="eyebrow">01 / УСЛУГИ</p>
+  <h2 id="studio-services">С чем можем помочь</h2>
+  <div class="studio-services">${studioServices.map(([path,label,text],i)=>`<article>
+   <span class="studio-index" aria-hidden="true">0${i+1}</span>
+   <h3>${link(path,label)}</h3><p>${text}</p>
+  </article>`).join('')}</div>
+ </section>
+ <div class="studio-process">${process()}</div>
+ <section class="section wrap studio-section" aria-labelledby="studio-terms">
+  <p class="eyebrow">03 / УСЛОВИЯ</p>
+  <h2 id="studio-terms">О чём договариваемся заранее</h2>
+  <div class="studio-terms">
+   <article><h3>Состав работ и оплата</h3><p>Фиксируем задачи, сроки и стоимость. Если проект разбит на этапы, согласуем, что сдаём на каждом и когда вносится оплата.</p></article>
+   <article><h3>Согласования и правки</h3><p>Определяем, кто принимает решения с вашей стороны. Показываем промежуточный результат и заранее согласуем количество итераций.</p></article>
+   <article><h3>Передача и поддержка</h3><p>Уточняем, какие исходники, доступы и инструкции передаём после запуска. Поддержку и дальнейшие доработки согласуем отдельно.</p></article>
+  </div>
+ </section>
+ <section class="section wrap studio-section" aria-labelledby="studio-faq">
+  <p class="eyebrow">04 / ВОПРОСЫ</p>
+  <h2 id="studio-faq">Перед первым разговором</h2>
+  ${faq([
+   site.faq[0],
+   ['Можно посмотреть примеры работы?', 'Да. В портфолио есть демонстрационные проекты. Можно открыть их и попробовать, как устроен запрос на бронирование, каталог магазина или доска заявок.'],
+   ['Можно обратиться с отдельной задачей?', 'Да. Можно начать с редизайна, отдельной страницы, продвижения или автоматизации одного процесса. На первой встрече обсудим, что нужно для этой задачи.'],
+   site.faq[4]
+  ])}
+ </section>`;
  } else if(key==='privacy') {
  title='Обработка данных обращения — Element Digital';description='Какие данные использует Element Digital для ответа на обращение, как работает форма и как управлять необязательной аналитикой.';
  body=`<article class="section wrap legal"><p class="eyebrow">ELEMENT / ИНФОРМАЦИЯ</p><h1>Данные вашего<br>обращения.</h1><h2>Что вы передаёте</h2><p>Имя, контакт для ответа и описание задачи. Используем эти сведения, чтобы обсудить обращение и подготовить предложение. Не указывайте в форме пароли, платёжные данные и другую конфиденциальную информацию.</p><h2>Как работает обращение</h2><p>Если доступна прямая отправка, сведения передаются в рабочую переписку студии. Если вы выбираете подготовку сообщения, текст остаётся на странице до перехода в Telegram. Окончательную отправку сообщения в Telegram вы выполняете самостоятельно.</p><h2>Вопросы о данных</h2><p>Чтобы уточнить обработку обращения, исправить или удалить переданные сведения, напишите в <a href="${esc(site.telegram)}" target="_blank" rel="noopener noreferrer">Telegram студии</a>, указав контакт и дату обращения.</p><h2>Аналитика</h2><p>Необязательная аналитика загружается только после вашего согласия, если подключена на сайте. Выбор хранится в браузере. Изменить его можно кнопкой «Настройки аналитики» в подвале. Тексты формы и контакты не отправляются в события аналитики.</p></article>`;
@@ -88,7 +135,6 @@ export function renderPage(key,base,options={}) {
  if(key==='')body=body.replace('<section class="section portfolio-strip">',serviceDirectory(link)+'<section class="section portfolio-strip">');
  if(key==='development')body+=serviceDirectory(link);
  if(key==='development')body+=`<section class="section wrap commercial-conditions">${heading('ПЕРЕД НАЧАЛОМ РАБОТЫ','Понятный объём.<br>Согласованные условия.')}<div class="commercial-terms"><div><h3>Оценка и состав</h3><p>Разберём задачу и текущую ситуацию. В предложении зафиксируем перечень работ, этапы, сроки и стоимость. Расходы на размещение рекламы, подписки и сторонние сервисы согласуем отдельно.</p></div><div><h3>Согласование и развитие</h3><p>До старта определим число итераций правок, ответственного за обратную связь и материалы для передачи. Поддержку и новые задачи после завершения обсудим отдельным объёмом.</p></div></div>${cta('Обсудить условия')}</section>`;
- if(key==='studio')body+=`<section class="section wrap commercial-conditions">${heading('КАК ДОГОВОРИМСЯ','Вы понимаете,<br>кто и за что отвечает.')}<div class="commercial-terms"><div><h3>Контакт и решения</h3><p>Работаем удалённо. На старте проекта согласуем контакт для обратной связи, ответственного за согласования и удобный порядок обсуждения. Задачу, этапы, стоимость и сроки фиксируем до начала работ.</p><p>Не нужно заранее знать технические термины. Расскажите, чем занимается ваш бизнес, покажите текущий сайт и объясните, какой результат вам нужен.</p></div><div><h3>Что можно проверить</h3><p>В портфолио доступны демонстрационные проекты с работающими сценариями. Они прямо обозначены как демо. Мы не выдаём их за клиентские заказы и не публикуем неподтверждённые результаты.</p><p>Состав исходников, доступов и инструкций для передачи включаем в договорённости. Условия поддержки после завершения и дополнительные работы согласуем отдельно.</p></div></div>${link('portfolio','Посмотреть демонстрации','text-link')}${cta('Написать о задаче')}</section>`;
  const isDemo=key.startsWith('demo/');
- return {title,description,theme,html:(header+`<main id="main">${body}${key==='privacy'||isDemo?'':key==='seo'?seoContact:key==='automation'?automationContact:contact}</main>`+footer).replaceAll('href="#contact"',`href="${key==='privacy'||isDemo?base+'#contact':'#contact'}"`)};
+ return {title,description,theme,html:(header+`<main id="main">${body}${key==='privacy'||isDemo?'':key==='seo'?seoContact:key==='automation'?automationContact:key==='studio'?studioContact:contact}</main>`+footer).replaceAll('href="#contact"',`href="${key==='privacy'||isDemo?base+'#contact':'#contact'}"`)};
 }

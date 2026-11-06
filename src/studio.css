@@ -1,0 +1,89 @@
+.studio-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(30px, 6vw, 100px);
+  padding-block: clamp(46px, 7vw, 106px);
+}
+.studio-intro h1 {
+  margin: 0;
+  font-size: clamp(44px, 6.4vw, 100px);
+  font-weight: 700;
+  line-height: 1.04;
+}
+.studio-intro .studio-lead {
+  margin: 18px 0 12px;
+  color: var(--accent);
+  font-size: clamp(22px, 3vw, 38px);
+  line-height: 1.2;
+}
+.studio-intro p:not(.eyebrow, .studio-lead),
+.studio-section article p {
+  max-width: 58ch;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.studio-intro .actions { margin-top: 28px; }
+.studio-visual {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #111110;
+}
+.studio-visual img { display: block; width: 100%; height: auto; }
+.studio-section, .studio-process { border-top: 1px solid var(--line); }
+.studio-section > h2, .studio-process h2 {
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+.studio-services, .studio-terms {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 34px;
+}
+.studio-section article {
+  padding: clamp(18px, 2.4vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+}
+.studio-section article h3 {
+  margin: 0 0 10px;
+  font-size: clamp(19px, 2vw, 25px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.studio-section article h3 a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.studio-section article h3 a:hover { color: var(--accent); }
+.studio-section article p { margin: 0; }
+.studio-index {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+.studio-process .steps h3 { font-weight: 700; }
+.studio-process .steps p, .studio-process .steps small,
+.studio-section .faq-list details p { font-size: 15px; line-height: 1.6; }
+.studio-section .faq-list { margin-top: 30px; }
+.studio-section .faq-list summary { font-size: 17px; font-weight: 600; }
+
+@media (max-width: 900px) {
+  .studio-hero { grid-template-columns: minmax(0, 1fr); }
+  .studio-visual { max-width: 720px; }
+  .studio-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .studio-services, .studio-terms { grid-template-columns: minmax(0, 1fr); }
+  .studio-intro .actions .button { width: 100%; }
+}
