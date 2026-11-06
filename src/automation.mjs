@@ -63,7 +63,7 @@ const industries = [
   },
 ];
 
-const n8nScenarios = [
+const businessScenarios = [
   {
     title: 'Поиск клиентов',
     outcome: 'Соберите базу для работы отдела продаж.',
@@ -123,7 +123,7 @@ const renderOrbit = i => `<div class="auto-orbit auto-orbit-${i+1}" aria-hidden=
 export function renderAutomation({ cta }) {
   return `<section class="auto-hero">
     <div class="wrap auto-hero-inner">
-      <p class="auto-kicker">AI / n8n / CRM</p>
+      <p class="auto-kicker">Заявки / Продажи / Отчёты</p>
       <h1>Автоматизируем <span>бизнес-процессы</span></h1>
       <p class="auto-lead">Автоматизируем заявки, работу с CRM, коммуникации и рутинные задачи, чтобы бизнес экономил время и тратил меньше ресурсов.</p>
       <div class="actions auto-actions">${cta('Обсудить автоматизацию')}<a class="button outline" href="#automation-solutions">Смотреть решения <span aria-hidden="true">↓</span></a></div>
@@ -184,12 +184,12 @@ export function renderAutomation({ cta }) {
     </div>
     <div class="actions auto-industry-actions">${cta('Подобрать решение для моего бизнеса')}</div>
   </section>
-  <section class="wrap auto-section" id="automation-n8n" aria-labelledby="automation-n8n-title">
-    <p class="auto-section-label">03 / Сценарии n8n</p>
-    <h2 id="automation-n8n-title">Что n8n может дать вашему бизнесу</h2>
-    <p class="auto-section-intro">n8n связывает сайт, CRM, таблицы и другие сервисы, чтобы данные передавались автоматически. Начать можно с одной задачи, которая каждый день отнимает время у команды.</p>
+  <section class="wrap auto-section" id="automation-scenarios" aria-labelledby="automation-scenarios-title">
+    <p class="auto-section-label">03 / Сценарии автоматизации</p>
+    <h2 id="automation-scenarios-title">Что можно автоматизировать в вашем бизнесе</h2>
+    <p class="auto-section-intro">Связываем сайт, CRM, таблицы и другие сервисы, чтобы команда меньше переносила данные вручную. Начать можно с одной задачи, которая каждый день отнимает время.</p>
     <div class="auto-industry-grid">
-      ${n8nScenarios.map(({title,outcome,workflow})=>`<article>
+      ${businessScenarios.map(({title,outcome,workflow})=>`<article>
         <h3>${title}</h3>
         <dl>
           <div><dt>Что вы получите</dt><dd>${outcome}</dd></div>
@@ -210,6 +210,6 @@ export function renderAutomation({ cta }) {
   </section>
   <section class="wrap auto-section" aria-labelledby="automation-tools-title">
     <div class="auto-tools"><div><p class="auto-section-label">06 / Интеграции</p><h2 id="automation-tools-title">Связываем то, чем пользуется команда</h2></div>
-    <p>Подбираем решение под ваш процесс: n8n для сценариев, API и вебхуки для обмена данными, CRM для заявок и сделок. Перед внедрением проверяем доступные интеграции и согласуем права доступа.</p></div>
+    <p>Подключаем сервисы, которыми уже пользуется команда, чтобы заявки, сделки и отчёты обновлялись автоматически. Перед внедрением проверяем, какие данные можно передавать, и согласуем права доступа.</p></div>
   </section>`;
 }
