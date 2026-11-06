@@ -57,7 +57,7 @@ const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveA
  </svg>`;
 
 const caseSearch = `<svg viewBox="0 0 24 24" focusable="false"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4 4"/></svg>`;
-const caseQuery = 'Создание сайтов для баз отдыха';
+const casePin = `<svg viewBox="0 0 24 24" focusable="false"><path d="M12 21s6-5.5 6-11a6 6 0 1 0-12 0c0 5.5 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>`;
 
 export function renderSeoArc({ asset, cta }) {
  const caseVisual = (key, label, screen) => `<div class="arc-case-visual" aria-hidden="true">
@@ -90,40 +90,38 @@ export function renderSeoArc({ asset, cta }) {
   <p class="arc-feedback arc-label">Данные и обратная связь</p>
  </div></section>
  <section class="arc-band arc-projects arc-dark" id="projects"><div class="wrap">
-  ${intro('03 / SEO-продвижение','Чтобы клиенты находили<br>вас в поиске.','Продвигаем страницы ваших услуг в Яндексе и Google. Смотрим, по каким запросам вас находят и какие страницы приводят обращения.')}
+  ${intro('03 / Стратегии SEO-продвижения','Три стратегии.<br>Разные задачи бизнеса.','Помогаем выбрать, где искать клиентов: среди тех, кто уже выбирает услугу, ищет бизнес поблизости или пока изучает варианты.')}
   <div class="arc-case">
    <div class="arc-case-grid">
     <article class="arc-case-step">
-     ${caseVisual('structure','01 / Клиент ищет',`
-      <div class="arc-case-query">${caseSearch}<b>${caseQuery}</b></div>
-      <div class="arc-case-suggestion">сайт для загородного отеля</div>
-      <div class="arc-case-suggestion">сайт базы отдыха с бронированием</div>`)}
-     <p class="arc-label">Поисковый спрос</p>
-     <h3>Находим спрос на ваши услуги</h3>
-     <p>Изучаем запросы по вашим услугам и регионам, сравниваем выдачу и выбираем, какие страницы продвигать в первую очередь.</p>
-     <p class="arc-case-detail"><strong>Что получите</strong> Карту запросов и список приоритетных страниц.</p>
+     ${caseVisual('technical','01 / Пример поиска услуги',`
+      <div class="arc-case-query">${caseSearch}<span>снять домик на Байкале</span></div>
+      <div class="arc-case-result"><small>Страница услуги</small><b>Аренда домиков на Байкале</b><span>Варианты проживания, цены и свободные даты.</span></div>`)}
+     <p class="arc-label">Готовый спрос</p>
+     <h3>Продвижение страниц услуг</h3>
+     <p>Под запросы людей, которые уже выбирают услугу, создаём и продвигаем отдельные страницы с ценами, условиями и формой обращения.</p>
+     <p class="arc-case-detail"><strong>Когда подходит</strong> Услугу уже ищут и сравнивают с предложениями конкурентов.</p>
     </article>
     <article class="arc-case-step">
-     ${caseVisual('technical','02 / Пример выдачи',`
-      <div class="arc-case-query">${caseSearch}<span>${caseQuery}</span></div>
-      <div class="arc-case-result"><small>Element Digital · Разработка</small><b>${caseQuery}</b><span>Домики, условия проживания и запрос бронирования.</span></div>`)}
-     <p class="arc-label">Видимость в поиске</p>
-     <h3>Продвигаем страницы услуг</h3>
-     <p>Дорабатываем заголовки, содержание и внутренние ссылки. Создаём отдельные страницы там, где у клиентов есть отдельный запрос.</p>
-     <p class="arc-case-detail"><strong>Что увидите в отчёте</strong> Динамику позиций и переходов из поиска.</p>
+     ${caseVisual('structure','02 / Пример карточки на карте',`
+      <div class="arc-case-map"><svg viewBox="0 0 260 65" preserveAspectRatio="none" focusable="false"><path d="M0 26 68 14 131 29 202 12 260 28M0 54l59-8 63 10 61-15 77 13M48 0l11 46 9 19M156 0l-25 29-9 27m95-56-15 12-19 29-9 24"/></svg><span>${casePin}</span></div>
+      <div class="arc-case-result"><b>База отдыха на Байкале</b><span>Маршрут · Телефон · Сайт</span></div>`)}
+     <p class="arc-label">Поиск рядом</p>
+     <h3>Локальное продвижение</h3>
+     <p>Оформляем карточки компании в картах и справочниках. Сверяем контакты, часы работы и адрес, чтобы клиент мог позвонить или построить маршрут.</p>
+     <p class="arc-case-detail"><strong>Когда подходит</strong> Клиенты выбирают по городу, району или расстоянию до вас.</p>
     </article>
     <article class="arc-case-step">
-     ${caseVisual('contact','03 / Посетитель оставляет заявку',`
-      <div class="arc-case-field">Имя и контакт</div>
-      <div class="arc-case-field">Нужен сайт для базы отдыха</div>
-      <div class="arc-case-send">Отправить заявку <span>↗</span></div>`)}
-     <p class="arc-label">Обращения из поиска</p>
-     <h3>Упрощаем путь до заявки</h3>
-     <p>Настраиваем отслеживание отправок форм и кликов по контактам. Проверяем, где посетители прерывают путь, и упрощаем обращение.</p>
-     <p class="arc-case-detail"><strong>Что увидите в отчёте</strong> Обращения из поиска и план следующих доработок.</p>
+     ${caseVisual('contact','03 / Пример статьи из поиска',`
+      <div class="arc-case-query">${caseSearch}<span>где отдохнуть на Байкале с детьми</span></div>
+      <div class="arc-case-result"><small>Гид для гостей</small><b>Как выбрать место для семейного отдыха</b><span>Сравнить варианты проживания →</span></div>`)}
+     <p class="arc-label">Поиск ответов</p>
+     <h3>Контентное продвижение</h3>
+     <p>Готовим статьи, сравнения и ответы на вопросы. Из полезного материала ведём к подходящей услуге, когда читатель готов выбирать.</p>
+     <p class="arc-case-detail"><strong>Когда подходит</strong> Перед покупкой клиенты изучают тему и сравнивают варианты.</p>
     </article>
    </div>
-   <div class="arc-case-action">${cta('Обсудить SEO-продвижение')}</div>
+   <div class="arc-case-action">${cta('Подобрать SEO-стратегию')}</div>
   </div>
  </div></section>
  <section class="arc-band arc-dark" id="team"><div class="wrap">
