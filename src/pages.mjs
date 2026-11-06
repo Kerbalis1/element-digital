@@ -1,3 +1,4 @@
+import { renderDevelopment } from './development.mjs';
 import { renderSmm } from './smm.mjs';
 import { renderSeoClient } from './seo-client.mjs';
 import { renderSeoArc } from './seo-arc.mjs';
@@ -56,8 +57,8 @@ export function renderPage(key,base,options={}) {
  } else if(key==='development') {
  title='Разработка сайтов, ботов и веб-сервисов — Element Digital';
  description='Разрабатываем сайты, интернет-магазины, Telegram-ботов и веб-сервисы. Продумываем сценарии, запускаем и помогаем развивать.';
- const art=`<div class="dev-art" aria-hidden="true"><div class="dev-toolbar"><i></i><i></i><i></i><span>element / workspace</span></div><p><span>01</span> const idea = your.business;</p><p><span>02</span> design(idea);</p><p><span>03</span> build(experience);</p><p><span>04</span> launch();</p><div class="dev-result">e↗ <small>Смысл обретает форму.</small></div></div>`;
- body=`<section class="direction-hero wrap"><div><p class="eyebrow">ELEMENT / WEB & DIGITAL PRODUCTS</p><h1>От вашей идеи —<br><em>к работающему продукту.</em></h1><p>${description}</p>${cta()}</div>${art}</section><section class="section wrap">${heading('СОСТАВ РАБОТ','Технологии под задачу.<br>Сценарии — под человека.')}`+`<div class="service-details">${site.services.map(s=>`<details id="${s.id==='support'?'support':'service-'+s.id}"><summary>${esc(s.title)}<span>+</span></summary><p>${esc(s.short)}</p><dl><dt>Кому подходит</dt><dd>${esc(s.for)}</dd><dt>Что входит</dt><dd>${esc(s.includes)}</dd><dt>Результат</dt><dd>${esc(s.result)}</dd></dl></details>`).join('')}</div>`+`</section>`+`<section class="section wrap">${heading('ОТКРЫТЫЕ ДЕМОНСТРАЦИИ','Посмотрите, как это работает.')}${projects()}</section>`+process();
+ const serviceDetails=()=>`<div class="service-details">${site.services.map(s=>`<details id="${s.id==='support'?'support':'service-'+s.id}"><summary>${esc(s.title)}<span>+</span></summary><p>${esc(s.short)}</p><dl><dt>Кому подходит</dt><dd>${esc(s.for)}</dd><dt>Что входит</dt><dd>${esc(s.includes)}</dd><dt>Результат</dt><dd>${esc(s.result)}</dd></dl></details>`).join('')}</div>`;
+ body=renderDevelopment({asset,link,cta,projects,serviceDetails})+process();
  } else if(key==='portfolio') {
  title='Портфолио и работающие демопроекты — Element Digital';description='Открытые интерактивные демонстрации: сайт загородного отдыха, магазин керамики и сервис заявок. Честные примеры подхода Element Digital.';
  body=`<section class="page-intro wrap"><p class="eyebrow">ELEMENT / SELECTED CONCEPTS</p><h1>Не просто смотреть.<br><em>Попробовать.</em></h1><p>Три демонстрационных проекта с работающими сценариями. Это примеры подхода студии, а не клиентские заказы. Заказы, платежи и внешние интеграции в демо не подключены.</p></section><section class="section wrap">${projects()}</section><section class="section wrap"><div class="statement"><h2>Ваш проект<br>может стать следующим.</h2><p>Обсудим задачу и создадим решение с вашим характером, содержанием и бизнес-логикой.</p>${cta()}</div></section>`;
