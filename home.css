@@ -54,3 +54,20 @@ body[data-page=home] main h3 {
   #home-process .steps h3 { margin: 0; }
   #home-faq .faq-list details p { margin-right: 0; }
 }
+
+.mountain-picture img { object-position: 65% 42%; }
+.mountain-credit {
+  margin: 22px 0 0;
+  color: #e8e3d9;
+  font-size: 12px;
+  line-height: 1.5;
+  text-shadow: 0 1px 4px #000;
+}
+.mountain-credit a {
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+@media (max-width: 640px) {
+  .mountain-picture img { object-position: center 38%; }
+  .mountain-credit { margin-top: 14px; }
+}
