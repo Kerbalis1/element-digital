@@ -8,7 +8,37 @@ body[data-page="development"]:has(.dev-hero) {
 }
 body[data-page="development"]:has(.dev-hero) .header,
 body[data-page="development"]:has(.dev-hero) .footer { background: #080b13; }
-body[data-page="development"]:has(.dev-hero) .header-cta { border-color: #ac9fea; }
+body[data-page="development"] .desktop-nav {
+  gap: clamp(14px, 1.5vw, 26px);
+  font-size: 16px;
+  font-weight: 600;
+}
+body[data-page="development"] .desktop-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+}
+body[data-page="development"] .header-cta {
+  border-color: #ac9fea;
+  padding: 13px 21px;
+  font-size: 16px;
+  font-weight: 600;
+}
+body[data-page="development"] .menu-toggle { min-width: 48px; min-height: 48px; }
+body[data-page="development"] .mobile-nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+}
+body[data-page="development"] .mobile-nav a:last-child {
+  justify-content: center;
+  margin-top: 12px;
+  padding-inline: 16px;
+  border: 1px solid #ac9fea;
+}
 .dev-hero {
   overflow: hidden;
   background: radial-gradient(ellipse at 72% 52%, #142044, transparent 60%), #080b13;
