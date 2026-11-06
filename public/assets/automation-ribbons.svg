@@ -14,18 +14,18 @@
       <stop offset=".83" stop-color="#ad28ff"/>
       <stop offset="1" stop-color="#260d62" stop-opacity="0"/>
     </linearGradient>
-    <filter id="halo" x="-50%" y="-40%" width="200%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="halo" x="-50%" y="-40%" width="200%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>
     <path id="wave-blue" d="M-95 -80C-46 89 200 104 171 265S-18 421 31 558s224 137 400 122"/>
     <path id="wave-pink" d="M385 -48C271 67 158 98 111 224S-37 388 5 511s216 148 333 168"/>
     <path id="wave-right" d="M1455 440C1360 553 1210 599 1178 653S1290 749 1510 722"/>
   </defs>
-  <g fill="none" filter="url(#halo)" opacity=".62">
-    <use href="#wave-blue" stroke="#00dfff" stroke-width="14"/>
-    <use href="#wave-pink" stroke="#e311ff" stroke-width="11"/>
-    <use href="#wave-right" stroke="#008dff" stroke-width="10"/>
+  <g fill="none" filter="url(#halo)" opacity=".91">
+    <use href="#wave-blue" stroke="#00dfff" stroke-width="22"/>
+    <use href="#wave-pink" stroke="#e311ff" stroke-width="17"/>
+    <use href="#wave-right" stroke="#008dff" stroke-width="16"/>
   </g>
-  <g fill="none" stroke="url(#blue)" stroke-width="1.3">
-    <use href="#wave-blue" opacity=".95"/>
+  <g fill="none" stroke="url(#blue)" stroke-width="1.55">
+    <use href="#wave-blue" stroke-width="2.6"/>
     <use href="#wave-blue" transform="translate(-6 7) scale(1.04 1)" opacity=".84"/>
     <use href="#wave-blue" transform="translate(-12 14) scale(1.07 1)" opacity=".7"/>
     <use href="#wave-blue" transform="translate(-18 21) scale(1.1 1)" opacity=".78"/>
@@ -40,8 +40,8 @@
     <use href="#wave-right" transform="translate(8 18)" opacity=".48"/>
     <use href="#wave-right" transform="translate(12 27)" opacity=".32"/>
   </g>
-  <g fill="none" stroke="url(#pink)" stroke-width="1.25">
-    <use href="#wave-pink" opacity=".95"/>
+  <g fill="none" stroke="url(#pink)" stroke-width="1.5">
+    <use href="#wave-pink" stroke-width="2.5"/>
     <use href="#wave-pink" transform="translate(5 7) scale(.98 1)" opacity=".84"/>
     <use href="#wave-pink" transform="translate(10 14) scale(.96 1)" opacity=".75"/>
     <use href="#wave-pink" transform="translate(15 21) scale(.94 1)" opacity=".7"/>

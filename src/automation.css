@@ -23,9 +23,9 @@ body[data-page="automation"] .header-cta:hover { background: #6937cf; color: #ff
   isolation: isolate;
   overflow: hidden;
   background:
-    url("assets/automation-ribbons.svg") center bottom / cover no-repeat,
-    radial-gradient(ellipse at 19% 79%, #06327b99, transparent 46%),
-    radial-gradient(ellipse at 80% 64%, #54137484, transparent 47%),
+    url("assets/automation-ribbons.svg?v=2") center bottom / cover no-repeat,
+    radial-gradient(ellipse at 19% 79%, #083c8eaa, transparent 46%),
+    radial-gradient(ellipse at 80% 64%, #63178a9c, transparent 47%),
     #080918;
 }
 .auto-hero-inner { padding-block: clamp(22px, 2.5vw, 36px) 26px; text-align: center; }
@@ -106,26 +106,35 @@ body[data-page="automation"] .contact .button:hover { background: #e4d9ff; color
   max-width: 1180px;
   margin: 25px auto 23px;
 }
-.auto-orbit { display: grid; justify-items: center; gap: 12px; }
+.auto-orbit { display: grid; justify-items: center; gap: 14px; }
 .auto-orbit > div {
+  --edge: #48ddff;
+  --glow: #20abff59;
+  --tilt: 4deg;
   display: grid;
   place-items: center;
-  gap: 6px;
-  width: clamp(86px, 8.8vw, 130px);
-  min-height: 68px;
-  padding: 8px 5px;
+  gap: 5px;
+  width: clamp(98px, 8.8vw, 130px);
+  min-height: 73px;
+  padding: 9px 7px;
   border: 1px solid transparent;
-  border-radius: 15px;
-  background: linear-gradient(145deg, #243658, #111332 73%) padding-box,
-    linear-gradient(120deg, #60eaff, #626dff, #ed75ff) border-box;
-  box-shadow: inset 0 0 18px #4e81d73d, 0 0 19px #497df251;
-  font-size: 12px;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at 22% 5%, #5c9bff43, transparent 56%) padding-box,
+    linear-gradient(155deg, #263b65, #151a3d 55%, #191331) padding-box,
+    linear-gradient(145deg, #d2f6ff, var(--edge) 29%, #6957de 62%, #d263ff) border-box;
+  box-shadow: inset 0 1px 11px #c5d9ff28, 0 0 20px var(--glow), 0 10px 20px #04081988;
+  color: #f4f5ff;
+  font-size: clamp(12px, 1.05vw, 14px);
   font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+  transform: rotate(var(--tilt));
 }
-.auto-orbit-1 > div { transform: rotate(8deg); }
-.auto-orbit-1 > div:nth-child(2) { transform: translateX(-12px) rotate(-6deg); }
-.auto-orbit-2 > div { transform: rotate(-8deg); }
-.auto-orbit-2 > div:nth-child(even) { transform: translateX(11px) rotate(7deg); }
+.auto-orbit-2 > div { --tilt: -4deg; }
+.auto-orbit > div:nth-child(even) { --edge: #cb76ff; --glow: #b240fa61; }
+.auto-orbit-1 > div:nth-child(2) { transform: translateX(-7px) rotate(-3deg); }
+.auto-orbit-2 > div:nth-child(even) { transform: translateX(7px) rotate(3deg); }
 .auto-orbit svg, .auto-benefits svg, .auto-console-rail svg, .auto-branches svg {
   width: 25px;
   height: 25px;
@@ -135,6 +144,7 @@ body[data-page="automation"] .contact .button:hover { background: #e4d9ff; color
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+.auto-orbit svg { filter: drop-shadow(0 0 5px #48c9ff80); }
 .auto-orbit > div:nth-child(even) svg, .auto-benefits li:nth-child(even) svg { stroke: #ed91ff; }
 .auto-benefits {
   display: grid;
@@ -166,11 +176,14 @@ body[data-page="automation"] .contact .button:hover { background: #e4d9ff; color
 .auto-workflow {
   min-width: 0;
   padding: 7px;
-  border: 2px solid transparent;
-  border-radius: 19px;
+  border: 3px solid transparent;
+  border-radius: 21px;
   background: linear-gradient(110deg, #182657, #261242) padding-box,
-    linear-gradient(100deg, #15f6ff, #32aeff 23%, #8353ff 57%, #ff49ec) border-box;
-  box-shadow: -5px 0 22px #00d9ff77, 6px 0 25px #ec37fa73, inset 0 0 8px #7654fb91;
+    linear-gradient(100deg, #9cffff, #10ddff 22%, #8b53ff 57%, #ff83f2) border-box;
+  box-shadow:
+    -5px 0 12px #08e6ffc9, 5px 0 13px #ff4deec9,
+    -12px 0 35px #02c7ff79, 12px 0 37px #ff32ee86,
+    inset 0 0 9px #9674ffb0;
   text-align: left;
 }
 .auto-window-bar {
@@ -280,8 +293,8 @@ body[data-page="automation"] .contact .button:hover { background: #e4d9ff; color
   content: "";
 }
 .auto-flow li[data-state="current"] {
-  border-color: #d9b6ff;
-  box-shadow: 0 0 16px #9b72ff6b, inset 0 0 18px #8050db44;
+  border-color: #e8c4ff;
+  box-shadow: 0 0 18px #ba6aff9c, inset 0 0 15px #9253e65c;
 }
 .auto-flow li[data-state="complete"] { border-color: #74dbe6; }
 .auto-flow li[data-state="complete"]::after { background: #74dbe6; }
