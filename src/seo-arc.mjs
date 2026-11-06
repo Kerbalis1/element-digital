@@ -95,7 +95,7 @@ export function renderSeoArc({ asset, cta }) {
      ${caseVisual('search','01 / Пример выдачи',`
       <div class="arc-case-screen">
       <div class="arc-case-query">${caseSearch}<span>снять домик на Байкале</span></div>
-      <div class="arc-case-result"><small>Страница услуги</small><b>Аренда домиков<br>на Байкале</b><span>Домики · Цены · Свободные даты</span></div>
+      <div class="arc-case-result"><small>Страница услуги <span>↗</span></small><b>Аренда домиков<br>на Байкале</b><span>Домики · Цены · Свободные даты</span></div>
       </div>`,'assets/seo-scene-technical.webp?v=2')}
      <p class="arc-label">Готовый спрос</p>
      <h3>Продвижение страниц услуг</h3>
@@ -105,9 +105,12 @@ export function renderSeoArc({ asset, cta }) {
     <article class="arc-case-step">
      ${caseVisual('local','02 / Пример на карте',`
       <div class="arc-case-map"><svg viewBox="0 0 340 235" preserveAspectRatio="xMidYMid slice" focusable="false">
-       <path class="arc-case-lake" d="M340 0H244l-21 27 7 24-41 35-11 29 12 27-38 41-11 52h199Z"/>
-       <path class="arc-case-road" d="M-12 41 86 61 137 47 202 73M-10 96l68 6 55-23 43 21 32-10M-12 156l63-17 61 11 53-27M8 214l67-22 52 9 19-17M41 0l17 102-7 37 24 53 5 43M116 0l21 47-24 32-1 71 15 51"/>
-       <path class="arc-case-route" d="M8 214l67-22-24-53 7-37 55-23 43 21"/>
+       <defs><linearGradient id="arc-map-water" x2=".92" y2="1"><stop stop-color="#527471"/><stop offset="1" stop-color="#263d42"/></linearGradient></defs>
+       <path class="arc-case-lake" d="M340 0H244q-26 22-19 42 8 17-21 31-15 9-22 31-7 17 5 34 7 14-21 31-20 14-25 66h199Z"/>
+       <path class="arc-case-contours" d="M-8 15q49 30 91 13t108-8M-8 24q48 28 93 13t106-9M-8 33q47 26 95 12t103-10M-10 165q47-20 87-5t75-16M-10 174q47-20 87-5t73-16M-10 183q47-20 87-5t71-15M-12 192q47-20 89-5t68-14"/>
+       <path class="arc-case-waterline" d="M265 0q-29 23-23 45 5 18-24 37-17 11-23 28-8 18 7 36 8 14-19 30-20 16-23 59M278 0q-29 24-23 45 5 20-23 39-18 13-23 29-7 16 7 35 10 15-17 32-21 16-22 55"/>
+       <path class="arc-case-road" d="M-12 41 86 61 137 47 202 73M-10 96l68 6 55-23 43 21 27-8M-12 156l63-17 61 11 53-27M8 214l67-22 52 9 19-17M41 0l17 102-7 37 24 53 5 43M116 0l21 47-24 32-1 71 15 51"/>
+       <path class="arc-case-route" d="M8 214l67-22-24-53 7-37 55-23 43 21"/><circle cx="156" cy="100" r="4" fill="#f4c992"/>
       </svg><span class="arc-case-map-pin">${casePin}</span><span class="arc-case-map-name">Байкал</span></div>
       <div class="arc-case-location"><b>База отдыха на Байкале</b><span>Маршрут · Телефон · Сайт</span></div>`)}
      <p class="arc-label">Поиск рядом</p>
@@ -121,7 +124,7 @@ export function renderSeoArc({ asset, cta }) {
        <span>Гид для гостей</span>
        <b>На Байкал<br>с детьми</b>
        <p>Как выбрать место<br>для семейного отдыха</p>
-       <svg viewBox="0 0 150 100" focusable="false"><path d="m0 78 35-36 18 17 32-43 40 46 12-13 13 15v36H0Z"/><path d="m49 64 36-48 20 24m-31-8 12 9 9-10M0 86l40-16 38 10 72-11M0 95l35-8 48 7 67-9"/></svg>
+       <img src="${asset('assets/mountain-mobile.webp')}" width="600" height="400" loading="lazy" decoding="async" alt="">
       </div>`)}
      <p class="arc-label">Поиск ответов</p>
      <h3>Контентное продвижение</h3>
