@@ -58,7 +58,7 @@ const heroLight = `<svg class="arc-hero-light" viewBox="0 0 1536 1024" preserveA
   <ellipse class="arc-crown-light" cx="980" cy="466" rx="90" ry="165" fill="url(#arc-gold-spot)"/>
  </svg>`;
 
-export function renderSeoArc({ asset, cta, href }) {
+export function renderSeoArc({ asset, cta }) {
  return `<section class="arc-hero">
   <div class="arc-hero-art">
    <img src="${asset('assets/seo-king-arch.webp')}" width="1320" height="880" alt="" fetchpriority="high">
@@ -81,7 +81,7 @@ export function renderSeoArc({ asset, cta, href }) {
   <ol class="arc-flow">${approach.map(([title,description],i)=>`<li><span class="arc-label">${index(i)}</span><h3>${title}</h3><p>${description}</p></li>`).join('')}</ol>
   <p class="arc-feedback arc-label">Данные и обратная связь</p>
  </div></section>
- ${renderPromotion({ asset, href, page: 'seo' })}
+ ${renderPromotion({ asset })}
  <section class="arc-band arc-dark" id="team"><div class="wrap">
   ${intro('04 / Команда','Люди, которые отвечают<br>за результат.','Пример распределения ролей в проекте. Иллюстративные портреты.')}
   <div class="arc-grid arc-four">${roles.map(([title,description],i)=>`<article class="arc-role">${imageWindow(asset('assets/seo-roles.webp'),`${(i%2)*560} ${Math.floor(i/2)*560+45} 560 445`,1120,1120)}<h3>${title}</h3><p>${description}</p></article>`).join('')}</div>
